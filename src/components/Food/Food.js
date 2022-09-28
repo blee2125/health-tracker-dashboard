@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import FoodForm from "./FoodForm";
 import FoodList from "./FoodList";
 
@@ -7,16 +7,23 @@ export default class Food extends React.Component {
         super(props)
         this.state = {
             foodObject: {
-                name: "",
-                calories: "150",
+                foodName: "",
+                totalCalories: "150",
                 timeOfConsumption: "",
                 meal: "",
-                quanity: ""
+                placeOfConsumption: "",
+                withWhom: "",
+                activity: "",
+                mood: "",
+                hungerLevel: "",
+                fullness: "",
+                amount: ""
             },
             foodArray: []
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDeleteFood = this.handleDeleteFood.bind(this);
     }
 
     updateData = (target, value) => {
@@ -29,11 +36,17 @@ export default class Food extends React.Component {
     };
 
     handleSubmit = () => {
-        if (this.state.foodObject.name !== '') {
+        if (this.state.foodObject.foodName !== '') {
             this.setState(prevState => ({
-                foodArray: [...prevState.foodArray, {name: this.state.foodObject.name, id: this.state.foodArray.length + 1}]
+                foodArray: [...prevState.foodArray, this.state.foodObject]
             }))
         }
+    }
+
+    handleDeleteFood(id) {
+        this.setState({
+            foodArray: this.state.foodArray.filter((_, i) => i !== id)
+        });
     }
 
     render() {
@@ -46,8 +59,8 @@ export default class Food extends React.Component {
         <button onClick={this.handleSubmit}> Submit</button>
 
         <p>list</p>
-        name: {this.state.foodObject.name}
-        <FoodList list={this.state.foodArray} />
+        name: {this.state.foodObject.foodName}
+        <FoodList list={this.state.foodArray} handleDelete={this.handleDeleteFood} />
       </div>
       )
     }
