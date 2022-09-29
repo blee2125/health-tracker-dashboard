@@ -2,6 +2,7 @@ import React from "react";
 import Card from 'react-bootstrap/Card';
 
 import ExerciseForm from "./ExerciseForm";
+import ExerciseList from "./ExerciseList";
 
 export default class Exercise extends React.Component {
     constructor(props) {
@@ -48,8 +49,9 @@ export default class Exercise extends React.Component {
       return (
         <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
             <h1>Exercise</h1>
-            <ExerciseForm />
+            <ExerciseForm  exerciseObject={this.state.exerciseObject} updateData={this.updateData} />
             <button onClick={this.handleSubmit}> Submit</button>
+            <ExerciseList list={this.state.exerciseArray} handleDelete={this.handleDeleteExercise} />
         </Card>
       )
     }
