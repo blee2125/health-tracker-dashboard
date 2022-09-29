@@ -1,4 +1,5 @@
 import React from "react";
+import Card from 'react-bootstrap/Card';
 
 
 export default class Exercise extends React.Component {
@@ -7,7 +8,7 @@ export default class Exercise extends React.Component {
         this.state = {
             exerciseObject: {
                 exerciseName: "",
-                duration: "150",
+                duration: "",
                 timeOfExercise: "",
                 typeOfExercise: "",
                 mood: ""
@@ -44,11 +45,10 @@ export default class Exercise extends React.Component {
 
     render() {
       return (
-      <div>
+        <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
+            <h1>Exercise</h1>
         
-        <h1>Exercise</h1>
-        
-      </div>
+        </Card>
       )
     }
 }

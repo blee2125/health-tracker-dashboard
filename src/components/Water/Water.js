@@ -1,4 +1,5 @@
 import React from "react";
+import Card from 'react-bootstrap/Card';
 
 import { AddWater } from "./AddWater";
 
@@ -18,14 +19,15 @@ export default class Water extends React.Component {
 
     render() {
       return (
-      <div>
-        <h1>{ this.state.glasses } glasses</h1>
-        <AddWater sign="+" glasses={this.state.glasses} updateCount={this.handleCount.bind(this)} />
-        {
-          this.state.glasses > 0 &&
-          <AddWater sign="-" glasses={this.state.glasses} updateCount={this.handleCount.bind(this)} />
-        }
-      </div>
+        <Card bg='light' border="secondary" style={{ width: '200px', padding: '25px', margin: "25px"}}>
+      
+          <h1>{ this.state.glasses } glasses</h1>
+          <AddWater sign="+" glasses={this.state.glasses} updateCount={this.handleCount.bind(this)} />
+          {
+            this.state.glasses > 0 &&
+            <AddWater sign="-" glasses={this.state.glasses} updateCount={this.handleCount.bind(this)} />
+          }
+        </Card>
       )
     }
 }
