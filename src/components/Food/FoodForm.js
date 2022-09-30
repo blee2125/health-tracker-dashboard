@@ -10,15 +10,15 @@ export const FoodForm = (props) => {
         <label>food to add</label>
         <br />
         <input 
-          name='name' 
-          placeholder='name'
+          name='foodName' 
+          placeholder='foodName'
           type='text'
           onChange={e => props.updateData('foodName', e.target.value)}
         />
         <input 
           name='totalCalories'
           placeholder='totalCalories'
-          type='text'
+          type='number'
           onChange={e => props.updateData('totalCalories', e.target.value)}
         />
         <input 

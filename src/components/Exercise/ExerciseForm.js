@@ -7,21 +7,21 @@ export const ExerciseForm = (props) => {
         <label>add exercise</label>
         <br />
         <input 
-          name='name' 
-          placeholder='name'
+          name='exerciseName' 
+          placeholder='exerciseName'
           type='text'
           onChange={e => props.updateData('exerciseName', e.target.value)}
         />
         <input 
           name='duration'
           placeholder='duration'
-          type='text'
+          type='number'
           onChange={e => props.updateData('duration', e.target.value)}
         />
         <input 
           name='timeOfExercise'
           placeholder='timeOfExercise'
-          type='text'
+          type='time'
           onChange={e => props.updateData('timeOfExercise', e.target.value)}
         />
         <input 
@@ -29,12 +29,6 @@ export const ExerciseForm = (props) => {
           placeholder='typeOfExercise'
           type='text'
           onChange={e => props.updateData('typeOfExercise', e.target.value)}
-        />
-        <input 
-          name='mood'
-          placeholder='mood'
-          type='text'
-          onChange={e => props.updateData('mood', e.target.value)}
         />
       </form>
     );
