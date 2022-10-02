@@ -10,20 +10,20 @@ const NavBar = () => {
     return(
         <Navbar bg="primary" variant="dark">
             <Container>
-                <Navbar.Brand href="#home">Health Tracker Dashboard</Navbar.Brand>
+                <Navbar.Brand href="/">Health Tracker Dashboard</Navbar.Brand>
                 <Nav className="me-auto">
                     <NavDropdown title="Exercise" id="navbarScrollingDropdown">
-                        <NavDropdown.Item href="#doesnotwork">Exercise Home</NavDropdown.Item>
+                        <NavDropdown.Item href="/exercise">Exercise Home</NavDropdown.Item>
                         <NavDropdown.Item href="#doesnotwork">Add Exercise</NavDropdown.Item>
                         <NavDropdown.Item href="#doesnotwork">another link</NavDropdown.Item>
                     </NavDropdown>
                     <NavDropdown title="Nutrition" id="navbarScrollingDropdown">
-                        <NavDropdown.Item href="#doesnotwork">Nutrition Home</NavDropdown.Item>
+                        <NavDropdown.Item href="/food">Nutrition Home</NavDropdown.Item>
                         <NavDropdown.Item href="#doesnotwork">Add Nutrition</NavDropdown.Item>
                         <NavDropdown.Item href="#doesnotwork">another link</NavDropdown.Item>
                     </NavDropdown>
                     <NavDropdown title="Water" id="navbarScrollingDropdown">
-                        <NavDropdown.Item href="#doesnotwork">Water Home</NavDropdown.Item>
+                        <NavDropdown.Item href="/water">Water Home</NavDropdown.Item>
                         <NavDropdown.Item href="#doesnotwork">Add Water</NavDropdown.Item>
                         <NavDropdown.Item href="#doesnotwork">another link</NavDropdown.Item>
                     </NavDropdown>
