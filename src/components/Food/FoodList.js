@@ -1,4 +1,5 @@
 import React from "react";
+import Card from 'react-bootstrap/Card';
 
 import FoodListItem from "./FoodListItem";
 
@@ -12,9 +13,12 @@ function FoodList(props) {
     })
 
     return (
+        <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
+            Food List
         <ol>
             {listFoodItems}
         </ol>
+        </Card>
     );
   }
 

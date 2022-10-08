@@ -1,5 +1,6 @@
 import React from "react";
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button'
 
 import FoodForm from "./FoodForm";
 import FoodList from "./FoodList";
@@ -53,17 +54,14 @@ export default class Food extends React.Component {
 
     render() {
       return (
-        <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
-        
+        <div>
+            <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
             <h1>Food</h1>
-            <p>form</p>
             <FoodForm foodObject={this.state.foodObject} updateData={this.updateData}/>
-            <button onClick={this.handleSubmit}> Submit</button>
-
-            <p>list</p>
-            name: {this.state.foodObject.foodName}
+            <Button onClick={this.handleSubmit}> Submit</Button>
+            </Card>
             <FoodList list={this.state.foodArray} handleDelete={this.handleDeleteFood} />
-        </Card>
+        </div>
       )
     }
 }
