@@ -1,5 +1,6 @@
 import React from "react";
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 
 import ExerciseForm from "./ExerciseForm";
 import ExerciseList from "./ExerciseList";
@@ -12,8 +13,7 @@ export default class Exercise extends React.Component {
                 exerciseName: "",
                 duration: "",
                 timeOfExercise: "",
-                typeOfExercise: "",
-                mood: ""
+                typeOfExercise: ""
             },
             exerciseArray: []
         }
@@ -47,12 +47,14 @@ export default class Exercise extends React.Component {
 
     render() {
       return (
-        <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
+        <div>
             <h1>Exercise</h1>
-            <ExerciseForm  exerciseObject={this.state.exerciseObject} updateData={this.updateData} />
-            <button onClick={this.handleSubmit}> Submit</button>
+            <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
+                <ExerciseForm  exerciseObject={this.state.exerciseObject} updateData={this.updateData} />
+                <Button onClick={this.handleSubmit}> Submit</Button>
+            </Card>
             <ExerciseList list={this.state.exerciseArray} handleDelete={this.handleDeleteExercise} />
-        </Card>
+        </div>
       )
     }
 }

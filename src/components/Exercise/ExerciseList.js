@@ -1,4 +1,6 @@
 import React from "react";
+import Card from 'react-bootstrap/Card';
+
 
 import ExerciseListItem from "./ExerciseListItem";
 
@@ -11,9 +13,12 @@ function ExerciseList(props) {
     })
 
     return (
-        <ol>
-            {listExerciseItems}
-        </ol>
+        <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
+            Exercise List
+            <ol>
+                {listExerciseItems}
+            </ol>
+        </Card>
     );
   }
 
