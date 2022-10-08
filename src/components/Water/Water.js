@@ -10,6 +10,8 @@ export default class Water extends React.Component {
     this.state = {
       glasses: 0
     }
+
+    this.handleCount = this.handleCount.bind(this)
   }
 
   handleCount(value) {
@@ -20,12 +22,12 @@ export default class Water extends React.Component {
     render() {
       return (
         <Card bg='light' border="secondary" style={{ width: '200px', padding: '25px', margin: "25px"}}>
-      
-          <h1>{ this.state.glasses } glasses</h1>
-          <AddWater sign="+" glasses={this.state.glasses} updateCount={this.handleCount.bind(this)} />
+          <h1>Water</h1>
+          <p>{ this.state.glasses }<br></br> glasses</p>
+          <AddWater sign="+" glasses={this.state.glasses} updateCount={this.handleCount} />
           {
             this.state.glasses > 0 &&
-            <AddWater sign="-" glasses={this.state.glasses} updateCount={this.handleCount.bind(this)} />
+            <AddWater sign="-" glasses={this.state.glasses} updateCount={this.handleCount} />
           }
         </Card>
       )
