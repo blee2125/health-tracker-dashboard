@@ -1,18 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
+//import { useState } from "react";
 import Card from 'react-bootstrap/Card';
 
 import { connect } from "react-redux";
 import { createWater } from "../../reducers/waterSlice";
 
+import { useSelector, useDispatch } from "react-redux";
+import { increment, decrement } from "../../reducers/waterSlice";
+
 function Water(props) {
-  const [glasses, setGlasses] = useState(0);
+  //const [glasses, setGlasses] = useState(0);
+
+  const glasses = useSelector((state) => state.waterState.glasses)
+  const dispatch = useDispatch();
 
   const handleAddGlasses = () => {
-    setGlasses(glasses + 1);
+    dispatch(increment())
+    //setGlasses(glasses + 1);
   };
 
   const handleSubtractGlasses = () => {
-    setGlasses(glasses - 1);
+    dispatch(decrement())
+    //setGlasses(glasses - 1);
   };
 
   const handlePostRequest = () => {
