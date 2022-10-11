@@ -1,35 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from 'react-bootstrap/Card';
 
-import { AddWater } from "./AddWater";
+import { connect } from "react-redux";
+import { createWater } from "../../reducers/waterSlice";
 
-export default class Water extends React.Component {
+function Water(props) {
+  const [glasses, setGlasses] = useState(0);
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      glasses: 0
-    }
+  const handleAddGlasses = () => {
+    setGlasses(glasses + 1);
+  };
 
-    this.handleCount = this.handleCount.bind(this)
+  const handleSubtractGlasses = () => {
+    setGlasses(glasses - 1);
+  };
+
+  const handlePostRequest = () => {
+    props.createWater({glasses: glasses})
+      .unwrap()
+      .then((data) => {
+
+        //console.log(data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   }
 
-  handleCount(value) {
-    this.setState((prevState) => ({ glasses: prevState.glasses + value }));
-  }
-
-
-    render() {
-      return (
-        <Card bg='light' border="secondary" style={{ width: '200px', padding: '25px', margin: "25px"}}>
-          <h1>Water</h1>
-          <p>{ this.state.glasses }<br></br> glasses</p>
-          <AddWater sign="+" glasses={this.state.glasses} updateCount={this.handleCount} />
-          {
-            this.state.glasses > 0 &&
-            <AddWater sign="-" glasses={this.state.glasses} updateCount={this.handleCount} />
-          }
-        </Card>
-      )
-    }
+  return (
+    <Card bg='light' border="secondary" style={{ width: '200px', padding: '25px', margin: "25px"}}>
+      <h1>Water</h1>
+      <button onClick={handlePostRequest}>post</button>
+      <p>{ glasses }<br></br> glasses</p>
+      <button onClick={handleAddGlasses}>+</button>
+      <button onClick={handleSubtractGlasses}>-</button>
+    </Card>
+  )
 }
+
+export default connect(null, { createWater })(Water)
