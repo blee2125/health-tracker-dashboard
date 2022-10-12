@@ -2,19 +2,30 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import WaterService from "../services/WaterService";
 
 export const createWater = createAsyncThunk(
-    "water/create",
+  "water/create",
     async (data) => {
-        console.log(data)
+      //console.log(data)
       const res = await WaterService.create(data);
       console.log(res)
       return res.data;
     }
-  );
+);
+
+export const updateWater = createAsyncThunk(
+  "water/update",
+    async ({id, data}) => {
+      //console.log(id, data)
+      const res = await WaterService.update(id, data);
+      //console.log(res)
+      return res.data;
+    }
+);
 
 export const waterSlice = createSlice({
   name: 'water',
   initialState: {
-    glasses: 5
+    glasses: 0,
+    id: null
   },
   reducers: {
     increment: (state) => {
@@ -33,26 +44,29 @@ export const waterSlice = createSlice({
   },
   extraReducers: {
     [createWater.fulfilled]: (state, action) => {
-      state.push(action.payload);
+      state.glasses = action.payload.glasses;
+      state.id = action.payload._id
     },
-    // [retrieveTutorials.fulfilled]: (state, action) => {
+    // [retrieveWater.fulfilled]: (state, action) => {
     //   return [...action.payload];
     // },
-    // [updateTutorial.fulfilled]: (state, action) => {
-    //   const index = state.findIndex(tutorial => tutorial.id === action.payload.id);
-    //   state[index] = {
-    //     ...state[index],
-    //     ...action.payload,
-    //   };
+    [updateWater.fulfilled]: (state, action) => {
+      //const index = state.findIndex(water => water.id === action.payload.id);
+      // state[index] = {
+      //   ...state[index],
+      //   ...action.payload,
+      // };
+      //console.log(action.payload.glasses)
+      state.glasses = action.payload.glasses;
+      state.id = action.payload._id
+    },
+    // [deleteWater.fulfilled]: (state, action) => {
+//
     // },
-    // [deleteTutorial.fulfilled]: (state, action) => {
-    //   let index = state.findIndex(({ id }) => id === action.payload.id);
-    //   state.splice(index, 1);
-    // },
-    // [deleteAllTutorials.fulfilled]: (state, action) => {
+    // [deleteAllWater.fulfilled]: (state, action) => {
     //   return [];
     // },
-    // [findTutorialsByTitle.fulfilled]: (state, action) => {
+    // [findWaterByDate.fulfilled]: (state, action) => {
     //   return [...action.payload];
     // },
   },
