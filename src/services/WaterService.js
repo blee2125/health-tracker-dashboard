@@ -23,7 +23,7 @@ class WaterService {
   }
 
   update(id, data) {
-    console.log(id, data)
+    //console.log(id, data)
     return http.put(`/water/update/${id}`, data);
   }
 
