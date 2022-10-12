@@ -9,8 +9,9 @@ class WaterService {
     return http.get(`/water/getOne/${id}`);
   }
 
-  getDate(dateString) {
-    return http.get(`/water/searchByDate/${dateString}`);
+  getDate(data) {
+    //console.log(data)
+    return http.get(`/water/searchByDate`, {params: data});
   }
 
   getDates(startDate, endDate) {
