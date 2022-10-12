@@ -3,7 +3,7 @@ import React from "react";
 import Card from 'react-bootstrap/Card';
 
 import { connect } from "react-redux";
-import { createWater, updateWater } from "../../reducers/waterSlice";
+import { createWater, updateWater, getWaterByDate } from "../../reducers/waterSlice";
 
 import { useSelector, useDispatch } from "react-redux";
 import { increment, decrement } from "../../reducers/waterSlice";
@@ -48,11 +48,25 @@ function Water(props) {
       });
   }
 
+  const handleGetTodayRequest = () => {
+    const dateString = new Date().toString().split(' ')
+    const dateStringSplit = (`${dateString[1]} ${dateString[2]} ${dateString[3]}`).toString()
+    props.getWaterByDate({'time': dateStringSplit})
+      .unwrap()
+      .then((data) => {
+
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+
   return (
     <Card bg='light' border="secondary" style={{ width: '200px', padding: '25px', margin: "25px"}}>
       <h1>Water</h1>
       <button onClick={handlePostRequest}>post</button>
       <button onClick={handleUpdateRequest}>update</button>
+      <button onClick={handleGetTodayRequest}>today</button>
       <p>{ glasses }<br></br> glasses</p>
       {id}
       <button onClick={handleAddGlasses}>+</button>
@@ -61,4 +75,4 @@ function Water(props) {
   )
 }
 
-export default connect(null, { createWater, updateWater })(Water)
+export default connect(null, { createWater, updateWater, getWaterByDate })(Water)
