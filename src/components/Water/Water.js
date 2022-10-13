@@ -8,6 +8,8 @@ import { createWater, updateWater, getWaterByDate } from "../../reducers/waterSl
 import { useSelector, useDispatch } from "react-redux";
 import { increment, decrement } from "../../reducers/waterSlice";
 
+import { useEffect } from 'react'
+
 function Water(props) {
   //const [glasses, setGlasses] = useState(0);
 
@@ -20,16 +22,18 @@ function Water(props) {
     //setGlasses(glasses + 1);
   };
 
+  const dateString = new Date().toString().split(' ')
+  const dateStringSplit = (`${dateString[1]} ${dateString[2]} ${dateString[3]}`).toString()
+
   const handleSubtractGlasses = () => {
     dispatch(decrement())
     //setGlasses(glasses - 1);
   };
 
   const handlePostRequest = () => {
-    props.createWater({glasses: glasses})
+    props.createWater({glasses: glasses, date: dateStringSplit})
       .unwrap()
       .then((data) => {
-
         //console.log(data);
       })
       .catch((e) => {
@@ -49,17 +53,23 @@ function Water(props) {
   }
 
   const handleGetTodayRequest = () => {
-    const dateString = new Date().toString().split(' ')
-    const dateStringSplit = (`${dateString[1]} ${dateString[2]} ${dateString[3]}`).toString()
     props.getWaterByDate({'time': dateStringSplit})
       .unwrap()
       .then((data) => {
-
+        //console.log(data)
       })
       .catch((e) => {
         console.log(e);
+        if (e.typeof === undefined) {
+          handlePostRequest()
+        }
       });
   }
+
+  useEffect(() => {
+    handleGetTodayRequest()
+    // eslint-disable-next-line
+  }, [])
 
   return (
     <Card bg='light' border="secondary" style={{ width: '200px', padding: '25px', margin: "25px"}}>
