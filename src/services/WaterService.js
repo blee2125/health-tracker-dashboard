@@ -1,22 +1,22 @@
 import http from "../http-common";
 
 class WaterService {
-  getAll() {
-    return http.get("/water/getAll");
-  }
+  // getAll() {
+  //   return http.get("/water/getAll");
+  // }
 
-  get(id) {
-    return http.get(`/water/getOne/${id}`);
-  }
+  // get(id) {
+  //   return http.get(`/water/getOne/${id}`);
+  // }
 
   getDate(data) {
     //console.log(data)
     return http.get(`/water/searchByDate`, {params: data});
   }
 
-  getDates(startDate, endDate) {
-    return http.get(`/water/getByDates/${startDate}-${endDate}`);
-  }
+  // getDates(startDate, endDate) {
+  //   return http.get(`/water/getByDates/${startDate}-${endDate}`);
+  // }
 
   create(data) {
     //console.log('create', data)
@@ -28,9 +28,9 @@ class WaterService {
     return http.put(`/water/update/${id}`, data);
   }
 
-  delete(id) {
-    return http.delete(`/water/delete/${id}`);
-  }
+  // delete(id) {
+  //   return http.delete(`/water/delete/${id}`);
+  // }
 
   // deleteAll() {
   //   return http.delete(`/water`);
