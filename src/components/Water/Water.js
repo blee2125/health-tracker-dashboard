@@ -17,17 +17,31 @@ function Water(props) {
   const id = useSelector((state) => state.waterState.id)
   const dispatch = useDispatch();
 
-  const handleAddGlasses = () => {
-    dispatch(increment())
-    //setGlasses(glasses + 1);
-  };
-
   const dateString = new Date().toString().split(' ')
   const dateStringSplit = (`${dateString[1]} ${dateString[2]} ${dateString[3]}`).toString()
 
+  const handleAddGlasses = () => {
+    //dispatch(increment())
+    props.updateWater({id: id, data: {glasses: glasses+1}})
+      .unwrap()
+      .then((data) => {
+
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
   const handleSubtractGlasses = () => {
-    dispatch(decrement())
-    //setGlasses(glasses - 1);
+    //dispatch(decrement())
+    props.updateWater({id: id, data: {glasses: glasses-1}})
+      .unwrap()
+      .then((data) => {
+
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   };
 
   const handlePostRequest = () => {
@@ -39,7 +53,7 @@ function Water(props) {
       .catch((e) => {
         console.log(e);
       });
-  }
+  } //<button onClick={handlePostRequest}>post</button>
 
   const handleUpdateRequest = () => {
     props.updateWater({id: id, data: {glasses}})
@@ -50,7 +64,7 @@ function Water(props) {
       .catch((e) => {
         console.log(e);
       });
-  }
+  } //<button onClick={handleUpdateRequest}>update</button>
 
   const handleGetTodayRequest = () => {
     props.getWaterByDate({'time': dateStringSplit})
@@ -64,7 +78,7 @@ function Water(props) {
           handlePostRequest()
         }
       });
-  }
+  } //<button onClick={handleGetTodayRequest}>today</button>
 
   useEffect(() => {
     handleGetTodayRequest()
@@ -74,9 +88,7 @@ function Water(props) {
   return (
     <Card bg='light' border="secondary" style={{ width: '200px', padding: '25px', margin: "25px"}}>
       <h1>Water</h1>
-      <button onClick={handlePostRequest}>post</button>
-      <button onClick={handleUpdateRequest}>update</button>
-      <button onClick={handleGetTodayRequest}>today</button>
+      
       <p>{ glasses }<br></br> glasses</p>
       {id}
       <button onClick={handleAddGlasses}>+</button>
