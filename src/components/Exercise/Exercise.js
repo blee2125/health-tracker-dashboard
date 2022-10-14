@@ -31,7 +31,6 @@ function Exercise(props) {
 
     const handleSubmit = () => {
         if (exerciseObject.exerciseName !== '') {
-
             props.createExercise(exerciseObject)
                 .unwrap()
                 .then((data) => {
@@ -40,13 +39,10 @@ function Exercise(props) {
                 .catch((e) => {
                 console.log(e);
                 });
-
         }
     }
 
     const handleDeleteExercise = (id) => {
-        console.log('delete')
-        console.log(id)
         props.deleteExercise({id})
             .unwrap()
             .then((data) => {
@@ -74,6 +70,6 @@ const mapStateToProps = (state) => {
     return {
         exerciseArray: state.exerciseState.exerciseArray
     };
-  }
+}
 
 export default connect(mapStateToProps, { createExercise, getAllExercises, deleteExercise })(Exercise)

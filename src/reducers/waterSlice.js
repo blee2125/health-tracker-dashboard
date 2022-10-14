@@ -4,9 +4,9 @@ import WaterService from "../services/WaterService";
 export const createWater = createAsyncThunk(
   "water/create",
     async (data) => {
-      console.log(data)
+      //console.log(data)
       const res = await WaterService.create(data);
-      console.log(res)
+      //console.log(res)
       return res.data;
     }
 );
@@ -65,23 +65,14 @@ export const waterSlice = createSlice({
     //   return [...action.payload];
     // },
     [updateWater.fulfilled]: (state, action) => {
-      //const index = state.findIndex(water => water.id === action.payload.id);
-      // state[index] = {
-      //   ...state[index],
-      //   ...action.payload,
-      // };
-      //console.log(action.payload.glasses)
       state.glasses = action.payload.glasses;
       state.id = action.payload._id
     },
     // [deleteWater.fulfilled]: (state, action) => {
-//
+    //
     // },
     // [deleteAllWater.fulfilled]: (state, action) => {
     //   return [];
-    // },
-    // [findWaterByDate.fulfilled]: (state, action) => {
-    //   return [...action.payload];
     // },
   },
 })

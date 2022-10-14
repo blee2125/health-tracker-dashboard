@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { createWater, updateWater, getWaterByDate } from "../../reducers/waterSlice";
 
 import { useSelector, useDispatch } from "react-redux";
+// eslint-disable-next-line
 import { increment, decrement } from "../../reducers/waterSlice";
 
 import { useEffect } from 'react'
@@ -15,6 +16,7 @@ function Water(props) {
 
   const glasses = useSelector((state) => state.waterState.glasses)
   const id = useSelector((state) => state.waterState.id)
+  // eslint-disable-next-line
   const dispatch = useDispatch();
 
   const dateString = new Date().toString().split(' ')
@@ -55,6 +57,7 @@ function Water(props) {
       });
   } //<button onClick={handlePostRequest}>post</button>
 
+  // eslint-disable-next-line
   const handleUpdateRequest = () => {
     props.updateWater({id: id, data: {glasses}})
       .unwrap()
