@@ -28,9 +28,9 @@ class ExerciseService {
     return http.put(`/exercise/update/${id}`, data);
   }
 
-  // delete(id) {
-  //   return http.delete(`/exercise/delete/${id}`);
-  // }
+  delete(id) {
+    return http.delete(`/exercise/delete/${id}`);
+  }
 
   // deleteAll() {
   //   return http.delete(`/exercise`);

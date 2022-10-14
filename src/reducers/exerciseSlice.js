@@ -19,6 +19,14 @@ export const getAllExercises = createAsyncThunk(
     }
 );
 
+export const deleteExercise = createAsyncThunk(
+  "exercise/delete",
+  async ({ id }) => {
+    await ExerciseService.delete(id);
+    return { id };
+  }
+);
+
 export const updateExercise = createAsyncThunk(
   "exercise/update",
     async ({id, data}) => {
@@ -55,19 +63,20 @@ export const exerciseSlice = createSlice({
       state.exerciseArray = action.payload;
     },
     [getExerciseByDate.fulfilled]: (state, action) => {
-      state.exerciseName = action.payload[0].exerciseName;
-      state.id = action.payload[0]._id
+      // state.exerciseName = action.payload[0].exerciseName;
+      // state.id = action.payload[0]._id
     },
     // [retrieveExercise.fulfilled]: (state, action) => {
     //   return [...action.payload];
     // },
     [updateExercise.fulfilled]: (state, action) => {
-      state.exerciseName = action.payload.exerciseName;
-      state.id = action.payload._id
+      // state.exerciseName = action.payload.exerciseName;
+      // state.id = action.payload._id
     },
-    // [deleteExercise.fulfilled]: (state, action) => {
-    //
-    // },
+    [deleteExercise.fulfilled]: (state, action) => ({
+      ...state,
+      exerciseArray: state.exerciseArray.filter(exercise => exercise._id !== action.payload.id)
+    }),
     // [deleteAllExercise.fulfilled]: (state, action) => {
     //   return [];
     // },
