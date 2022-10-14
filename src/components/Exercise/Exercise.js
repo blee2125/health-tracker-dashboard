@@ -7,7 +7,7 @@ import ExerciseList from "./ExerciseList";
 
 import { connect } from "react-redux";
 
-import { createExercise } from "../../reducers/exerciseSlice";
+import { createExercise, getAllExercises, deleteExercise } from "../../reducers/exerciseSlice";
 
 function Exercise(props) {
     const [exerciseObject, setExerciseObject] = useState({
@@ -44,20 +44,18 @@ function Exercise(props) {
         }
     }
 
-    // handleDeleteExercise(id) {
-    //     this.setState({
-    //         exerciseArray: this.state.exerciseArray.filter((_, i) => i !== id)
-    //     });
-    // }
-
-    // <div>
-    //         <h1>Exercise</h1>
-    //         <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
-    //             <ExerciseForm  exerciseObject={this.state.exerciseObject} updateData={this.updateData} />
-    //             <Button onClick={this.handleSubmit}> Submit</Button>
-    //         </Card>
-    //         <ExerciseList list={this.state.exerciseArray} handleDelete={this.handleDeleteExercise} />
-    //     </div>
+    const handleDeleteExercise = (id) => {
+        console.log('delete')
+        console.log(id)
+        props.deleteExercise({id})
+            .unwrap()
+            .then((data) => {
+            //console.log(data);
+            })
+            .catch((e) => {
+            console.log(e);
+            });
+    }
 
     return (
         <div>
@@ -66,6 +64,8 @@ function Exercise(props) {
                 <ExerciseForm  exerciseObject={exerciseObject} updateData={updateData} />
                 <Button onClick={handleSubmit}> Submit</Button>
             </Card>
+            <Button onClick={() => props.getAllExercises()}> get all</Button>
+            <ExerciseList list={props.exerciseArray}  handleDelete={handleDeleteExercise} />
         </div>
     )
 }
@@ -76,4 +76,4 @@ const mapStateToProps = (state) => {
     };
   }
 
-export default connect(mapStateToProps, { createExercise })(Exercise)
+export default connect(mapStateToProps, { createExercise, getAllExercises, deleteExercise })(Exercise)
