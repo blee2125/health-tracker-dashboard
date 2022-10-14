@@ -1,4 +1,5 @@
 import React from "react";
+import { Table } from "react-bootstrap";
 import Card from 'react-bootstrap/Card';
 
 
@@ -15,9 +16,16 @@ function ExerciseList(props) {
     return (
         <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
             Exercise List
-            <ol>
+            <Table>
+                <tr>
+                    <td><b>NAME</b></td>
+                    <td><b>DURATION</b></td>
+                    <td><b>TIME</b></td>
+                    <td><b>TYPE</b></td>
+                    <td></td>
+                </tr>
                 {listExerciseItems}
-            </ol>
+            </Table>
         </Card>
     );
   }

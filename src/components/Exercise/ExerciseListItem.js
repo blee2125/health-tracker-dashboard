@@ -1,13 +1,18 @@
 import React from "react";
 
+import { Button } from "react-bootstrap";
+
 function ExerciseListItem(props) {
 
 
     return (
-        <li>
-            {props.exerciseData.exerciseName}
-            <button onClick={() => props.deleteButton(props.exerciseData._id)}> delete</button>
-        </li>
+        <tr>
+            <td>{props.exerciseData.exerciseName}</td>
+            <td>{props.exerciseData.duration}</td>
+            <td>{props.exerciseData.timeOfExercise}</td>
+            <td>{props.exerciseData.typeOfExercise}</td>
+            <td><Button onClick={() => props.deleteButton(props.exerciseData._id)}> delete</Button></td>
+        </tr>
     );
   }
 
