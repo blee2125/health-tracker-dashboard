@@ -1,9 +1,9 @@
 import http from "../http-common";
 
 class ExerciseService {
-  // getAll() {
-  //   return http.get("/exercise/getAll");
-  // }
+  getAll() {
+    return http.get("/exercise/getAll");
+  }
 
   // get(id) {
   //   return http.get(`/exercise/getOne/${id}`);

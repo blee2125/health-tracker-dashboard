@@ -11,6 +11,14 @@ export const createExercise = createAsyncThunk(
     }
 );
 
+export const getAllExercises = createAsyncThunk(
+  "exercise/getAll",
+    async () => {
+      const res = await ExerciseService.getAll();
+      return res.data;
+    }
+);
+
 export const updateExercise = createAsyncThunk(
   "exercise/update",
     async ({id, data}) => {
@@ -41,6 +49,10 @@ export const exerciseSlice = createSlice({
         console.log(action)
       // state.exerciseObject.exerciseName = action.payload.exerciseName;
       // state.id = action.payload._id
+    },
+    [getAllExercises.fulfilled]: (state, action) => {
+      //console.log(action)
+      state.exerciseArray = action.payload;
     },
     [getExerciseByDate.fulfilled]: (state, action) => {
       state.exerciseName = action.payload[0].exerciseName;
