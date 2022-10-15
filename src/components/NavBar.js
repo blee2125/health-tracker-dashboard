@@ -15,6 +15,7 @@ const NavBar = () => {
                 <Nav className="me-auto">
                     <NavDropdown title="Exercise" id="navbarScrollingDropdown">
                         <NavDropdown.Item as={Link} to="/exercise">Exercise Home</NavDropdown.Item>
+                        <NavDropdown.Item as={Link} to="/exercise/add">Add Exercise</NavDropdown.Item>
                     </NavDropdown>
                     <NavDropdown title="Nutrition" id="navbarScrollingDropdown">
                         <NavDropdown.Item as={Link} to="/food">Nutrition Home</NavDropdown.Item>
