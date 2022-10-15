@@ -17,7 +17,7 @@ export const ExerciseForm = (props) => {
           name='duration'
           placeholder='duration'
           type='number'
-          value={props.exerciseObject.duration ? props.exerciseObject.duration : ''}
+          value={props.exerciseObject.duration}
           onChange={e => props.updateData('duration', e.target.value)}
         />
         <input 
