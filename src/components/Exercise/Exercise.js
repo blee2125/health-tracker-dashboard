@@ -12,9 +12,9 @@ import { createExercise, getAllExercises, deleteExercise, updateExercise } from 
 function Exercise(props) {
     const [exerciseObject, setExerciseObject] = useState({
         exerciseName: "",
-        // duration: '',
-        // timeOfExercise: '',
-        // typeOfExercise: ''
+        duration: '',
+        timeOfExercise: '',
+        typeOfExercise: ''
     })
 
     let navigate = useNavigate(); 

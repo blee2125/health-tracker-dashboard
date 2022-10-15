@@ -14,9 +14,9 @@ function ExerciseEdit(props) {
 
     const [exerciseObject, setExerciseObject] = useState({
         exerciseName: "",
-        // duration: '',
-        // timeOfExercise: '',
-        // typeOfExercise: ''
+        duration: '',
+        timeOfExercise: '',
+        typeOfExercise: ''
     })
 
     const updateData = (target, value) => {
