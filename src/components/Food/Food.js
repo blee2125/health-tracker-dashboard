@@ -1,67 +1,81 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button'
 
 import FoodForm from "./FoodForm";
 import FoodList from "./FoodList";
 
-export default class Food extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            foodObject: {
-                foodName: "",
-                totalCalories: "150",
-                timeOfConsumption: "",
-                meal: "",
-                placeOfConsumption: "",
-                withWhom: "",
-                activity: "",
-                mood: "",
-                hungerLevel: "",
-                fullness: "",
-                amount: ""
-            },
-            foodArray: []
-        }
+import { connect } from "react-redux";
+import { createFood, getAllFood, deleteFood } from "../../reducers/foodSlice";
 
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleDeleteFood = this.handleDeleteFood.bind(this);
-    }
+function Food(props) {
+    const [foodObject, setFoodObject] = useState({
+        foodName: "",
+        totalCalories: "150",
+        timeOfConsumption: "",
+        meal: "",
+        placeOfConsumption: "",
+        withWhom: "",
+        activity: "",
+        mood: "",
+        hungerLevel: "",
+        fullness: "",
+        amount: ""
+    })
 
-    updateData = (target, value) => {
-        this.setState(({
-            foodObject: {
-                ...this.state.foodObject,
-                [target]: value
-            }
-        }));
+    const dateString = new Date().toString().split(' ')
+    const dateStringSplit = (`${dateString[1]} ${dateString[2]} ${dateString[3]}`).toString()
+
+    const updateData = (target, value) => {
+        let updatedValue = {};
+            updatedValue = {[target]: value};
+        setFoodObject(foodObject => ({
+            ...foodObject,
+            ...updatedValue
+        }));        
     };
 
-    handleSubmit = () => {
-        if (this.state.foodObject.foodName !== '') {
-            this.setState(prevState => ({
-                foodArray: [...prevState.foodArray, this.state.foodObject]
-            }))
+    const handleSubmit = () => {
+        if (foodObject.foodName !== '') {
+            props.createFood(foodObject)
+                .unwrap()
+                .then((data) => {
+                //console.log(data);
+                })
+                .catch((e) => {
+                console.log(e);
+                });
         }
     }
 
-    handleDeleteFood(id) {
-        this.setState({
-            foodArray: this.state.foodArray.filter((_, i) => i !== id)
-        });
+    const handleDeleteFood = (id) => {
+        props.deleteFood({id})
+            .unwrap()
+            .then((data) => {
+            //console.log(data);
+            })
+            .catch((e) => {
+            console.log(e);
+            });
     }
 
-    render() {
-      return (
+    return (
         <div>
             <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
-            <h1>Food</h1>
-            <FoodForm foodObject={this.state.foodObject} updateData={this.updateData}/>
-            <Button onClick={this.handleSubmit}> Submit</Button>
+                <h1>Food</h1>
+                <FoodForm foodObject={foodObject} updateData={updateData}/>
+                <Button onClick={handleSubmit}> Submit</Button>
             </Card>
-            <FoodList list={this.state.foodArray} handleDelete={this.handleDeleteFood} />
+            <Button onClick={() => props.getAllFood()}> get all food</Button>
+            <FoodList list={props.foodArray} handleDelete={handleDeleteFood} />
         </div>
-      )
-    }
+    )
 }
+
+const mapStateToProps = (state) => {
+    return {
+        foodArray: state.foodState.foodArray
+    };
+}
+
+export default connect(mapStateToProps, { createFood, getAllFood, deleteFood }) (Food)
