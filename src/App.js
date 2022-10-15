@@ -13,6 +13,7 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux'
 import { getWaterByDate } from "./reducers/waterSlice";
 import ExerciseEdit from './components/Exercise/ExerciseEdit';
+import ExerciseAdd from './components/Exercise/ExerciseAdd';
 
 
 function App(props) {
@@ -46,6 +47,7 @@ function App(props) {
         <Route path="/water" element={<Water />} />
         <Route path="/exercise" element={<Exercise />} />
           <Route path="/exercise/edit/:id" element={<ExerciseEdit />} />
+          <Route path="/exercise/add" element={<ExerciseAdd />} />
         <Route path="/food" element={<Food />} />
       </Routes>
     </div>
