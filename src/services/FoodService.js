@@ -23,10 +23,10 @@ class FoodService {
     return http.post("/food/post", data);
   }
 
-//   update(id, data) {
-//     console.log(id, data)
-//     return http.put(`/food/update/${id}`, data);
-//   }
+  update(id, data) {
+    console.log(id, data)
+    return http.put(`/food/update/${id}`, data);
+  }
 
   delete(id) {
     return http.delete(`/food/delete/${id}`);
