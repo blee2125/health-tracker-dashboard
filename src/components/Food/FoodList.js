@@ -17,11 +17,15 @@ function FoodList(props) {
         <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
             Food List
             <Table>
-                <tr>
-                    <td><b>NAME</b></td>
-                    <td></td>
-                </tr>
-                {listFoodItems}
+                <thead>
+                    <tr>
+                        <td><b>NAME</b></td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {listFoodItems}
+                </tbody>
             </Table>
         </Card>
     );

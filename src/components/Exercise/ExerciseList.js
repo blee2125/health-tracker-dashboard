@@ -17,14 +17,18 @@ function ExerciseList(props) {
         <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
             Exercise List
             <Table>
-                <tr>
-                    <td><b>NAME</b></td>
-                    <td><b>DURATION</b></td>
-                    <td><b>TIME</b></td>
-                    <td><b>TYPE</b></td>
-                    <td></td>
-                </tr>
-                {listExerciseItems}
+                <thead>
+                    <tr>
+                        <td><b>NAME</b></td>
+                        <td><b>DURATION</b></td>
+                        <td><b>TIME</b></td>
+                        <td><b>TYPE</b></td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {listExerciseItems}
+                </tbody>
             </Table>
         </Card>
     );
