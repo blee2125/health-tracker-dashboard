@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
@@ -6,16 +6,18 @@ import ExerciseForm from "./ExerciseForm";
 import ExerciseList from "./ExerciseList";
 
 import { connect } from "react-redux";
-
+import { useNavigate } from "react-router-dom";
 import { createExercise, getAllExercises, deleteExercise, updateExercise } from "../../reducers/exerciseSlice";
 
 function Exercise(props) {
     const [exerciseObject, setExerciseObject] = useState({
         exerciseName: "",
-        duration: '',
-        timeOfExercise: null,
-        typeOfExercise: null
+        // duration: '',
+        // timeOfExercise: '',
+        // typeOfExercise: ''
     })
+
+    let navigate = useNavigate(); 
 
     const dateString = new Date().toString().split(' ')
     const dateStringSplit = (`${dateString[1]} ${dateString[2]} ${dateString[3]}`).toString()
@@ -53,18 +55,16 @@ function Exercise(props) {
             });
     }
 
-    const handleEditExercise = (id) => {
-        console.log(id)
-        
-        props.updateExercise({id: id, data: {exerciseObject}})
-            .unwrap()
-            .then((data) => {
-            //console.log(data);
-            })
-            .catch((e) => {
-            console.log(e);
-            });
+    const selectEditExercise = (id) => {
+        const objectToEdit = props.exerciseArray.filter(e => e._id === id)[0]
+        let path = `edit/${id}`; 
+        navigate(path, {state: {objectToEdit}});
     }
+
+    useEffect(() => {
+        props.getAllExercises()
+        // eslint-disable-next-line
+      }, [])
 
     return (
         <div>
@@ -74,7 +74,7 @@ function Exercise(props) {
                 <Button onClick={handleSubmit}> Submit</Button>
             </Card>
             <Button onClick={() => props.getAllExercises()}> get all</Button>
-            <ExerciseList list={props.exerciseArray}  handleDelete={handleDeleteExercise} handleEdit={handleEditExercise} />
+            <ExerciseList list={props.exerciseArray}  handleDelete={handleDeleteExercise} handleEdit={selectEditExercise} />
         </div>
     )
 }
