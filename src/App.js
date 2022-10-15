@@ -15,6 +15,8 @@ import { getWaterByDate } from "./reducers/waterSlice";
 import ExerciseEdit from './components/Exercise/ExerciseEdit';
 import ExerciseAdd from './components/Exercise/ExerciseAdd';
 
+import FoodAdd from './components/Food/FoodAdd';
+import FoodEdit from './components/Food/FoodEdit';
 
 function App(props) {
   const dateString = new Date().toString().split(' ')
@@ -49,6 +51,8 @@ function App(props) {
           <Route path="/exercise/edit/:id" element={<ExerciseEdit />} />
           <Route path="/exercise/add" element={<ExerciseAdd />} />
         <Route path="/food" element={<Food />} />
+          <Route path="/food/edit/:id" element={<FoodEdit />} />
+          <Route path="/food/add" element={<FoodAdd />} />
       </Routes>
     </div>
   );
