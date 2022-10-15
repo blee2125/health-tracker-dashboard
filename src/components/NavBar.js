@@ -19,6 +19,7 @@ const NavBar = () => {
                     </NavDropdown>
                     <NavDropdown title="Nutrition" id="navbarScrollingDropdown">
                         <NavDropdown.Item as={Link} to="/food">Nutrition Home</NavDropdown.Item>
+                        <NavDropdown.Item as={Link} to="/food/add">Add Food</NavDropdown.Item>
                     </NavDropdown>
                     <NavDropdown title="Water" id="navbarScrollingDropdown">
                         <NavDropdown.Item as={Link} to="/water">Water Home</NavDropdown.Item>
