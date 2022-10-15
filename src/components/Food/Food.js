@@ -1,52 +1,18 @@
-import React, { useState } from "react";
-import Card from 'react-bootstrap/Card';
+import React, { useEffect } from "react";
 import Button from 'react-bootstrap/Button'
 
-import FoodForm from "./FoodForm";
 import FoodList from "./FoodList";
 
 import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { createFood, getAllFood, deleteFood } from "../../reducers/foodSlice";
 
 function Food(props) {
-    const [foodObject, setFoodObject] = useState({
-        foodName: "",
-        totalCalories: "150",
-        timeOfConsumption: "",
-        meal: "",
-        placeOfConsumption: "",
-        withWhom: "",
-        activity: "",
-        mood: "",
-        hungerLevel: "",
-        fullness: "",
-        amount: ""
-    })
+    let navigate = useNavigate(); 
 
     const dateString = new Date().toString().split(' ')
+    // eslint-disable-next-line
     const dateStringSplit = (`${dateString[1]} ${dateString[2]} ${dateString[3]}`).toString()
-
-    const updateData = (target, value) => {
-        let updatedValue = {};
-            updatedValue = {[target]: value};
-        setFoodObject(foodObject => ({
-            ...foodObject,
-            ...updatedValue
-        }));        
-    };
-
-    const handleSubmit = () => {
-        if (foodObject.foodName !== '') {
-            props.createFood(foodObject)
-                .unwrap()
-                .then((data) => {
-                //console.log(data);
-                })
-                .catch((e) => {
-                console.log(e);
-                });
-        }
-    }
 
     const handleDeleteFood = (id) => {
         props.deleteFood({id})
@@ -59,15 +25,23 @@ function Food(props) {
             });
     }
 
+    const selectEditFood = (id) => {
+        const objectToEdit = props.foodArray.filter(e => e._id === id)[0]
+        let path = `edit/${id}`; 
+        navigate(path, {state: {objectToEdit}});
+    }
+
+    useEffect(() => {
+        props.getAllFood()
+        // eslint-disable-next-line
+    }, [])
+
     return (
         <div>
-            <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
-                <h1>Food</h1>
-                <FoodForm foodObject={foodObject} updateData={updateData}/>
-                <Button onClick={handleSubmit}> Submit</Button>
-            </Card>
-            <Button onClick={() => props.getAllFood()}> get all food</Button>
-            <FoodList list={props.foodArray} handleDelete={handleDeleteFood} />
+            <h1>Food</h1>
+            <Button onClick={() => navigate('/food/add')}>Add Food</Button>
+            <Button onClick={() => props.getAllFood()}>Get Food</Button>
+            <FoodList list={props.foodArray} handleDelete={handleDeleteFood} handleEdit={selectEditFood} />
         </div>
     )
 }
