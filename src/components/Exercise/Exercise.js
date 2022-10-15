@@ -7,7 +7,7 @@ import ExerciseList from "./ExerciseList";
 
 import { connect } from "react-redux";
 
-import { createExercise, getAllExercises, deleteExercise } from "../../reducers/exerciseSlice";
+import { createExercise, getAllExercises, deleteExercise, updateExercise } from "../../reducers/exerciseSlice";
 
 function Exercise(props) {
     const [exerciseObject, setExerciseObject] = useState({
@@ -53,6 +53,19 @@ function Exercise(props) {
             });
     }
 
+    const handleEditExercise = (id) => {
+        console.log(id)
+        
+        props.updateExercise({id: id, data: {exerciseObject}})
+            .unwrap()
+            .then((data) => {
+            //console.log(data);
+            })
+            .catch((e) => {
+            console.log(e);
+            });
+    }
+
     return (
         <div>
             <h1>Exercise</h1>
@@ -61,7 +74,7 @@ function Exercise(props) {
                 <Button onClick={handleSubmit}> Submit</Button>
             </Card>
             <Button onClick={() => props.getAllExercises()}> get all</Button>
-            <ExerciseList list={props.exerciseArray}  handleDelete={handleDeleteExercise} />
+            <ExerciseList list={props.exerciseArray}  handleDelete={handleDeleteExercise} handleEdit={handleEditExercise} />
         </div>
     )
 }
@@ -72,4 +85,4 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps, { createExercise, getAllExercises, deleteExercise })(Exercise)
+export default connect(mapStateToProps, { createExercise, getAllExercises, deleteExercise, updateExercise })(Exercise)

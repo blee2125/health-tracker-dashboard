@@ -9,7 +9,7 @@ function ExerciseList(props) {
     
     const listExerciseItems = props.list.map((exerciseItem, index) => {
         return (
-            <ExerciseListItem exerciseData={exerciseItem} key={index} id={index} deleteButton={props.handleDelete}/>
+            <ExerciseListItem exerciseData={exerciseItem} key={index} id={index} deleteButton={props.handleDelete} editButton={props.handleEdit}/>
         )
     })
 
