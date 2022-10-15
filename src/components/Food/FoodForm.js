@@ -2,13 +2,8 @@ import React from "react";
 
 export const FoodForm = (props) => {
 
-
-
-
     return (
       <form >
-        <label>food to add</label>
-        <br />
         <input 
           name='foodName' 
           placeholder='foodName'
