@@ -4,15 +4,13 @@ import Button from 'react-bootstrap/Button'
 
 function FoodListItem(props) {
 
-    // function handleDeleteClick(id) {
-    //     console.log(id)
-    //   } //<button onClick={() => handleDeleteClick(props.id)}>X</button>
-
     return (
-        <li>
-            {props.foodData.foodName} {props.foodData.foodName} {props.foodData.foodName} {props.foodData.foodName} 
-            <Button onClick={() => props.deleteButton(props.id)}> delete</Button>
-        </li>
+
+        <tr>
+            <td>{props.foodData.foodName}</td>
+
+            <td><Button onClick={() => props.deleteButton(props.foodData._id)}> delete</Button></td>
+        </tr>
     );
   }
 

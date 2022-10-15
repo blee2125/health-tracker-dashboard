@@ -1,12 +1,13 @@
 import React from "react";
 import Card from 'react-bootstrap/Card';
 
+import { Table } from "react-bootstrap";
+
 import FoodListItem from "./FoodListItem";
 
 function FoodList(props) {
     
     const listFoodItems = props.list.map((foodItem, index) => {
-        //console.log('foodItem:', foodItem)
         return (
             <FoodListItem foodData={foodItem} key={index} id={index} deleteButton={props.handleDelete}/>
         )
@@ -15,9 +16,13 @@ function FoodList(props) {
     return (
         <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
             Food List
-        <ol>
-            {listFoodItems}
-        </ol>
+            <Table>
+                <tr>
+                    <td><b>NAME</b></td>
+                    <td></td>
+                </tr>
+                {listFoodItems}
+            </Table>
         </Card>
     );
   }
