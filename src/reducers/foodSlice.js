@@ -80,4 +80,4 @@ export const foodSlice = createSlice({
   },
 })
 
-export default exerciseSlice.reducer
+export default foodSlice.reducer
