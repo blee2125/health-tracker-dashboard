@@ -87,6 +87,7 @@
         visibility: visible !important;
         top: var(--topNavbarHeight) !important;
         height: calc(100% - var(--topNavbarHeight)) !important;
+        transition: none !important;
     }
 }
 
