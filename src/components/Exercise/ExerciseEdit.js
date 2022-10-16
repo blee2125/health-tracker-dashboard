@@ -6,11 +6,12 @@ import ExerciseForm from "./ExerciseForm";
 
 import { connect } from "react-redux";
 import { updateExercise } from "../../reducers/exerciseSlice";
-import {useLocation, useParams} from 'react-router-dom';
+import {useLocation, useParams, useNavigate} from 'react-router-dom';
 
 function ExerciseEdit(props) {
     const location = useLocation();
     const params = useParams()
+    const navigate = useNavigate();
 
     const [exerciseObject, setExerciseObject] = useState({
         exerciseName: "",
@@ -33,7 +34,7 @@ function ExerciseEdit(props) {
             props.updateExercise({id: params.id, data: {exerciseObject}})
                 .unwrap()
                 .then((data) => {
-                //console.log(data);
+                    navigate('/exercise')
                 })
                 .catch((e) => {
                 console.log(e);
