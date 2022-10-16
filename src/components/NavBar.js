@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 const NavBar = () => {
     
     return(
-        <Navbar bg="primary" variant="dark">
+        <Navbar bg="primary" variant="dark" fixed="top">
             <Container>
                 <Navbar.Brand as={Link} to="/">Health Tracker Dashboard</Navbar.Brand>
                 <Nav className="me-auto">
