@@ -29,12 +29,12 @@ export const FoodForm = (props) => {
           onChange={e => props.updateData('timeOfConsumption', e.target.value)}
         /><br></br>
         <label>Meal</label>
-        <select>
-          <option></option>
-          <option>Breakfast</option>
-          <option>Lunch</option>
-          <option>Dinner</option>
-          <option>Snack</option>
+        <select value={props.foodObject.meal} onChange={e => props.updateData('meal', e.target.value)}>
+          <option value=''></option>
+          <option value='Breakfast'>Breakfast</option>
+          <option value='Lunch'>Lunch</option>
+          <option value='Dinner'>Dinner</option>
+          <option value='Snack'>Snack</option>
         </select><br></br>
         <label>Place of Consumption</label>
         <input 
