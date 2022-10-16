@@ -1,5 +1,5 @@
-import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 import NavBar from './components/NavBar';
 import { Routes, Route } from "react-router-dom";
 
@@ -17,6 +17,8 @@ import ExerciseAdd from './components/Exercise/ExerciseAdd';
 
 import FoodAdd from './components/Food/FoodAdd';
 import FoodEdit from './components/Food/FoodEdit';
+
+import SideBar from './components/SideBar';
 
 function App(props) {
   const dateString = new Date().toString().split(' ')
@@ -44,16 +46,21 @@ function App(props) {
   return (
     <div className="App">
       <NavBar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/water" element={<Water />} />
-        <Route path="/exercise" element={<Exercise />} />
-          <Route path="/exercise/edit/:id" element={<ExerciseEdit />} />
-          <Route path="/exercise/add" element={<ExerciseAdd />} />
-        <Route path="/food" element={<Food />} />
-          <Route path="/food/edit/:id" element={<FoodEdit />} />
-          <Route path="/food/add" element={<FoodAdd />} />
-      </Routes>
+      <div>
+        <SideBar />
+        <div className='main'>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/water" element={<Water />} />
+            <Route path="/exercise" element={<Exercise />} />
+              <Route path="/exercise/edit/:id" element={<ExerciseEdit />} />
+              <Route path="/exercise/add" element={<ExerciseAdd />} />
+            <Route path="/food" element={<Food />} />
+              <Route path="/food/edit/:id" element={<FoodEdit />} />
+              <Route path="/food/add" element={<FoodAdd />} />
+          </Routes>
+        </div>
+      </div>
     </div>
   );
 }
