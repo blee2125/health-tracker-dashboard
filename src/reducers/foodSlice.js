@@ -54,7 +54,7 @@ export const foodSlice = createSlice({
   },
   extraReducers: {
     [createFood.fulfilled]: (state, action) => {
-        console.log(action)
+        //console.log(action)
 
     },
     [getAllFood.fulfilled]: (state, action) => {

@@ -19,12 +19,12 @@ class FoodService {
   // }
 
   create(data) {
-    console.log('create', data)
+    //console.log('create', data)
     return http.post("/food/post", data);
   }
 
   update(id, data) {
-    console.log(id, data)
+    //console.log(id, data)
     return http.put(`/food/update/${id}`, data);
   }
 

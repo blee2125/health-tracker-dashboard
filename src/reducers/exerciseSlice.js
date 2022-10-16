@@ -54,7 +54,7 @@ export const exerciseSlice = createSlice({
   },
   extraReducers: {
     [createExercise.fulfilled]: (state, action) => {
-        console.log(action)
+        //console.log(action)
       // state.exerciseObject.exerciseName = action.payload.exerciseName;
       // state.id = action.payload._id
     },

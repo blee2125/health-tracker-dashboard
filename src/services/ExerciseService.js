@@ -10,7 +10,7 @@ class ExerciseService {
   // }
 
   getDate(data) {
-    console.log(data)
+    //console.log(data)
     return http.get(`/exercise/searchByDate`, {params: data});
   }
 
@@ -19,12 +19,12 @@ class ExerciseService {
   // }
 
   create(data) {
-    console.log('create', data)
+    //console.log('create', data)
     return http.post("/exercise/post", data);
   }
 
   update(id, data) {
-    console.log(id, data)
+    //console.log(id, data)
     return http.put(`/exercise/update/${id}`, data);
   }
 
