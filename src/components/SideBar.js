@@ -9,12 +9,12 @@ const SideBar = () => {
     
     return(
         <>
-            <Offcanvas show={true} backdrop={false} className='side-bar'>
+            <Offcanvas show={true} backdrop={false} enforceFocus={false} className='side-bar'>
                 <Offcanvas.Header>
                     <Offcanvas.Title></Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                    <NavLink  href="/home" className='sidebar-link'>
+                    <NavLink  href="/" className='sidebar-link'>
                         Dashboard Home
                     </NavLink>
                     <NavLink  href="/exercise" className='sidebar-link'>
