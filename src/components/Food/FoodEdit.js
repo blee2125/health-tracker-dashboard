@@ -14,8 +14,8 @@ function FoodEdit(props) {
     const navigate = useNavigate();
 
     const [foodObject, setFoodObject] = useState({
-        foodName: '',
-        totalCalories: '',
+        name: '',
+        calories: '',
         timeOfConsumption: '',
         meal: '',
         placeOfConsumption: '',
@@ -37,7 +37,7 @@ function FoodEdit(props) {
     };
 
     const handleEditFood = () => {
-        if (foodObject.foodName !== '') {
+        if (foodObject.name !== '') {
             props.updateFood({id: params.id, data: {foodObject}})
                 .unwrap()
                 .then((data) => {
