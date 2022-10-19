@@ -6,19 +6,19 @@ export const FoodForm = (props) => {
       <form >
         <label>Name</label>
         <input 
-          name='foodName' 
-          placeholder='foodName'
+          name='name' 
+          placeholder='name'
           type='text'
-          value={props.foodObject.foodName}
-          onChange={e => props.updateData('foodName', e.target.value)}
+          value={props.foodObject.name}
+          onChange={e => props.updateData('name', e.target.value)}
         /><br></br>
         <label>Total Calories</label>
         <input 
-          name='totalCalories'
-          placeholder='totalCalories'
+          name='calories'
+          placeholder='calories'
           type='number'
-          value={props.foodObject.totalCalories}
-          onChange={e => props.updateData('totalCalories', e.target.value)}
+          value={props.foodObject.calories}
+          onChange={e => props.updateData('calories', e.target.value)}
         /><br></br>
         <label>Time of Consumption</label>
         <input 
