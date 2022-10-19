@@ -11,7 +11,7 @@ const SideBar = () => {
         <>
             <Offcanvas show={true} backdrop={false} enforceFocus={false} className='side-bar'>
                 <Offcanvas.Header>
-                    <Offcanvas.Title></Offcanvas.Title>
+                    <Offcanvas.Title><b>Health Tracker</b></Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <NavLink  href="/" className='sidebar-link'>
@@ -20,9 +20,15 @@ const SideBar = () => {
                     <NavLink  href="/exercise" className='sidebar-link'>
                         Exercise
                     </NavLink>
+                        <NavLink  href="/exercise/add" className='sidebar-sub-link'>
+                            Add New
+                        </NavLink>
                     <NavLink  href="/food" className='sidebar-link'>
                         Food
                     </NavLink>
+                        <NavLink  href="/food/add" className='sidebar-sub-link'>
+                            Add New
+                        </NavLink>
                     <NavLink  href="/water" className='sidebar-link'>
                         Water
                     </NavLink>
