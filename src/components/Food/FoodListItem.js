@@ -6,7 +6,7 @@ function FoodListItem(props) {
 
     return (
         <tr>
-            <td>{props.foodData.name}</td>
+            <td><p>{props.foodData.name}</p></td>
             <td>{props.foodData.calories}</td>
             <td>
                 <Button onClick={() => props.editButton(props.foodData._id)}>edit</Button>
