@@ -9,10 +9,12 @@ import { createFood } from "../../reducers/foodSlice";
 
 import { useNavigate } from "react-router-dom";
 
+import FoodSearch from "./FoodSearch";
+
 function FoodAdd(props) {
     const [foodObject, setFoodObject] = useState({
-        foodName: '',
-        totalCalories: '',
+        name: '',
+        calories: '',
         timeOfConsumption: '',
         meal: '',
         placeOfConsumption: '',
@@ -23,6 +25,7 @@ function FoodAdd(props) {
         fullness: '',
         amount: ''
     })
+    const [foodSearchResults, setFoodSearchResults] = useState({})
 
     const navigate = useNavigate();
 
@@ -36,7 +39,7 @@ function FoodAdd(props) {
     };
 
     const handleSubmit = () => {
-        if (foodObject.foodName !== '') {
+        if (foodObject.name !== '') {
             props.createFood(foodObject)
                 .unwrap()
                 .then((data) => {
@@ -48,13 +51,27 @@ function FoodAdd(props) {
         }
     }
 
+    const transferButton = () => {
+        console.log(foodSearchResults)
+        setFoodObject(foodObject => ({
+            ...foodObject,
+            ...foodSearchResults
+        }));  
+    }
+
     return (
         <div>
+            <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
+                <h1>Search</h1>
+                <FoodSearch updateData={setFoodSearchResults} />
+            </Card>
+            <Button onClick={transferButton}>Transfer Search to Form</Button>
             <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
                 <h1>Add Food</h1>
                 <FoodForm foodObject={foodObject} updateData={updateData}/>
             </Card>
             <Button onClick={handleSubmit}> Submit</Button>
+            
         </div>
     )
 }
