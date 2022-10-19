@@ -19,6 +19,7 @@ function FoodList(props) {
                 <thead>
                     <tr>
                         <td><b>NAME</b></td>
+                        <td><b>CALORIES</b></td>
                         <td></td>
                     </tr>
                 </thead>
