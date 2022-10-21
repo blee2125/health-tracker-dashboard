@@ -20,7 +20,15 @@ import FoodEdit from './components/Food/FoodEdit';
 
 import SideBar from './components/SideBar';
 
+import Login from './components/User/Login';
+import Register from './components/User/Register';
+import UserInfo from './components/User/UserInfo';
+
+import useToken from './hooks/useToken';
+
 function App(props) {
+  const { token, setToken } = useToken();
+
   const dateString = new Date().toString().split(' ')
   const dateStringSplit = (`${dateString[1]} ${dateString[2]} ${dateString[3]}`).toString()
 
@@ -58,6 +66,9 @@ function App(props) {
             <Route path="/food" element={<Food />} />
               <Route path="/food/edit/:id" element={<FoodEdit />} />
               <Route path="/food/add" element={<FoodAdd />} />
+            <Route path='/userinfo' element={<UserInfo />} />
+            <Route path="/login" element={<Login setToken={setToken} />} />
+              <Route path="/register" element={<Register />} />
           </Routes>
         </div>
       </div>
