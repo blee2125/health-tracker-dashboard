@@ -36,6 +36,10 @@ export const userSlice = createSlice({
     user: null,
   },
   reducers: {
+    userLogout: (state) => {
+      state.isAuthenticated = false
+      state.user = null
+    },
   },
   extraReducers: {
     [loginUser.fulfilled]: (state, action) => {
@@ -50,5 +54,7 @@ export const userSlice = createSlice({
     },
   },
 })
+
+export const { userLogout } = userSlice.actions
 
 export default userSlice.reducer
