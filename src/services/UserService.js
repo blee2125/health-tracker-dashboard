@@ -1,8 +1,12 @@
 import http from "../http-common";
 
 class UserService {
-  get(username, auth) {
-    return http.get(`/user/${username}`, auth);
+  getUser(user) {
+    //console.log(user)
+    return http.get(`/user/${user.username}`, {
+      headers: { "x-auth-token": user.token,
+      "content-type": "application/json"}
+    });
   }
 
   login(credentials) {

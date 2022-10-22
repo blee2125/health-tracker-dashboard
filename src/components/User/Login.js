@@ -17,7 +17,7 @@ function Login(props) {
         props.loginUser({username, password})
             .unwrap()
             .then((data) => {
-                console.log(data)
+                //console.log(data)
                 props.setToken(data.token);
                 props.setUserData({token: data.token, user: data, isAuthenticated: true})
                 navigate('/')

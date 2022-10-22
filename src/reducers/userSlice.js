@@ -23,8 +23,9 @@ export const createUser = createAsyncThunk(
 
 export const getUserData = createAsyncThunk(
     "user/getUser",
-      async () => {
-        const res = await UserService.getUser();
+      async (user) => {
+        //console.log(user)
+        const res = await UserService.getUser(user);
         return res.data;
       }
 );
@@ -47,7 +48,8 @@ export const userSlice = createSlice({
       state.isAuthenticated = true
     },
     [getUserData.fulfilled]: (state, action) => {
-      console.log('get userslice')
+      //console.log('get userslice')
+      //console.log(action.payload)
     },
     [createUser.fulfilled]: (state, action) => {
         console.log('create userslice')
