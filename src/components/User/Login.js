@@ -19,6 +19,7 @@ function Login(props) {
             .then((data) => {
                 console.log(data)
                 props.setToken(data.token);
+                props.setUserData({token: data.token, user: data, isAuthenticated: true})
                 navigate('/')
             })
             .catch((e) => {
