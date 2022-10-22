@@ -26,8 +26,18 @@ import UserInfo from './components/User/UserInfo';
 
 import useToken from './hooks/useToken';
 
+import { useState } from 'react';
+import userContext from './context/userContext';
+
+import AccessDeniedPage from './views/AccessDeniedPage';
+
 function App(props) {
   const { token, setToken } = useToken();
+  const [userData, setUserData] = useState({
+    token: token,
+    user: undefined,
+    isAuthenticated: false
+  })
 
   const dateString = new Date().toString().split(' ')
   const dateStringSplit = (`${dateString[1]} ${dateString[2]} ${dateString[3]}`).toString()
@@ -51,29 +61,50 @@ function App(props) {
       });
   }
 
+  const isAuth = (element) => {
+    if (userData.isAuthenticated === true) {
+      return element
+    } else {
+      return <AccessDeniedPage />
+    }
+  }
+
+  const isNotAuth = (element) => {
+    if (userData.isAuthenticated === false) {
+      return element
+    } else {
+      return <AccessDeniedPage />
+    }
+  }
+
+  
+
   return (
     <div className="App">
-      <NavBar />
-      <div>
-        <SideBar />
-        <div className='main'>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/water" element={<Water />} />
-            <Route path="/exercise" element={<Exercise />} />
-              <Route path="/exercise/edit/:id" element={<ExerciseEdit />} />
-              <Route path="/exercise/add" element={<ExerciseAdd />} />
-            <Route path="/food" element={<Food />} />
-              <Route path="/food/edit/:id" element={<FoodEdit />} />
-              <Route path="/food/add" element={<FoodAdd />} />
-            <Route path='/userinfo' element={<UserInfo />} />
-            <Route path="/login" element={<Login setToken={setToken} />} />
-              <Route path="/register" element={<Register />} />
-          </Routes>
+      <userContext.Provider value={{ userData, setUserData }}>
+        <NavBar setUserData={setUserData} />
+        <div>
+          <SideBar />
+          <div className='main'>
+            <Routes>
+              <Route path="/" element={<HomePage context={userContext} />} />
+              <Route path="/water" element={isAuth(<Water />)} />
+              <Route path="/exercise" element={isAuth(<Exercise />)} />
+              <Route path="/exercise/edit/:id" element={isAuth(<ExerciseEdit />)} />
+              <Route path="/exercise/add" element={isAuth(<ExerciseAdd />)} />
+              <Route path="/food" element={isAuth(<Food />)} />
+              <Route path="/food/edit/:id" element={isAuth(<FoodEdit />)} />
+              <Route path="/food/add" element={isAuth(<FoodAdd />)} />
+              <Route path='/userinfo' element={isAuth(<UserInfo />)} />
+
+              <Route path="/login" element={isNotAuth(<Login setToken={setToken} setUserData={setUserData} />)} />
+              <Route path="/register" element={isNotAuth(<Register />)} />
+            </Routes>
+          </div>
         </div>
-      </div>
+      </userContext.Provider>
     </div>
   );
 }
 
-export default connect(null, { getWaterByDate })(App);
+export default connect(null, { getWaterByDate, context: userContext })(App);
