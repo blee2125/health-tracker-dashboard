@@ -1,6 +1,6 @@
 import React from "react";
-
 import Button from 'react-bootstrap/Button'
+import DeleteConfirmation from "../DeleteConfirmation";
 
 function FoodListItem(props) {
 
@@ -10,7 +10,10 @@ function FoodListItem(props) {
             <td>{props.foodData.calories}</td>
             <td>
                 <Button onClick={() => props.editButton(props.foodData._id)}>edit</Button>
-                <Button onClick={() => props.deleteButton(props.foodData._id)}>delete</Button>
+                <DeleteConfirmation 
+                    deleteItem={() => props.deleteButton(props.foodData._id)} 
+                    info={props.foodData.name} 
+                />
             </td>
         </tr>
     );
