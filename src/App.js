@@ -39,27 +39,10 @@ function App(props) {
     isAuthenticated: false
   })
 
-  const dateString = new Date().toString().split(' ')
-  const dateStringSplit = (`${dateString[1]} ${dateString[2]} ${dateString[3]}`).toString()
-
   useEffect(() => {
-    handleGetTodayWaterRequest()
+    sessionStorage.clear()
       // eslint-disable-next-line
   }, [])
-
-  const handleGetTodayWaterRequest = () => {
-    props.getWaterByDate({'time': dateStringSplit})
-      .unwrap()
-      .then((data) => {
-        //console.log(data)
-      })
-      .catch((e) => {
-        console.log(e);
-        if (e.typeof === undefined) {
-          //handlePostRequest()
-        }
-      });
-  }
 
   const isAuth = (element) => {
     if (userData.isAuthenticated === true) {

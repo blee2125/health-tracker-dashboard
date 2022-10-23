@@ -23,7 +23,8 @@ function Login(props) {
                 navigate('/')
             })
             .catch((e) => {
-              console.log(e);
+                sessionStorage.clear()
+                console.log(e);
             });
     }
 
