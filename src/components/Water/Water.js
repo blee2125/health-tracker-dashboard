@@ -1,5 +1,4 @@
 import React from "react";
-//import { useState } from "react";
 import Card from 'react-bootstrap/Card';
 
 import { connect } from "react-redux";
@@ -12,10 +11,10 @@ import { increment, decrement } from "../../reducers/waterSlice";
 import { useEffect } from 'react'
 
 function Water(props) {
-  //const [glasses, setGlasses] = useState(0);
-
   const glasses = useSelector((state) => state.waterState.glasses)
   const id = useSelector((state) => state.waterState.id)
+  const userToken = useSelector((state) => state.userState.user.token)
+
   // eslint-disable-next-line
   const dispatch = useDispatch();
 
@@ -24,7 +23,10 @@ function Water(props) {
 
   const handleAddGlasses = () => {
     //dispatch(increment())
-    props.updateWater({id: id, data: {glasses: glasses+1}})
+    if (glasses === 0) {
+      handlePostRequest()
+    } else {
+    props.updateWater({id: id, data: {glasses: glasses+1}, token: userToken})
       .unwrap()
       .then((data) => {
 
@@ -32,11 +34,12 @@ function Water(props) {
       .catch((e) => {
         console.log(e);
       });
+    }
   };
 
   const handleSubtractGlasses = () => {
     //dispatch(decrement())
-    props.updateWater({id: id, data: {glasses: glasses-1}})
+    props.updateWater({id: id, data: {glasses: glasses-1}, token: userToken})
       .unwrap()
       .then((data) => {
 
@@ -47,7 +50,7 @@ function Water(props) {
   };
 
   const handlePostRequest = () => {
-    props.createWater({glasses: glasses, date: dateStringSplit})
+    props.createWater({data: {glasses: glasses + 1, date: dateStringSplit}, token: userToken})
       .unwrap()
       .then((data) => {
         //console.log(data);
@@ -59,7 +62,7 @@ function Water(props) {
 
   // eslint-disable-next-line
   const handleUpdateRequest = () => {
-    props.updateWater({id: id, data: {glasses}})
+    props.updateWater({id: id, data: {glasses}, token: userToken})
       .unwrap()
       .then((data) => {
 
@@ -70,7 +73,7 @@ function Water(props) {
   } //<button onClick={handleUpdateRequest}>update</button>
 
   const handleGetTodayRequest = () => {
-    props.getWaterByDate({'time': dateStringSplit})
+    props.getWaterByDate({date: {'time': dateStringSplit}, token: userToken})
       .unwrap()
       .then((data) => {
         //console.log(data)
@@ -78,7 +81,7 @@ function Water(props) {
       .catch((e) => {
         console.log(e);
         if (e.typeof === undefined) {
-          handlePostRequest()
+          //handlePostRequest()
         }
       });
   } //<button onClick={handleGetTodayRequest}>today</button>
