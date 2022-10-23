@@ -10,6 +10,7 @@ import { createFood } from "../../reducers/foodSlice";
 import { useNavigate } from "react-router-dom";
 
 import FoodSearch from "./FoodSearch";
+import { useSelector } from "react-redux";
 
 function FoodAdd(props) {
     const [foodObject, setFoodObject] = useState({
@@ -26,6 +27,7 @@ function FoodAdd(props) {
         amount: ''
     })
     const [foodSearchResults, setFoodSearchResults] = useState({})
+    const userToken = useSelector((state) => state.userState.user.token)
 
     const navigate = useNavigate();
 
@@ -40,7 +42,7 @@ function FoodAdd(props) {
 
     const handleSubmit = () => {
         if (foodObject.name !== '') {
-            props.createFood(foodObject)
+            props.createFood({foodObject, userToken})
                 .unwrap()
                 .then((data) => {
                     navigate('/food')
