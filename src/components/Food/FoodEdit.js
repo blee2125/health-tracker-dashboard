@@ -7,6 +7,7 @@ import FoodForm from "./FoodForm";
 import { connect } from "react-redux";
 import { updateFood } from "../../reducers/foodSlice";
 import {useLocation, useParams, useNavigate } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 function FoodEdit(props) {
     const location = useLocation();
@@ -26,6 +27,7 @@ function FoodEdit(props) {
         fullness: '',
         amount: ''
     })
+    const userToken = useSelector((state) => state.userState.user.token)
 
     const updateData = (target, value) => {
         let updatedValue = {};
@@ -38,7 +40,7 @@ function FoodEdit(props) {
 
     const handleEditFood = () => {
         if (foodObject.name !== '') {
-            props.updateFood({id: params.id, data: {foodObject}})
+            props.updateFood({id: params.id, data: {foodObject}, userToken: userToken})
                 .unwrap()
                 .then((data) => {
                     navigate('/food')
