@@ -6,16 +6,18 @@ import FoodList from "./FoodList";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createFood, getAllFood, deleteFood } from "../../reducers/foodSlice";
+import { useSelector } from "react-redux";
 
 function Food(props) {
     let navigate = useNavigate(); 
+    const userToken = useSelector((state) => state.userState.user.token)
 
     const dateString = new Date().toString().split(' ')
     // eslint-disable-next-line
     const dateStringSplit = (`${dateString[1]} ${dateString[2]} ${dateString[3]}`).toString()
 
     const handleDeleteFood = (id) => {
-        props.deleteFood({id})
+        props.deleteFood({id: id, userToken: userToken})
             .unwrap()
             .then((data) => {
             //console.log(data);
@@ -32,7 +34,7 @@ function Food(props) {
     }
 
     useEffect(() => {
-        props.getAllFood()
+        props.getAllFood(userToken)
         // eslint-disable-next-line
     }, [])
 
