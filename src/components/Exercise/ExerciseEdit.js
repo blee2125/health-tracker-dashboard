@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-
-import ExerciseForm from "./ExerciseForm";
-
-import { connect } from "react-redux";
-import { updateExercise } from "../../reducers/exerciseSlice";
+import { connect, useSelector } from "react-redux";
 import {useLocation, useParams, useNavigate} from 'react-router-dom';
-import { useSelector } from "react-redux";
+import {Card, Button} from 'react-bootstrap';
+import ExerciseForm from "./ExerciseForm";
+import { updateExercise } from "../../reducers/exerciseSlice";
 
 function ExerciseEdit(props) {
     const location = useLocation();
@@ -56,10 +52,10 @@ function ExerciseEdit(props) {
 
     return (
         <div>
-            <h1>Exercise Edit</h1>
             <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
+                <h2>Exercise Edit</h2>
                 <ExerciseForm  exerciseObject={exerciseObject} updateData={updateData} />
-                <Button onClick={handleEditExercise}> Submit</Button>
+                <Button onClick={handleEditExercise}>Submit</Button>
             </Card>
         </div>
     )

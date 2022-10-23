@@ -1,6 +1,6 @@
 import React from 'react'
-import { Offcanvas, NavLink } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { Offcanvas, NavLink } from 'react-bootstrap';
 
 const SideBar = () => {
     // const [show, setShow] = useState(false);
@@ -22,20 +22,19 @@ const SideBar = () => {
                         Exercise
                     </NavLink>
                         <NavLink as={Link}  to="/exercise/add" className='sidebar-sub-link'>
-                            Add New
+                            Add Exercise
                         </NavLink>
                     <NavLink as={Link}  to="/food" className='sidebar-link'>
                         Food
                     </NavLink>
                         <NavLink as={Link}  to="/food/add" className='sidebar-sub-link'>
-                            Add New
+                            Add Food
                         </NavLink>
                     <NavLink as={Link}  to="/water" className='sidebar-link'>
                         Water
                     </NavLink>
                 </Offcanvas.Body>
             </Offcanvas>
-
         </>
     )
 }

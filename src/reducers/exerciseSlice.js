@@ -56,15 +56,13 @@ export const exerciseSlice = createSlice({
   },
   extraReducers: {
     [createExercise.fulfilled]: (state, action) => {
-      // state.exerciseObject.exerciseName = action.payload.exerciseName;
-      // state.id = action.payload._id
+
     },
     [getAllExercises.fulfilled]: (state, action) => {
       state.exerciseArray = action.payload;
     },
     [updateExercise.fulfilled]: (state, action) => {
-      // state.exerciseName = action.payload.exerciseName;
-      // state.id = action.payload._id
+
     },
     [deleteExercise.fulfilled]: (state, action) => ({
       ...state,

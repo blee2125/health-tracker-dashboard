@@ -4,9 +4,7 @@ import UserService from "../services/UserService";
 export const loginUser = createAsyncThunk(
   "user/login",
     async (data) => {
-      //console.log(data)
       const res = await UserService.login(data);
-      //console.log(res)
       return res.data;
     }
 );
@@ -14,9 +12,7 @@ export const loginUser = createAsyncThunk(
 export const createUser = createAsyncThunk(
   "user/create",
     async (data) => {
-      //console.log(data)
       const res = await UserService.create(data);
-      //console.log(res)
       return res.data;
     }
 );
@@ -24,7 +20,6 @@ export const createUser = createAsyncThunk(
 export const getUserData = createAsyncThunk(
     "user/getUser",
       async (user) => {
-        //console.log(user)
         const res = await UserService.getUser(user);
         return res.data;
       }
@@ -48,8 +43,7 @@ export const userSlice = createSlice({
       state.isAuthenticated = true
     },
     [getUserData.fulfilled]: (state, action) => {
-      //console.log('get userslice')
-      //console.log(action.payload)
+
     },
     [createUser.fulfilled]: (state, action) => {
         console.log('create userslice')

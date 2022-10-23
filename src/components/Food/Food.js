@@ -1,29 +1,22 @@
 import React, { useEffect } from "react";
-import Button from 'react-bootstrap/Button'
-
-import FoodList from "./FoodList";
-
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import {Button} from 'react-bootstrap'
+import FoodList from "./FoodList";
 import { createFood, getAllFood, deleteFood } from "../../reducers/foodSlice";
-import { useSelector } from "react-redux";
 
 function Food(props) {
     let navigate = useNavigate(); 
     const userToken = useSelector((state) => state.userState.user.token)
 
-    const dateString = new Date().toString().split(' ')
-    // eslint-disable-next-line
-    const dateStringSplit = (`${dateString[1]} ${dateString[2]} ${dateString[3]}`).toString()
-
     const handleDeleteFood = (id) => {
         props.deleteFood({id: id, userToken: userToken})
             .unwrap()
             .then((data) => {
-            //console.log(data);
+                //console.log(data);
             })
             .catch((e) => {
-            console.log(e);
+                console.log(e);
             });
     }
 
@@ -42,7 +35,6 @@ function Food(props) {
         <div>
             <h1>Food</h1>
             <Button onClick={() => navigate('/food/add')}>Add Food</Button>
-            <Button onClick={() => props.getAllFood()}>Get Food</Button>
             <FoodList list={props.foodArray} handleDelete={handleDeleteFood} handleEdit={selectEditFood} />
         </div>
     )

@@ -1,14 +1,9 @@
 import React, { useState } from "react";
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-
-import ExerciseForm from "./ExerciseForm";
-
-import { connect } from "react-redux";
-import { createExercise } from "../../reducers/exerciseSlice";
-
+import { connect, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import {Card, Button} from 'react-bootstrap';
+import ExerciseForm from "./ExerciseForm";
+import { createExercise } from "../../reducers/exerciseSlice";
 
 function ExerciseAdd(props) {
     const [exerciseObject, setExerciseObject] = useState({
@@ -49,7 +44,7 @@ function ExerciseAdd(props) {
             <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
                 <ExerciseForm  exerciseObject={exerciseObject} updateData={updateData} />
             </Card>
-            <Button onClick={handleSubmit}> Submit</Button>
+            <Button onClick={handleSubmit}>Submit</Button>
         </div>
     )
 }

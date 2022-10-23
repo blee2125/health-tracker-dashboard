@@ -1,8 +1,6 @@
-import React from 'react'
-
+import React, { useContext } from 'react'
 import { useSelector } from 'react-redux'
 import UserContext from '../context/userContext';
-import { useContext } from 'react';
 
 const HomePage = (props) => {
     const {userData} = useContext(UserContext);
@@ -22,10 +20,8 @@ const HomePage = (props) => {
     return(
         <div>
             <h1>{dateStringSplit}</h1>
-
-            <p>water - glasses {waterState.glasses === 0 ?  "" : waterState.glasses}</p>
-            <p>username: {displayUserData()}</p>
-            <button onClick={()=>console.log(userData)}>userdata</button>
+            <p>Water - Glasses {waterState.glasses === 0 ?  "" : waterState.glasses}</p>
+            <p>Username: {displayUserData()}</p>
         </div>
     )
 }

@@ -1,11 +1,8 @@
 import React from "react";
-import Card from 'react-bootstrap/Card';
-import { Table } from "react-bootstrap";
-
+import { Table, Card } from "react-bootstrap";
 import FoodListItem from "./FoodListItem";
 
 function FoodList(props) {
-    
     const listFoodItems = props.list.map((foodItem, index) => {
         return (
             <FoodListItem foodData={foodItem} key={index} id={index} deleteButton={props.handleDelete} editButton={props.handleEdit} />
@@ -14,7 +11,7 @@ function FoodList(props) {
 
     return (
         <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
-            Food List
+            <h2>Food List</h2>
             <Table>
                 <thead>
                     <tr>
@@ -29,6 +26,6 @@ function FoodList(props) {
             </Table>
         </Card>
     );
-  }
+}
 
 export default FoodList;
