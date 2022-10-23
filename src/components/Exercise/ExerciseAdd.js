@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { createExercise } from "../../reducers/exerciseSlice";
 
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function ExerciseAdd(props) {
     const [exerciseObject, setExerciseObject] = useState({
@@ -16,6 +17,7 @@ function ExerciseAdd(props) {
         timeOfExercise: '',
         typeOfExercise: ''
     })
+    const userToken = useSelector((state) => state.userState.user.token)
 
     const navigate = useNavigate();
 
@@ -30,7 +32,7 @@ function ExerciseAdd(props) {
 
     const handleSubmit = () => {
         if (exerciseObject.exerciseName !== '') {
-            props.createExercise(exerciseObject)
+            props.createExercise({exerciseObject, userToken})
                 .unwrap()
                 .then((data) => {
                     navigate('/exercise')
