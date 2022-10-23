@@ -1,8 +1,8 @@
 import http from "../http-common";
 
 class FoodService {
-  getAll() {
-    return http.get("/food/getAll");
+  getAll(head) {
+    return http.get("/food/getAll", head);
   }
 
   // get(id) {
@@ -18,18 +18,16 @@ class FoodService {
   //   return http.get(`/food/getByDates/${startDate}-${endDate}`);
   // }
 
-  create(data) {
-    //console.log('create', data)
-    return http.post("/food/post", data);
+  create(data, head) {
+    return http.post("/food/post", data, head);
   }
 
-  update(id, data) {
-    //console.log(id, data)
-    return http.put(`/food/update/${id}`, data);
+  update(id, data, head) {
+    return http.put(`/food/update/${id}`, data, head);
   }
 
-  delete(id) {
-    return http.delete(`/food/delete/${id}`);
+  delete(id, head) {
+    return http.delete(`/food/delete/${id}`, head);
   }
 
   // deleteAll() {
