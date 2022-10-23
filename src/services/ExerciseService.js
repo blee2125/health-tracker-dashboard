@@ -1,35 +1,33 @@
 import http from "../http-common";
 
 class ExerciseService {
-  getAll() {
-    return http.get("/exercise/getAll");
+  getAll(head) {
+    return http.get("/exercise/getAll", head);
   }
 
   // get(id) {
   //   return http.get(`/exercise/getOne/${id}`);
   // }
 
-  getDate(data) {
-    //console.log(data)
-    return http.get(`/exercise/searchByDate`, {params: data});
-  }
+  // getDate(data) {
+  //   //console.log(data)
+  //   return http.get(`/exercise/searchByDate`, {params: data});
+  // }
 
   // getDates(startDate, endDate) {
   //   return http.get(`/exercise/getByDates/${startDate}-${endDate}`);
   // }
 
-  create(data) {
-    //console.log('create', data)
-    return http.post("/exercise/post", data);
+  create(data, head) {
+    return http.post("/exercise/post", data, head);
   }
 
-  update(id, data) {
-    //console.log(id, data)
-    return http.put(`/exercise/update/${id}`, data);
+  update(id, data, head) {
+    return http.put(`/exercise/update/${id}`, data, head);
   }
 
-  delete(id) {
-    return http.delete(`/exercise/delete/${id}`);
+  delete(id, head) {
+    return http.delete(`/exercise/delete/${id}`, head);
   }
 
   // deleteAll() {
