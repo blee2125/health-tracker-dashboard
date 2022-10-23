@@ -9,7 +9,7 @@ function FoodListItem(props) {
             <td><p>{props.foodData.name}</p></td>
             <td>{props.foodData.calories}</td>
             <td>
-                <Button onClick={() => props.editButton(props.foodData._id)}>edit</Button>
+                <Button onClick={() => props.editButton(props.foodData._id)}>Edit</Button>
                 <DeleteConfirmation 
                     deleteItem={() => props.deleteButton(props.foodData._id)} 
                     info={props.foodData.name} 
@@ -17,6 +17,6 @@ function FoodListItem(props) {
             </td>
         </tr>
     );
-  }
+}
 
 export default FoodListItem;

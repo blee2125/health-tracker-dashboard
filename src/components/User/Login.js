@@ -1,13 +1,11 @@
 import React, {useState} from "react";
-import { Button, Form } from "react-bootstrap";
-
 import { connect } from "react-redux";
-import { loginUser } from "../../reducers/userSlice";
 import { useNavigate } from "react-router-dom";
+import { Button, Form } from "react-bootstrap";
+import { loginUser } from "../../reducers/userSlice";
 
 function Login(props) {
     const [username, setUsername] = useState();
-    //const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
     const navigate = useNavigate();
@@ -17,7 +15,6 @@ function Login(props) {
         props.loginUser({username, password})
             .unwrap()
             .then((data) => {
-                //console.log(data)
                 props.setToken(data.token);
                 props.setUserData({token: data.token, user: data, isAuthenticated: true})
                 navigate('/')
@@ -31,20 +28,20 @@ function Login(props) {
     return (
         <div>
             <Form onSubmit={handleSubmit}>
-                <h1>sign in</h1>
+                <h1>Sign in</h1>
                 <br></br>
-                <label>username</label>
+                <label>Username</label>
                 <input
                     type='text'
                     placeholder="enter username"
                     onChange={e => setUsername(e.target.value)}
-                />
-                <label>password</label>
+                /><br></br>
+                <label>Password</label>
                 <input
                     type='password'
                     placeholder="enter password"
                     onChange={e => setPassword(e.target.value)}
-                />
+                /><br></br>
                 <Button type="submit">Submit</Button>
             </Form>
         </div>

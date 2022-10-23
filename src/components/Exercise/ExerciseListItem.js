@@ -11,7 +11,7 @@ function ExerciseListItem(props) {
             <td>{props.exerciseData.timeOfExercise}</td>
             <td>{props.exerciseData.typeOfExercise}</td>
             <td>
-                <Button onClick={() => props.editButton(props.exerciseData._id)}> edit</Button>
+                <Button onClick={() => props.editButton(props.exerciseData._id)}>Edit</Button>
                 <DeleteConfirmation 
                     deleteItem={() => props.deleteButton(props.exerciseData._id)} 
                     info={props.exerciseData.exerciseName} 

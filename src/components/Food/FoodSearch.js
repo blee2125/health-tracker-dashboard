@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-//import axios from "axios";
 import http from "../../http-common";
 
 function FoodSearch(props) {
@@ -37,7 +36,7 @@ function FoodSearch(props) {
                 />
                 <input type="submit" value="Search" />
             </form>
-            <p>name - {foodSearchResults.name}, calories - {foodSearchResults.calories}</p>
+            <p>Name - {foodSearchResults.name}, Calories - {foodSearchResults.calories}</p>
         </div>
     )
 }

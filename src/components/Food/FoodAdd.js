@@ -1,16 +1,10 @@
 import React, { useState } from "react";
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button'
-
-import FoodForm from "./FoodForm";
-
-import { connect } from "react-redux";
-import { createFood } from "../../reducers/foodSlice";
-
+import { connect, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import {Card, Button} from 'react-bootstrap';
+import FoodForm from "./FoodForm";
 import FoodSearch from "./FoodSearch";
-import { useSelector } from "react-redux";
+import { createFood } from "../../reducers/foodSlice";
 
 function FoodAdd(props) {
     const [foodObject, setFoodObject] = useState({
@@ -48,7 +42,7 @@ function FoodAdd(props) {
                     navigate('/food')
                 })
                 .catch((e) => {
-                console.log(e);
+                    console.log(e);
                 });
         }
     }
@@ -64,15 +58,15 @@ function FoodAdd(props) {
     return (
         <div>
             <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
-                <h1>Search</h1>
+                <h2>Search</h2>
                 <FoodSearch updateData={setFoodSearchResults} />
             </Card>
-            <Button onClick={transferButton}>Transfer Search to Form</Button>
+            <Button onClick={transferButton}>Transfer</Button>
             <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
-                <h1>Add Food</h1>
+                <h2>Add Food</h2>
                 <FoodForm foodObject={foodObject} updateData={updateData}/>
             </Card>
-            <Button onClick={handleSubmit}> Submit</Button>
+            <Button onClick={handleSubmit}>Submit</Button>
             
         </div>
     )

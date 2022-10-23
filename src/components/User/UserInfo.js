@@ -5,22 +5,8 @@ import { connect } from "react-redux";
 
 const UserInfo = (props) => {
 
-    // const getUser = () => {
-    //     //console.log(userData.user.username, userData.user.token)
-    //     props.getUserData(userData.user)
-    //     .unwrap()
-    //     .then((data) => {
-    //       //console.log(data)
-    //     })
-    //     .catch((e) => {
-    //       console.log(e);
-    //     });
-    // } <button onClick={getUser}>getUser</button>
-
-
     return(
         <div>
-            
             <h1>User Info</h1>
             <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
                 <Table>

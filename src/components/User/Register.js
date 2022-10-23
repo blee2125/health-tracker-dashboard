@@ -1,9 +1,8 @@
 import React, {useState} from "react";
-import { Button, Form } from "react-bootstrap";
-
 import { connect } from "react-redux";
-import { createUser } from "../../reducers/userSlice";
 import { useNavigate } from "react-router-dom";
+import { Button, Form } from "react-bootstrap";
+import { createUser } from "../../reducers/userSlice";
 
 function Register(props) {
     const [username, setUsername] = useState();
@@ -27,26 +26,26 @@ function Register(props) {
     return (
         <div>
             <Form onSubmit={handleSubmitRegister}>
-                <h1>sign up</h1>
+                <h1>Register</h1>
                 <br></br>
-                <label>username</label>
+                <label>Username</label>
                 <input
                     type='text'
                     placeholder="enter username"
                     onChange={e => setUsername(e.target.value)}
-                />
-                <label>Email address</label>
+                /><br></br>
+                <label>Email Address</label>
                 <input
                     type="email"
                     placeholder="Email Address"
                     onChange={e => setEmail(e.target.value)}
-                />
+                /><br></br>
                 <label>Password</label>
                 <input
                     type='password'
                     placeholder="enter password"
                     onChange={e => setPassword(e.target.value)}
-                />
+                /><br></br>
                 <Button type='submit'>Submit</Button>
             </Form>
         </div>

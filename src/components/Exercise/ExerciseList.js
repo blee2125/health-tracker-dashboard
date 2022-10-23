@@ -1,12 +1,8 @@
 import React from "react";
-import { Table } from "react-bootstrap";
-import Card from 'react-bootstrap/Card';
-
-
+import { Table, Card } from "react-bootstrap";
 import ExerciseListItem from "./ExerciseListItem";
 
-function ExerciseList(props) {
-    
+function ExerciseList(props) { 
     const listExerciseItems = props.list.map((exerciseItem, index) => {
         return (
             <ExerciseListItem exerciseData={exerciseItem} key={index} id={index} deleteButton={props.handleDelete} editButton={props.handleEdit}/>
@@ -15,7 +11,7 @@ function ExerciseList(props) {
 
     return (
         <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
-            Exercise List
+            <h2>Exercise List</h2>
             <Table>
                 <thead>
                     <tr>
@@ -32,6 +28,6 @@ function ExerciseList(props) {
             </Table>
         </Card>
     );
-  }
+}
 
 export default ExerciseList;

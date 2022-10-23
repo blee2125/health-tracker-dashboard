@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-
-import FoodForm from "./FoodForm";
-
-import { connect } from "react-redux";
-import { updateFood } from "../../reducers/foodSlice";
+import { connect, useSelector } from "react-redux";
 import {useLocation, useParams, useNavigate } from 'react-router-dom';
-import { useSelector } from "react-redux";
+import {Card, Button} from 'react-bootstrap';
+import FoodForm from "./FoodForm";
+import { updateFood } from "../../reducers/foodSlice";
 
 function FoodEdit(props) {
     const location = useLocation();
@@ -63,10 +59,10 @@ function FoodEdit(props) {
 
     return (
         <div>
-            <h1>Food Edit</h1>
             <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
+                <h2>Food Edit</h2>
                 <FoodForm  foodObject={foodObject} updateData={updateData} />
-                <Button onClick={handleEditFood}> Submit</Button>
+                <Button onClick={handleEditFood}>Submit</Button>
             </Card>
         </div>
     )

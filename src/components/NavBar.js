@@ -1,18 +1,9 @@
-import React from 'react'
-import Navbar from 'react-bootstrap/Navbar'
-import Container from 'react-bootstrap/Container';
-// import Nav from 'react-bootstrap/Nav';
-// import NavDropdown from 'react-bootstrap/NavDropdown';
-import { Link } from 'react-router-dom';
-
-import { useNavigate } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
-
-import { useContext } from 'react';
+import React, {useContext} from 'react'
+import { connect, useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { Button, Navbar, Container } from 'react-bootstrap';
 import userContext from '../context/userContext';
-import { connect } from 'react-redux';
 import { userLogout } from '../reducers/userSlice';
-import { useDispatch } from 'react-redux';
 
 const NavBar = (props) => {
     const {userData} = useContext(userContext);
@@ -52,8 +43,8 @@ const NavBar = (props) => {
                 <Navbar.Collapse className="justify-content-end">
                     <Navbar.Text>
                         Signed in as: <Link to="/userinfo">{displayUserData()}</Link>
-                        {authCheckFalse(<Button onClick={() => navigate('/login')}>login</Button>)}
-                        {authCheckFalse(<Button onClick={() => navigate('/register')}>signup</Button>)}
+                        {authCheckFalse(<Button onClick={() => navigate('/login')}>Sign In</Button>)}
+                        {authCheckFalse(<Button onClick={() => navigate('/register')}>Register</Button>)}
                         {authCheckTrue(<Button onClick={handleLogout}>Logout</Button>)}
                     </Navbar.Text>
                 </Navbar.Collapse>
