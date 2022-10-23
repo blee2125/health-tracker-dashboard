@@ -1,9 +1,8 @@
 import React from "react";
-
 import { Button } from "react-bootstrap";
+import DeleteConfirmation from "../DeleteConfirmation";
 
 function ExerciseListItem(props) {
-
 
     return (
         <tr>
@@ -13,10 +12,13 @@ function ExerciseListItem(props) {
             <td>{props.exerciseData.typeOfExercise}</td>
             <td>
                 <Button onClick={() => props.editButton(props.exerciseData._id)}> edit</Button>
-                <Button onClick={() => props.deleteButton(props.exerciseData._id)}> delete</Button>
+                <DeleteConfirmation 
+                    deleteItem={() => props.deleteButton(props.exerciseData._id)} 
+                    info={props.exerciseData.exerciseName} 
+                />
             </td>
         </tr>
     );
-  }
+}
 
 export default ExerciseListItem;
