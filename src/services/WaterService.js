@@ -9,23 +9,20 @@ class WaterService {
   //   return http.get(`/water/getOne/${id}`);
   // }
 
-  getDate(data) {
-    //console.log(data)
-    return http.get(`/water/searchByDate`, {params: data});
+  getDate(data, head) {
+    return http.get(`/water/searchByDate`, {params: data, ...head})
   }
 
   // getDates(startDate, endDate) {
   //   return http.get(`/water/getByDates/${startDate}-${endDate}`);
   // }
 
-  create(data) {
-    //console.log('create', data)
-    return http.post("/water/post", data);
+  create(data, head) {
+    return http.post("/water/post", data, head);
   }
 
-  update(id, data) {
-    //console.log(id, data)
-    return http.put(`/water/update/${id}`, data);
+  update(id, data, head) {
+    return http.put(`/water/update/${id}`, data, head);
   }
 
   // delete(id) {
