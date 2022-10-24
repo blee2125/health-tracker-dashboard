@@ -104,3 +104,19 @@
 p::first-letter {
     text-transform:capitalize;
 }
+
+.btn {
+  min-width: 50px;
+  max-width: 120px;
+  margin: auto;
+}
+
+.form-control {
+  width: 50% !important;
+  margin: auto;
+}
+
+.form-select {
+  width: 50% !important;
+  margin: auto;
+}
