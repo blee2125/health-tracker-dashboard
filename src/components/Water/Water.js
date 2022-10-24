@@ -1,14 +1,10 @@
-import React from "react";
-import Card from 'react-bootstrap/Card';
-
-import { connect } from "react-redux";
+import React, {useEffect} from "react";
+import { connect, useSelector, useDispatch } from "react-redux";
+import {Card, Button} from 'react-bootstrap';
 import { createWater, updateWater, getWaterByDate } from "../../reducers/waterSlice";
 
-import { useSelector, useDispatch } from "react-redux";
 // eslint-disable-next-line
 import { increment, decrement } from "../../reducers/waterSlice";
-
-import { useEffect } from 'react'
 
 function Water(props) {
   const glasses = useSelector((state) => state.waterState.glasses)
@@ -23,7 +19,7 @@ function Water(props) {
 
   const handleAddGlasses = () => {
     //dispatch(increment())
-    if (glasses === 0) {
+    if (id === null || undefined) {
       handlePostRequest()
     } else {
     props.updateWater({id: id, data: {glasses: glasses+1}, token: userToken})
@@ -97,8 +93,8 @@ function Water(props) {
       
       <p>{ glasses }<br></br> glasses</p>
       {id}
-      <button onClick={handleAddGlasses}>+</button>
-      <button onClick={handleSubtractGlasses}>-</button>
+      <Button onClick={handleAddGlasses}>+</Button>
+      {glasses > 0 ? <Button onClick={handleSubtractGlasses}>-</Button> : ''}
     </Card>
   )
 }
