@@ -5,11 +5,11 @@ import { connect } from 'react-redux'
 import { Routes, Route } from "react-router-dom";
 import useToken from './hooks/useToken';
 import userContext from './context/userContext';
-import NavBar from './components/NavBar';
+import NavBar from './views/NavBar';
 import Login from './components/User/Login';
 import Register from './components/User/Register';
 import UserInfo from './components/User/UserInfo';
-import SideBar from './components/SideBar';
+import SideBar from './views/SideBar';
 import HomePage from './views/Home';
 import AccessDeniedPage from './views/AccessDeniedPage';
 import Water from './components/Water/Water';
