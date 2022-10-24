@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import http from "../../http-common";
+import { Button, Form } from "react-bootstrap";
 
 function FoodSearch(props) {
     const [foodSearch, setFoodSearch] = useState('')
@@ -25,17 +26,18 @@ function FoodSearch(props) {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <label>Name</label>
-                <input 
-                name='foodSearch' 
-                placeholder='foodSearch'
-                type='text'
-                value={foodSearch}
-                onChange={e => setFoodSearch(e.target.value)}
+            <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="formGroupName">
+                <Form.Label></Form.Label>
+                <Form.Control 
+                    type="text" 
+                    placeholder="Food Search" 
+                    defaultValue={foodSearch}
+                    onChange={e => setFoodSearch(e.target.value)}
                 />
-                <input type="submit" value="Search" />
-            </form>
+            </Form.Group>
+                <Button type="submit" >Search</Button>
+            </Form>
             <p>Name - {foodSearchResults.name}, Calories - {foodSearchResults.calories}</p>
         </div>
     )
