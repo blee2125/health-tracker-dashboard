@@ -65,9 +65,8 @@ function FoodAdd(props) {
             <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
                 <h2>Add Food</h2>
                 <FoodForm foodObject={foodObject} updateData={updateData}/>
+                <Button onClick={handleSubmit}>Submit</Button>
             </Card>
-            <Button onClick={handleSubmit}>Submit</Button>
-            
         </div>
     )
 }
