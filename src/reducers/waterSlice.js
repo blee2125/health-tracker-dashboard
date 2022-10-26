@@ -31,11 +31,20 @@ export const getWaterByDate = createAsyncThunk(
     }
 );
 
+export const getSevenDays = createAsyncThunk(
+  "water/getSevenDays",
+    async (data) => {
+      const res = await WaterService.getSevenDays(createHead(data));
+      return res.data;
+    }
+);
+
 export const waterSlice = createSlice({
   name: 'water',
   initialState: {
     glasses: 0,
-    id: null
+    id: null,
+    waterArray7days: []
   },
   reducers: {
     increment: (state) => {
@@ -60,6 +69,10 @@ export const waterSlice = createSlice({
     [updateWater.fulfilled]: (state, action) => {
       state.glasses = action.payload.glasses;
       state.id = action.payload._id
+    },
+    [getSevenDays.fulfilled]: (state, action) => {
+      //console.log(action.payload)
+      state.waterArray7days = action.payload;
     },
   },
 })
