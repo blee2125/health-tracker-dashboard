@@ -13,9 +13,9 @@ class WaterService {
     return http.get(`/water/searchByDate`, {params: data, ...head})
   }
 
-  // getDates(startDate, endDate) {
-  //   return http.get(`/water/getByDates/${startDate}-${endDate}`);
-  // }
+  getSevenDays(head) {
+    return http.get(`/water/getSevenDays?7+days+GMT`, head);
+  }
 
   create(data, head) {
     return http.post("/water/post", data, head);
