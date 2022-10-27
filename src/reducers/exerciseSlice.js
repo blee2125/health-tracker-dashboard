@@ -39,18 +39,18 @@ export const updateExercise = createAsyncThunk(
     }
 );
 
-// export const getExerciseByDate = createAsyncThunk(
-//   "exercise/searchByDate",
-//     async (data) => {
-//       //console.log(data)
-//       const res = await ExerciseService.getDate(data);
-//       //console.log(res)
-//       return res.data;
-//     }
-// );
+export const getExerciseByDate = createAsyncThunk(
+  "exercise/searchByDate",
+    async (data) => {
+      const res = await ExerciseService.searchByDate({date: data.date}, createHead(data.token));
+      return res.data;
+    }
+);
 
 const initialState = {
-  exerciseArray: []
+  exerciseArray: [],
+  exerciseByDayArray: [],
+  searchDate: ''
 }
 
 export const exerciseSlice = createSlice({
@@ -60,10 +60,16 @@ export const exerciseSlice = createSlice({
     exerciseLogout: () => {
       return initialState
     },
+    updateSearchDate: (state, action) => {
+      state.searchDate = action.payload
+    }
   },
   extraReducers: {
     [createExercise.fulfilled]: (state, action) => {
 
+    },
+    [getExerciseByDate.fulfilled]: (state, action) => {
+      state.exerciseByDayArray = action.payload;
     },
     [getAllExercises.fulfilled]: (state, action) => {
       state.exerciseArray = action.payload;
@@ -78,6 +84,6 @@ export const exerciseSlice = createSlice({
   },
 })
 
-export const { exerciseLogout } = exerciseSlice.actions
+export const { exerciseLogout, updateSearchDate } = exerciseSlice.actions
 
 export default exerciseSlice.reducer
