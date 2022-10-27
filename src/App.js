@@ -16,6 +16,7 @@ import Water from './components/Water/Water';
 import Food from './components/Food/Food';
 import FoodAdd from './components/Food/FoodAdd';
 import FoodEdit from './components/Food/FoodEdit';
+import FoodByDate from './components/Food/FoodByDate';
 import Exercise from './components/Exercise/Exercise';
 import ExerciseAdd from './components/Exercise/ExerciseAdd';
 import ExerciseEdit from './components/Exercise/ExerciseEdit';
@@ -66,8 +67,9 @@ function App(props) {
                 <Route path="/exercise/add" element={isAuth(<ExerciseAdd />)} />
                 <Route path="/exercise/byDate" element={isAuth(<ExerciseByDate />)} />
               <Route path="/food" element={isAuth(<Food />)} />
-              <Route path="/food/edit/:id" element={isAuth(<FoodEdit />)} />
-              <Route path="/food/add" element={isAuth(<FoodAdd />)} />
+                <Route path="/food/edit/:id" element={isAuth(<FoodEdit />)} />
+                <Route path="/food/add" element={isAuth(<FoodAdd />)} />
+                <Route path="/food/byDate" element={isAuth(<FoodByDate />)} />
               <Route path='/userinfo' element={isAuth(<UserInfo />)} />
               <Route path="/login" element={isNotAuth(<Login setToken={setToken} setUserData={setUserData} />)} />
               <Route path="/register" element={isNotAuth(<Register />)} />

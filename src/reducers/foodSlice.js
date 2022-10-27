@@ -39,8 +39,18 @@ export const updateFood = createAsyncThunk(
     }
 );
 
+export const getFoodByDate = createAsyncThunk(
+  "food/searchByDate",
+    async (data) => {
+      const res = await FoodService.searchByDate({date: data.date}, createHead(data.token));
+      return res.data;
+    }
+);
+
 const initialState = {
-  foodArray: []
+  foodArray: [],
+  foodByDayArray: [],
+  searchDate: ''
 }
 
 export const foodSlice = createSlice({
@@ -50,10 +60,16 @@ export const foodSlice = createSlice({
     foodLogout: () => {
       return initialState
     },
+    updateSearchDate: (state, action) => {
+      state.searchDate = action.payload
+    }
   },
   extraReducers: {
     [createFood.fulfilled]: (state, action) => {
       
+    },
+    [getFoodByDate.fulfilled]: (state, action) => {
+      state.foodByDayArray = action.payload;
     },
     [getAllFood.fulfilled]: (state, action) => {
       state.foodArray = action.payload;
@@ -68,6 +84,6 @@ export const foodSlice = createSlice({
   },
 })
 
-export const { foodLogout } = foodSlice.actions
+export const { foodLogout, updateSearchDate } = foodSlice.actions
 
 export default foodSlice.reducer
