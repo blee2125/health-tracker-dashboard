@@ -3,7 +3,8 @@
 An app to track personal health data.
 
 Built using React.js.
-Backend built using Express.js and MongoDB [Backend Github](https://github.com/blee2125/health-tracker-dashboard-backend)
+
+Backend built using Express.js and MongoDB [Github](https://github.com/blee2125/health-tracker-dashboard-backend)
 
 ## Features
 
