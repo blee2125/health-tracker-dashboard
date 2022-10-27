@@ -14,9 +14,9 @@ class FoodService {
 //     return http.get(`/food/searchByDate`, {params: data});
 //   }
 
-  // getDates(startDate, endDate) {
-  //   return http.get(`/food/getByDates/${startDate}-${endDate}`);
-  // }
+  searchByDate(date, head) {
+    return http.get(`/food/searchByDate`, {params: date, ...head});
+  }
 
   create(data, head) {
     return http.post("/food/post", data, head);
@@ -32,10 +32,6 @@ class FoodService {
 
   // deleteAll() {
   //   return http.delete(`/food`);
-  // }
-
-  // findByTitle(title) {
-  //   return http.get(`/food?title=${title}`);
   // }
 }
 
