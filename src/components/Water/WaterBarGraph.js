@@ -5,7 +5,7 @@ import { Chart } from 'react-chartjs-2'
 import { Chart as ChartJS } from 'chart.js/auto'
 
 function WaterBarGraph(props) {
-  const weekday = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
+  const weekday = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
   const d = new Date()
   const today = d.getDay()
 
