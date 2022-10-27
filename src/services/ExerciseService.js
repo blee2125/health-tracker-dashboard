@@ -18,6 +18,10 @@ class ExerciseService {
   //   return http.get(`/exercise/getByDates/${startDate}-${endDate}`);
   // }
 
+  searchByDate(date, head) {
+    return http.get(`/exercise/searchByDate`, {params: date, ...head});
+  }
+
   create(data, head) {
     return http.post("/exercise/post", data, head);
   }
@@ -32,10 +36,6 @@ class ExerciseService {
 
   // deleteAll() {
   //   return http.delete(`/exercise`);
-  // }
-
-  // findByTitle(title) {
-  //   return http.get(`/exercise?title=${title}`);
   // }
 }
 
