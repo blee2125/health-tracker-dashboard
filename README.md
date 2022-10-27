@@ -17,12 +17,11 @@ An app to track personal health data.
     - Data: Name, Calories, Meal, Amount, Date, and more...
     - Add, View, Edit, Delete
     - Search for food from ninja-api
-    - 
 
 * Track Water Consumption
     - Data: Glasses per day, Date
     - View graph of water in the last week
-    
+
 
 ## Future improvements
 
@@ -31,6 +30,7 @@ An app to track personal health data.
 * Health Goals
 * Notes on Health
 * Sleep Tracking
+* Medications
 * And More...
 
 
