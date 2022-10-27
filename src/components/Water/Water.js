@@ -102,7 +102,7 @@ function Water(props) {
         <p>{ glasses }<br></br> glasses</p>
         {id}
         <Button onClick={handleAddGlasses}>+</Button>
-        {glasses > 0 ? <Button onClick={handleSubtractGlasses}>-</Button> : ''}
+        {glasses > 0 ? <Button onClick={handleSubtractGlasses}>-</Button> : <Button onClick={handleSubtractGlasses} disabled>-</Button>}
       </Card>
       <WaterBarGraph sevenDaysData={sevenDays} />
     </div>
