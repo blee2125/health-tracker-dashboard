@@ -4,6 +4,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Button, Navbar, Container } from 'react-bootstrap';
 import userContext from '../context/userContext';
 import { userLogout } from '../reducers/userSlice';
+import { waterReset } from '../reducers/waterSlice';
+import { foodLogout } from '../reducers/foodSlice';
+import { exerciseLogout } from '../reducers/exerciseSlice';
 
 const NavBar = (props) => {
     const {userData} = useContext(userContext);
@@ -13,6 +16,9 @@ const NavBar = (props) => {
     const handleLogout = () => {
         sessionStorage.clear()
         props.setUserData({token: undefined, user: undefined, isAuthenticated: false})
+        dispatch(waterReset())
+        dispatch(foodLogout())
+        dispatch(exerciseLogout())
         dispatch(userLogout())
         navigate('/login')
     }
@@ -53,4 +59,4 @@ const NavBar = (props) => {
     )
 }
 
-export default connect(null, {userLogout}) (NavBar);
+export default connect(null, {userLogout, waterReset, exerciseLogout, foodLogout}) (NavBar);

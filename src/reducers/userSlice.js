@@ -25,16 +25,17 @@ export const getUserData = createAsyncThunk(
       }
 );
 
+const initialState = {
+  isAuthenticated: false,
+  user: null,
+}
+
 export const userSlice = createSlice({
   name: 'user',
-  initialState: {
-    isAuthenticated: false,
-    user: null,
-  },
+  initialState,
   reducers: {
-    userLogout: (state) => {
-      state.isAuthenticated = false
-      state.user = null
+    userLogout: () => {
+      return initialState
     },
   },
   extraReducers: {

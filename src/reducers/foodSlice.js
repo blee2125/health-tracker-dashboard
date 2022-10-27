@@ -39,10 +39,17 @@ export const updateFood = createAsyncThunk(
     }
 );
 
+const initialState = {
+  foodArray: []
+}
+
 export const foodSlice = createSlice({
   name: 'food',
-  initialState: {
-    foodArray: []
+  initialState,
+  reducers: {
+    foodLogout: () => {
+      return initialState
+    },
   },
   extraReducers: {
     [createFood.fulfilled]: (state, action) => {
@@ -60,5 +67,7 @@ export const foodSlice = createSlice({
     }),
   },
 })
+
+export const { foodLogout } = foodSlice.actions
 
 export default foodSlice.reducer
