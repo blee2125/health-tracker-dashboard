@@ -49,10 +49,17 @@ export const updateExercise = createAsyncThunk(
 //     }
 // );
 
+const initialState = {
+  exerciseArray: []
+}
+
 export const exerciseSlice = createSlice({
   name: 'exercise',
-  initialState: {
-    exerciseArray: []
+  initialState,
+  reducers: {
+    exerciseLogout: () => {
+      return initialState
+    },
   },
   extraReducers: {
     [createExercise.fulfilled]: (state, action) => {
@@ -70,5 +77,7 @@ export const exerciseSlice = createSlice({
     }),
   },
 })
+
+export const { exerciseLogout } = exerciseSlice.actions
 
 export default exerciseSlice.reducer

@@ -39,14 +39,19 @@ export const getSevenDays = createAsyncThunk(
     }
 );
 
+const initialState = {
+  glasses: 0,
+  id: null,
+  waterArray7days: []
+}
+
 export const waterSlice = createSlice({
   name: 'water',
-  initialState: {
-    glasses: 0,
-    id: null,
-    waterArray7days: []
-  },
+  initialState,
   reducers: {
+    waterReset: () => {
+      return initialState
+    },
     increment: (state) => {
       state.glasses += 1
     },
@@ -78,6 +83,6 @@ export const waterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = waterSlice.actions
+export const { increment, decrement, incrementByAmount, waterReset } = waterSlice.actions
 
 export default waterSlice.reducer
