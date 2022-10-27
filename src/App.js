@@ -19,6 +19,7 @@ import FoodEdit from './components/Food/FoodEdit';
 import Exercise from './components/Exercise/Exercise';
 import ExerciseAdd from './components/Exercise/ExerciseAdd';
 import ExerciseEdit from './components/Exercise/ExerciseEdit';
+import ExerciseByDate from './components/Exercise/ExerciseByDate';
 import { getWaterByDate } from "./reducers/waterSlice";
 
 function App(props) {
@@ -61,8 +62,9 @@ function App(props) {
               <Route path="/" element={<HomePage context={userContext} />} />
               <Route path="/water" element={isAuth(<Water />)} />
               <Route path="/exercise" element={isAuth(<Exercise />)} />
-              <Route path="/exercise/edit/:id" element={isAuth(<ExerciseEdit />)} />
-              <Route path="/exercise/add" element={isAuth(<ExerciseAdd />)} />
+                <Route path="/exercise/edit/:id" element={isAuth(<ExerciseEdit />)} />
+                <Route path="/exercise/add" element={isAuth(<ExerciseAdd />)} />
+                <Route path="/exercise/byDate" element={isAuth(<ExerciseByDate />)} />
               <Route path="/food" element={isAuth(<Food />)} />
               <Route path="/food/edit/:id" element={isAuth(<FoodEdit />)} />
               <Route path="/food/add" element={isAuth(<FoodAdd />)} />
