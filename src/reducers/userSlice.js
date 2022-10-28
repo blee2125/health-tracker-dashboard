@@ -1,6 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import UserService from "../services/UserService";
 
+const createHead = (token) => {
+  return {
+    headers: { "x-auth-token": token}
+  }
+}
+
 export const loginUser = createAsyncThunk(
   "user/login",
     async (data) => {
@@ -23,6 +29,14 @@ export const getUserData = createAsyncThunk(
         const res = await UserService.getUser(user);
         return res.data;
       }
+);
+
+export const editPassword = createAsyncThunk(
+  "user/changepassword",
+    async (data) => {
+      const res = await UserService.editPassword(data, createHead(data.userToken));
+      return res.data;
+    }
 );
 
 const initialState = {
