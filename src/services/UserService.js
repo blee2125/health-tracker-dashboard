@@ -16,6 +16,10 @@ class UserService {
     return http.post("/user/register", data);
   }
 
+  editPassword({data}, head) {
+    return http.put("/user/changepassword", data, head);
+  }
+
 }
 
 export default new UserService();
