@@ -39,6 +39,9 @@ const SideBar = () => {
                     <NavLink as={Link}  to="/water" className='sidebar-link'>
                         Water
                     </NavLink>
+                    <NavLink as={Link}  to="/weight" className='sidebar-link'>
+                        Weight
+                    </NavLink>
                 </Offcanvas.Body>
             </Offcanvas>
         </>

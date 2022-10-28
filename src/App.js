@@ -22,6 +22,7 @@ import Exercise from './components/Exercise/Exercise';
 import ExerciseAdd from './components/Exercise/ExerciseAdd';
 import ExerciseEdit from './components/Exercise/ExerciseEdit';
 import ExerciseByDate from './components/Exercise/ExerciseByDate';
+import Weight from './components/BodyMetrics/Weight/Weight';
 import { getWaterByDate } from "./reducers/waterSlice";
 
 function App(props) {
@@ -75,6 +76,7 @@ function App(props) {
                 <Route path="userinfo/editpassword" element={isAuth(<EditUserPassword />)} />
               <Route path="/login" element={isNotAuth(<Login setToken={setToken} setUserData={setUserData} />)} />
               <Route path="/register" element={isNotAuth(<Register />)} />
+              <Route path="/weight" element={isAuth(<Weight />)} />
             </Routes>
           </div>
         </div>
