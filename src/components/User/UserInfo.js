@@ -1,7 +1,7 @@
 import React from "react";
-import { Table, Card } from "react-bootstrap";
-
 import { connect } from "react-redux";
+import {Link} from "react-router-dom";
+import { Table, Card } from "react-bootstrap";
 
 const UserInfo = (props) => {
 
@@ -25,6 +25,14 @@ const UserInfo = (props) => {
                             </td>
                             <td>
                                 {props.userState.email}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Password:
+                            </td>
+                            <td>
+                                <Link to="/userinfo/editpassword">Edit</Link>
                             </td>
                         </tr>
                     </tbody>
