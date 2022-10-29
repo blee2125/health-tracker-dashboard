@@ -39,6 +39,14 @@ export const editPassword = createAsyncThunk(
     }
 );
 
+export const addHeight = createAsyncThunk(
+  "user/addheight",
+    async (data) => {
+      const res = await UserService.addHeight(data, createHead(data.userToken));
+      return res.data;
+    }
+);
+
 const initialState = {
   isAuthenticated: false,
   user: null,
@@ -62,6 +70,10 @@ export const userSlice = createSlice({
     },
     [createUser.fulfilled]: (state, action) => {
         console.log('create userslice')
+    },
+    [addHeight.fulfilled]: (state, action) => {
+      state.user = action.payload.user
+      state.isAuthenticated = true
     },
   },
 })
