@@ -20,6 +20,13 @@ const UserInfo = (props) => {
             });
     }
 
+    const processCreatedAt = (date) => {
+        const monthArray = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+        const removeTime = date.split('T')
+        const newDate = removeTime[0].split('-')
+        return monthArray[newDate[1]-1]+" "+newDate[2]+" "+newDate[0]
+    }
+
     return(
         <div>
             <h1>User Info</h1>
@@ -60,6 +67,14 @@ const UserInfo = (props) => {
                                     addHeight={addHeight} 
                                     setHeight={setHeight} 
                                 />}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Account Created:
+                            </td>
+                            <td>
+                                {processCreatedAt(props.userState.createdAt)}
                             </td>
                         </tr>
                     </tbody>
