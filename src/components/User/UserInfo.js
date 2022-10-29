@@ -1,9 +1,24 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, {useState} from "react";
+import { connect, useSelector } from "react-redux";
 import {Link} from "react-router-dom";
 import { Table, Card } from "react-bootstrap";
+import AddHeight from "./AddHeight";
+import { addHeight } from "../../reducers/userSlice";
 
 const UserInfo = (props) => {
+    const userToken = useSelector((state) => state.userState.user.token)
+    const [height, setHeight] = useState()
+
+    const addHeight = () => {
+        props.addHeight({data: {height: height}, userToken})
+            .unwrap()
+            .then((data) => {
+                
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    }
 
     return(
         <div>
@@ -35,6 +50,18 @@ const UserInfo = (props) => {
                                 <Link to="/userinfo/editpassword">Edit</Link>
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                Height:
+                            </td>
+                            <td>
+                                {props.userState.height > 0 ? props.userState.height : 
+                                <AddHeight 
+                                    addHeight={addHeight} 
+                                    setHeight={setHeight} 
+                                />}
+                            </td>
+                        </tr>
                     </tbody>
                 </Table>
             </Card>
@@ -48,4 +75,4 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps, null) (UserInfo)
+export default connect(mapStateToProps, {addHeight}) (UserInfo)
