@@ -20,6 +20,10 @@ class UserService {
     return http.put("/user/changepassword", data, head);
   }
 
+  addHeight({data}, head) {
+    return http.patch("/user/addheight", data, head);
+  }
+
 }
 
 export default new UserService();
