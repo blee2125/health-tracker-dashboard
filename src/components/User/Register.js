@@ -8,12 +8,13 @@ function Register(props) {
     const [username, setUsername] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const [height, setHeight] = useState();
 
     const navigate = useNavigate();
 
     const handleSubmitRegister = async e => {
         e.preventDefault();
-        props.createUser({username, email, password})
+        props.createUser({username, email, password, height})
             .unwrap()
             .then((data) => {
                 navigate('/login')
@@ -34,6 +35,14 @@ function Register(props) {
                         type="text" 
                         placeholder="Username" 
                         onChange={e => setUsername(e.target.value)}
+                    />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formGroupHeight">
+                    <Form.Label>Height</Form.Label>
+                    <Form.Control 
+                        type="number" 
+                        placeholder="inches" 
+                        onChange={e => setHeight(e.target.value)}
                     />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formGroupEmail">
