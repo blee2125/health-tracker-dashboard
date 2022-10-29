@@ -72,7 +72,7 @@ export const userSlice = createSlice({
         console.log('create userslice')
     },
     [addHeight.fulfilled]: (state, action) => {
-      state.user = action.payload.user
+      state.user.height = action.payload.user.height
       state.isAuthenticated = true
     },
   },
