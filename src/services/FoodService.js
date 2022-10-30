@@ -18,6 +18,10 @@ class FoodService {
     return http.get(`/food/searchByDate`, {params: date, ...head});
   }
 
+  getFoodToday(date, head) {
+    return http.get(`/food/getFoodToday`, {params: date, ...head});
+  }
+
   create(data, head) {
     return http.post("/food/post", data, head);
   }
