@@ -35,7 +35,7 @@ Backend built using Express.js and MongoDB [Github](https://github.com/blee2125/
 
 ## Future improvements
 
-* Body Stats - Weight, BMI, Heart Rate, Blood Pressure
+* Body Stats - Heart Rate, Blood Pressure
 * Daily Supplements - Vitamins and Minerals
 * Health Goals
 * Notes on Health
