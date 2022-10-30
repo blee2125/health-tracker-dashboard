@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import { connect, useSelector } from "react-redux";
-import {Card, Button} from 'react-bootstrap';
+import {Card, Button, ButtonGroup} from 'react-bootstrap';
 import { createWater, updateWater, getWaterByDate, getSevenDays } from "../../reducers/waterSlice";
 import WaterBarGraph from "./WaterBarGraph";
 
@@ -99,10 +99,11 @@ function Water(props) {
     <div>
       <Card bg='light' border="secondary" style={{ width: '200px', padding: '25px', margin: "25px"}}>
         <h1>Water</h1>
-        <p>{ glasses }<br></br> glasses</p>
-        {id}
-        <Button onClick={handleAddGlasses}>+</Button>
-        {glasses > 0 ? <Button onClick={handleSubtractGlasses}>-</Button> : <Button onClick={handleSubtractGlasses} disabled>-</Button>}
+        <p>{ glasses }<br></br> Glasses (8oz)</p>
+        <ButtonGroup>       
+          {glasses > 0 ? <Button onClick={handleSubtractGlasses}>-</Button> : <Button onClick={handleSubtractGlasses} disabled>-</Button>}
+          <Button onClick={handleAddGlasses}>+</Button>
+        </ButtonGroup> 
       </Card>
       <WaterBarGraph sevenDaysData={sevenDays} />
     </div>
