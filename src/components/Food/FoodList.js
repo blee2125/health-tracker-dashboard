@@ -12,7 +12,7 @@ function FoodList(props) {
 
     return (
         <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
-            <h2>Food List</h2>
+            <h2>{props.listTitle ? props.listTitle : "Food List"}</h2>
             <Table>
                 <thead>
                     <tr>

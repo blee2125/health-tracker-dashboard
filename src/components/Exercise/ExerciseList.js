@@ -11,7 +11,7 @@ function ExerciseList(props) {
 
     return (
         <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
-            <h2>Exercise List</h2>
+            <h2>{props.listTitle ? props.listTitle : "Exercise List"}</h2>
             <Table>
                 <thead>
                     <tr>
