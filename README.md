@@ -26,6 +26,12 @@ Backend built using Express.js and MongoDB [Github](https://github.com/blee2125/
     - Data: Glasses per day, Date
     - View graph of water in the last week
 
+* Track Weight
+    - Add daily weight
+    - View graph of weight or BMI
+
+![bmigraph](https://photos.app.goo.gl/DwW7fCQBntGGFGrX9)
+
 
 ## Future improvements
 
