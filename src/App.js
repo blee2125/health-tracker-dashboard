@@ -22,6 +22,7 @@ import Exercise from './components/Exercise/Exercise';
 import ExerciseAdd from './components/Exercise/ExerciseAdd';
 import ExerciseEdit from './components/Exercise/ExerciseEdit';
 import ExerciseByDate from './components/Exercise/ExerciseByDate';
+import ExerciseGraph from './components/Exercise/ExerciseGraph';
 import Weight from './components/BodyMetrics/Weight/Weight';
 import WeightForm from './components/BodyMetrics/Weight/WeightForm';
 import WeightGraph from './components/BodyMetrics/Weight/WeightGraph';
@@ -70,6 +71,7 @@ function App(props) {
                 <Route path="/exercise/edit/:id" element={isAuth(<ExerciseEdit />)} />
                 <Route path="/exercise/add" element={isAuth(<ExerciseAdd />)} />
                 <Route path="/exercise/byDate" element={isAuth(<ExerciseByDate />)} />
+                <Route path="/exercise/exerciseGraph" element={isAuth(<ExerciseGraph />)} />
               <Route path="/food" element={isAuth(<Food />)} />
                 <Route path="/food/edit/:id" element={isAuth(<FoodEdit />)} />
                 <Route path="/food/add" element={isAuth(<FoodAdd />)} />
