@@ -1,10 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { useEffect, useState } from 'react';
-import { connect } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 import { Routes, Route } from "react-router-dom";
-import useToken from './hooks/useToken';
-import userContext from './context/userContext';
 import NavBar from './views/NavBar';
 import Login from './components/User/Login';
 import Register from './components/User/Register';
@@ -30,17 +27,7 @@ import WeightGraph from './components/BodyMetrics/Weight/WeightGraph';
 import { getWaterByDate } from "./reducers/waterSlice";
 
 function App(props) {
-  const { token, setToken } = useToken();
-  const [userData, setUserData] = useState({
-    token: token,
-    user: undefined,
-    isAuthenticated: false
-  })
-
-  useEffect(() => {
-    sessionStorage.clear()
-      // eslint-disable-next-line
-  }, [])
+  const userData = useSelector((state) => state.userState)
 
   const isAuth = (element) => {
     if (userData.isAuthenticated === true) {
@@ -60,13 +47,12 @@ function App(props) {
 
   return (
     <div className="App">
-      <userContext.Provider value={{ userData, setUserData }}>
-        <NavBar setUserData={setUserData} />
+        <NavBar />
         <div>
           <SideBar />
           <div className='main'>
             <Routes>
-              <Route path="/" element={<HomePage context={userContext} />} />
+              <Route path="/" element={isAuth(<HomePage />)} />
               <Route path="/water" element={isAuth(<Water />)} />
               <Route path="/exercise" element={isAuth(<Exercise />)} />
                 <Route path="/exercise/edit/:id" element={isAuth(<ExerciseEdit />)} />
@@ -80,7 +66,7 @@ function App(props) {
                 <Route path="/food/foodGraph" element={isAuth(<FoodGraph />)} />
               <Route path='userinfo' element={isAuth(<UserInfo />)} />
                 <Route path="userinfo/editpassword" element={isAuth(<EditUserPassword />)} />
-              <Route path="/login" element={isNotAuth(<Login setToken={setToken} setUserData={setUserData} />)} />
+              <Route path="/login" element={isNotAuth(<Login />)} />
               <Route path="/register" element={isNotAuth(<Register />)} />
               <Route path="/weight" element={isAuth(<Weight />)} />
                 <Route path="/weight/addWeight" element={isAuth(<WeightForm />)} />
@@ -88,9 +74,8 @@ function App(props) {
             </Routes>
           </div>
         </div>
-      </userContext.Provider>
     </div>
   );
 }
 
-export default connect(null, { getWaterByDate, context: userContext })(App);
+export default connect(null, { getWaterByDate })(App);
