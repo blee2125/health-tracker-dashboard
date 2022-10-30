@@ -30,7 +30,7 @@ Backend built using Express.js and MongoDB [Github](https://github.com/blee2125/
     - Add daily weight
     - View graph of weight or BMI
 
-![bmigraph](https://photos.app.goo.gl/DwW7fCQBntGGFGrX9)
+![bmigraph](https://github.com/blee2125/health-tracker-dashboard/blob/main/public/images/bmigraph.png)
 
 
 ## Future improvements
