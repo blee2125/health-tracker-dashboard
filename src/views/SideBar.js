@@ -42,6 +42,12 @@ const SideBar = () => {
                     <NavLink as={Link}  to="/weight" className='sidebar-link'>
                         Weight
                     </NavLink>
+                        <NavLink as={Link}  to="/weight/addWeight" className='sidebar-sub-link'>
+                            Add Weight
+                        </NavLink>
+                        <NavLink as={Link}  to="/weight/weightLineGraph" className='sidebar-sub-link'>
+                            Weight Graph
+                        </NavLink>
                 </Offcanvas.Body>
             </Offcanvas>
         </>

@@ -23,6 +23,14 @@ export const getCurrentWeight = createAsyncThunk(
     }
 );
 
+export const getWeightLast30Days = createAsyncThunk(
+  "weight/getWeightLast30Days",
+    async (token) => {
+      const res = await WeightService.getWeightLast30Days(createHead(token));
+      return res.data;
+    }
+);
+
 const initialState = {
   newWeight: {
     weight: '',
@@ -57,6 +65,9 @@ export const weightSlice = createSlice({
     },
     [getCurrentWeight.fulfilled]: (state, action) => {
       state.currentWeight = action.payload
+    },
+    [getWeightLast30Days.fulfilled]: (state, action) => {
+      state.weightArray = action.payload
     },
   },
 })
