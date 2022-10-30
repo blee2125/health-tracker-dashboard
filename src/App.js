@@ -18,6 +18,7 @@ import Food from './components/Food/Food';
 import FoodAdd from './components/Food/FoodAdd';
 import FoodEdit from './components/Food/FoodEdit';
 import FoodByDate from './components/Food/FoodByDate';
+import FoodGraph from './components/Food/FoodGraph';
 import Exercise from './components/Exercise/Exercise';
 import ExerciseAdd from './components/Exercise/ExerciseAdd';
 import ExerciseEdit from './components/Exercise/ExerciseEdit';
@@ -76,6 +77,7 @@ function App(props) {
                 <Route path="/food/edit/:id" element={isAuth(<FoodEdit />)} />
                 <Route path="/food/add" element={isAuth(<FoodAdd />)} />
                 <Route path="/food/byDate" element={isAuth(<FoodByDate />)} />
+                <Route path="/food/foodGraph" element={isAuth(<FoodGraph />)} />
               <Route path='userinfo' element={isAuth(<UserInfo />)} />
                 <Route path="userinfo/editpassword" element={isAuth(<EditUserPassword />)} />
               <Route path="/login" element={isNotAuth(<Login setToken={setToken} setUserData={setUserData} />)} />
