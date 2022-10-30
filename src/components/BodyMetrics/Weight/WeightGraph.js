@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import {Card} from 'react-bootstrap';
-import { Chart } from 'react-chartjs-2'
-// eslint-disable-next-line
-import { Chart as ChartJS } from 'chart.js/auto'
 import { connect, useSelector } from "react-redux";
 import { getWeightLast30Days } from "../../../reducers/weightSlice";
 import { useEffect } from "react";
+import WeightGraphSelection from "./GraphComponents/WeightGraphSelection";
+import WeightLineGraph from "./GraphComponents/WeightLineGraph";
+import BMILineGraph from "./GraphComponents/BMILineGraph";
 
-function WeightLineGraph(props) {
+function WeightGraph(props) {
     const userToken = useSelector((state) => state.userState.user.token)
     const weightArray = useSelector((state) => state.weightState.weightArray)
+    const [graphSelection, setGraphSelection] = useState('Weight');
 
     //array of last 30 dates - graph label
     function thirtyDates() {
@@ -30,7 +31,6 @@ function WeightLineGraph(props) {
         let arr4 = []
         arr3.forEach(day => {
             if (arr2.includes(day)) {
-                console.log(arr2.indexOf(day))
                 arr4.push(weightArray[arr2.indexOf(day)])
             } else {
                 arr4.push(NaN)
@@ -45,24 +45,10 @@ function WeightLineGraph(props) {
             const mapWeightForGraph = matchDataAndDateArrays(weightArray).map((w) =>
                 w.weight
             );
-            console.log(mapWeightForGraph)
             return mapWeightForGraph
         } else {
             return [NaN]
         }
-    }
-
-    const graphData = {
-        labels: thirtyDates(),
-        datasets: [
-        {
-            label: 'Pounds',
-            backgroundColor: 'lightblue',
-            borderColor: 'rgba(0,0,0,1)',
-            borderWidth: 1,
-            data: mappedData()
-        }
-        ]
     }
 
     useEffect(() => {
@@ -72,28 +58,23 @@ function WeightLineGraph(props) {
 
   return (
     <>
-      <Card bg='light' border="secondary" style={{ width: '800px', padding: '25px', margin: "25px"}}>
-            <Chart
-                type="line"
-                data={graphData}
-                options={{
-                    spanGaps: true,
-                plugins: {
-                    title:{
-                    display:true,
-                    text:'Weight (last 30 days)',
-                    fontSize:20
-                    },
-                    legend:{
-                    display:true,
-                    position:'bottom'
-                    }
-                }
-                }}
-            />
+        <WeightGraphSelection graphSelection={graphSelection} setGraphSelection={setGraphSelection}/>
+        <Card bg='light' border="secondary" style={{ width: '800px', padding: '25px', margin: "25px"}}>
+            {graphSelection === 'Weight' &&
+                <WeightLineGraph
+                    graphLabel={thirtyDates()}
+                    weightArray={mappedData()}
+                />
+            }
+            {graphSelection === 'BMI' &&
+                <BMILineGraph
+                    graphLabel={thirtyDates()}
+                    weightArray={mappedData()}
+                />
+            }
         </Card>
     </>
   )
 }
 
-export default connect(null, {getWeightLast30Days}) (WeightLineGraph)
+export default connect(null, {getWeightLast30Days}) (WeightGraph)
