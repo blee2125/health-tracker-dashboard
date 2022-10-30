@@ -39,6 +39,9 @@ const SideBar = () => {
                         <NavLink as={Link}  to="/food/byDate" className='sidebar-sub-link'>
                             View By Date
                         </NavLink>
+                        <NavLink as={Link}  to="/food/foodGraph" className='sidebar-sub-link'>
+                            Food Graph
+                        </NavLink>
                     <NavLink as={Link}  to="/water" className='sidebar-link'>
                         Water
                     </NavLink>
