@@ -9,7 +9,10 @@ class WeightService {
         return http.get(`/weight/getcurrentweight`, head)
     }
 
-    
+    getWeightLast30Days(head) {
+        return http.get(`/weight/getLast30Days`, head)
+    }
+
 }
 
 export default new WeightService();
