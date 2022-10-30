@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
-import { connect, useSelector, useDispatch } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getFoodToday, deleteFood, updateSearchDate } from "../../reducers/foodSlice";
 import FoodList from "./FoodList";
 
 const FoodHome = (props) => {
     let navigate = useNavigate();
-    let dispatch = useDispatch();
     const todayDate = new Date()
     const todayMonth = (todayDate.getMonth()+1).toString().padStart(2, "0")
     const todayDate2 = `${todayDate.getFullYear()}-${todayMonth}-${todayDate.getDate()}`
