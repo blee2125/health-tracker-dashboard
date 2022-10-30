@@ -24,7 +24,7 @@ import ExerciseEdit from './components/Exercise/ExerciseEdit';
 import ExerciseByDate from './components/Exercise/ExerciseByDate';
 import Weight from './components/BodyMetrics/Weight/Weight';
 import WeightForm from './components/BodyMetrics/Weight/WeightForm';
-import WeightLineGraph from './components/BodyMetrics/Weight/WeightGraph';
+import WeightGraph from './components/BodyMetrics/Weight/WeightGraph';
 import { getWaterByDate } from "./reducers/waterSlice";
 
 function App(props) {
@@ -80,7 +80,7 @@ function App(props) {
               <Route path="/register" element={isNotAuth(<Register />)} />
               <Route path="/weight" element={isAuth(<Weight />)} />
                 <Route path="/weight/addWeight" element={isAuth(<WeightForm />)} />
-                <Route path="/weight/weightLineGraph" element={isAuth(<WeightLineGraph />)} />
+                <Route path="/weight/weightGraph" element={isAuth(<WeightGraph />)} />
             </Routes>
           </div>
         </div>
