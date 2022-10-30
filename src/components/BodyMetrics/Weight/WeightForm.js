@@ -6,12 +6,13 @@ import { useSelector, useDispatch } from "react-redux";
 
 export const WeightForm = (props) => {
     const dispatch = useDispatch();
+    const userToken = useSelector((state) => state.userState.user.token)
     const weight = useSelector((state) => state.weightState.newWeight.weight)
     const time = useSelector((state) => state.weightState.newWeight.time)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        props.createWeight({data: {weight: weight, time: time}, token: props.userToken})
+        props.createWeight({data: {weight: weight, time: time}, token: userToken})
             .unwrap()
             .then((data) => {
                 console.log(data)
