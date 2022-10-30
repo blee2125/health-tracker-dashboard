@@ -3,6 +3,10 @@ import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import { loginUser } from "../../reducers/userSlice";
+import { getExerciseToday } from "../../reducers/exerciseSlice";
+import { getWaterByDate } from "../../reducers/waterSlice";
+import { getFoodToday } from "../../reducers/foodSlice";
+import { getCurrentWeight } from "../../reducers/weightSlice";
 
 function Login(props) {
     const [username, setUsername] = useState();
@@ -10,17 +14,21 @@ function Login(props) {
 
     const navigate = useNavigate();
 
+    const dateString = new Date().toString().split(' ')
+    const dateStringSplit = (`${dateString[1]} ${dateString[2]} ${dateString[3]}`).toString()
+
     const handleSubmit = async e => {
         e.preventDefault();
         props.loginUser({username, password})
             .unwrap()
             .then((data) => {
-                props.setToken(data.token);
-                props.setUserData({token: data.token, user: data, isAuthenticated: true})
+                props.getExerciseToday({date: dateStringSplit, token: data.token})
+                props.getWaterByDate({date: {'time': dateStringSplit}, token: data.token})
+                props.getFoodToday({date: dateStringSplit, token: data.token})
+                props.getCurrentWeight(data.token)
                 navigate('/')
             })
             .catch((e) => {
-                sessionStorage.clear()
                 console.log(e);
             });
     }
@@ -52,4 +60,4 @@ function Login(props) {
     )
 }
 
-export default connect(null, { loginUser }) (Login)
+export default connect(null, { loginUser, getExerciseToday, getWaterByDate, getFoodToday, getCurrentWeight }) (Login)

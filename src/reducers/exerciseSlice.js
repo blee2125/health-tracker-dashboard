@@ -47,9 +47,18 @@ export const getExerciseByDate = createAsyncThunk(
     }
 );
 
+export const getExerciseToday = createAsyncThunk(
+  "exercise/searchByDate",
+    async (data) => {
+      const res = await ExerciseService.getExerciseToday({date: data.date}, createHead(data.token));
+      return res.data;
+    }
+);
+
 const initialState = {
   exerciseArray: [],
   exerciseByDayArray: [],
+  exerciseTodayArray: [],  
   searchDate: ''
 }
 
@@ -73,6 +82,9 @@ export const exerciseSlice = createSlice({
     },
     [getAllExercises.fulfilled]: (state, action) => {
       state.exerciseArray = action.payload;
+    },
+    [getExerciseToday.fulfilled]: (state, action) => {
+      state.exerciseTodayArray = action.payload;
     },
     [updateExercise.fulfilled]: (state, action) => {
 

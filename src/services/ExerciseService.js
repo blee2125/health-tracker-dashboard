@@ -22,6 +22,10 @@ class ExerciseService {
     return http.get(`/exercise/searchByDate`, {params: date, ...head});
   }
 
+  getExerciseToday(date, head) {
+    return http.get(`/exercise/getExerciseToday`, {params: date, ...head});
+  }
+
   create(data, head) {
     return http.post("/exercise/post", data, head);
   }

@@ -47,9 +47,18 @@ export const getFoodByDate = createAsyncThunk(
     }
 );
 
+export const getFoodToday = createAsyncThunk(
+  "food/getFoodToday",
+    async (data) => {
+      const res = await FoodService.getFoodToday({date: data.date}, createHead(data.token));
+      return res.data;
+    }
+);
+
 const initialState = {
   foodArray: [],
   foodByDayArray: [],
+  foodTodayArray: [],
   searchDate: ''
 }
 
@@ -70,6 +79,9 @@ export const foodSlice = createSlice({
     },
     [getFoodByDate.fulfilled]: (state, action) => {
       state.foodByDayArray = action.payload;
+    },
+    [getFoodToday.fulfilled]: (state, action) => {
+      state.foodTodayArray = action.payload;
     },
     [getAllFood.fulfilled]: (state, action) => {
       state.foodArray = action.payload;

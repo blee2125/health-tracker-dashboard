@@ -1,21 +1,19 @@
-import React, {useContext} from 'react'
-import { connect, useDispatch } from 'react-redux';
+import React from 'react'
+import { connect, useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button, Navbar, Container } from 'react-bootstrap';
-import userContext from '../context/userContext';
 import { userLogout } from '../reducers/userSlice';
 import { waterReset } from '../reducers/waterSlice';
 import { foodLogout } from '../reducers/foodSlice';
 import { exerciseLogout } from '../reducers/exerciseSlice';
 
 const NavBar = (props) => {
-    const {userData} = useContext(userContext);
+    const userData = useSelector((state) => state.userState)
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const handleLogout = () => {
         sessionStorage.clear()
-        props.setUserData({token: undefined, user: undefined, isAuthenticated: false})
         dispatch(waterReset())
         dispatch(foodLogout())
         dispatch(exerciseLogout())
@@ -24,7 +22,7 @@ const NavBar = (props) => {
     }
 
     const displayUserData = () => {
-        if (userData.user !== undefined) {
+        if (userData.user !== null) {
             return userData.user.username
         } else {
             return 'not logged in'
