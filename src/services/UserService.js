@@ -24,6 +24,10 @@ class UserService {
     return http.patch("/user/addheight", data, head);
   }
 
+  addBirthday({data}, head) {
+    return http.patch("/user/addbirthday", data, head);
+  }
+
 }
 
 export default new UserService();
