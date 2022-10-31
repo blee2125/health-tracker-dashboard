@@ -11,20 +11,23 @@ Backend built using Express.js and MongoDB [Github](https://github.com/blee2125/
 * Users
     - Allows for multiple users via accounts
     - All data is connected to individual accounts for privacy
+    - Options to delete all data 
 
 * Track Exercise
     - Data: Name, Duration, Time, Date, Type
     - Add, View, Edit, Delete
     - View exercises by day
+    - Bar graph displaying minutes of exercise per day (currently limited to 30 days)
 
 * Track Food Consumption
     - Data: Name, Calories, Meal, Amount, Date, and more...
     - Add, View, Edit, Delete
     - Search for food from ninja-api
+    - Bar graph displaying calories consumed per day (currently limited to 30 days)
 
 * Track Water Consumption
     - Data: Glasses per day, Date
-    - View graph of water in the last week
+    - View bar graph of water in the last week
 
 * Track Weight
     - Add daily weight
