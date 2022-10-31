@@ -6,7 +6,6 @@ import AddHeight from "./AddHeight";
 import { addHeight, addBirthday } from "../../reducers/userSlice";
 import AddBirthday from "./AddBirthday";
 
-
 const UserInfo = (props) => {
     const userToken = useSelector((state) => state.userState.user.token)
     const [height, setHeight] = useState()
@@ -101,6 +100,14 @@ const UserInfo = (props) => {
                             </td>
                             <td>
                                 {processCreatedAt(props.userState.createdAt)}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Delete Data:
+                            </td>
+                            <td>
+                                <Link to="/userinfo/deletedata">Delete</Link>
                             </td>
                         </tr>
                     </tbody>
