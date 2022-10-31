@@ -55,6 +55,14 @@ export const getExerciseToday = createAsyncThunk(
     }
 );
 
+export const deleteAllExercise = createAsyncThunk(
+  "exercise/deleteall",
+    async (data) => {
+      const res = await ExerciseService.deleteAllExercise(createHead(data));
+      return res.data;
+    }
+);
+
 const initialState = {
   exerciseArray: [],
   exerciseByDayArray: [],
@@ -93,6 +101,9 @@ export const exerciseSlice = createSlice({
       ...state,
       exerciseArray: state.exerciseArray.filter(exercise => exercise._id !== action.payload.id)
     }),
+    [deleteAllExercise.fulfilled]: () => {
+      return initialState
+    },
   },
 })
 

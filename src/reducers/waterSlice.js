@@ -39,6 +39,14 @@ export const getSevenDays = createAsyncThunk(
     }
 );
 
+export const deleteAllWater = createAsyncThunk(
+  "water/deleteall",
+    async (data) => {
+      const res = await WaterService.deleteAllWater(createHead(data));
+      return res.data;
+    }
+);
+
 const initialState = {
   glasses: 0,
   id: null,
@@ -68,8 +76,10 @@ export const waterSlice = createSlice({
       state.id = action.payload._id
     },
     [getWaterByDate.fulfilled]: (state, action) => {
-      state.glasses = action.payload[0].glasses;
-      state.id = action.payload[0]._id
+      if (action.payload[0]) {
+        state.glasses = action.payload[0].glasses;
+        state.id = action.payload[0]._id
+      }
     },
     [updateWater.fulfilled]: (state, action) => {
       state.glasses = action.payload.glasses;
@@ -78,6 +88,9 @@ export const waterSlice = createSlice({
     [getSevenDays.fulfilled]: (state, action) => {
       //console.log(action.payload)
       state.waterArray7days = action.payload;
+    },
+    [deleteAllWater.fulfilled]: () => {
+      return initialState
     },
   },
 })
