@@ -31,6 +31,14 @@ export const getWeightLast30Days = createAsyncThunk(
     }
 );
 
+export const deleteAllWeight = createAsyncThunk(
+  "weight/deleteall",
+    async (token) => {
+      const res = await WeightService.deleteAllWeight(createHead(token));
+      return res.data;
+    }
+);
+
 const initialState = {
   newWeight: {
     weight: '',
@@ -68,6 +76,9 @@ export const weightSlice = createSlice({
     },
     [getWeightLast30Days.fulfilled]: (state, action) => {
       state.weightArray = action.payload
+    },
+    [deleteAllWeight.fulfilled]: () => {
+      return initialState
     },
   },
 })

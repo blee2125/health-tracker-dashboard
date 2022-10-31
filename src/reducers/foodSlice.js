@@ -55,6 +55,14 @@ export const getFoodToday = createAsyncThunk(
     }
 );
 
+export const deleteAllFood = createAsyncThunk(
+  "food/deleteall",
+    async (data) => {
+      const res = await FoodService.deleteAllFood(createHead(data));
+      return res.data;
+    }
+);
+
 const initialState = {
   foodArray: [],
   foodByDayArray: [],
@@ -93,6 +101,9 @@ export const foodSlice = createSlice({
       ...state,
       foodArray: state.foodArray.filter(food => food._id !== action.payload.id)
     }),
+    [deleteAllFood.fulfilled]: () => {
+      return initialState
+    },
   },
 })
 

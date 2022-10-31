@@ -7,6 +7,7 @@ import Login from './components/User/Login';
 import Register from './components/User/Register';
 import UserInfo from './components/User/UserInfo';
 import EditUserPassword from './components/User/EditUserPassword';
+import DeleteData from './components/User/DeleteData';
 import SideBar from './views/SideBar';
 import HomePage from './views/Home';
 import AccessDeniedPage from './views/AccessDeniedPage';
@@ -66,6 +67,7 @@ function App(props) {
                 <Route path="/food/foodGraph" element={isAuth(<FoodGraph />)} />
               <Route path='userinfo' element={isAuth(<UserInfo />)} />
                 <Route path="userinfo/editpassword" element={isAuth(<EditUserPassword />)} />
+                <Route path="userinfo/deletedata" element={isAuth(<DeleteData />)} />
               <Route path="/login" element={isNotAuth(<Login />)} />
               <Route path="/register" element={isNotAuth(<Register />)} />
               <Route path="/weight" element={isAuth(<Weight />)} />
