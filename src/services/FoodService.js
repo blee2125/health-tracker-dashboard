@@ -5,15 +5,6 @@ class FoodService {
     return http.get("/food/getAll", head);
   }
 
-  // get(id) {
-  //   return http.get(`/food/getOne/${id}`);
-  // }
-
-//   getDate(data) {
-//     console.log(data)
-//     return http.get(`/food/searchByDate`, {params: data});
-//   }
-
   searchByDate(date, head) {
     return http.get(`/food/searchByDate`, {params: date, ...head});
   }
@@ -34,9 +25,9 @@ class FoodService {
     return http.delete(`/food/delete/${id}`, head);
   }
 
-  // deleteAll() {
-  //   return http.delete(`/food`);
-  // }
+  deleteAllFood(head) {
+    return http.delete(`/food/deleteall`, head)
+  }
 }
 
 export default new FoodService();

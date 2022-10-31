@@ -13,6 +13,9 @@ class WeightService {
         return http.get(`/weight/getLast30Days`, head)
     }
 
+    deleteAllWeight(head) {
+        return http.delete(`/weight/deleteall`, head)
+    }
 }
 
 export default new WeightService();

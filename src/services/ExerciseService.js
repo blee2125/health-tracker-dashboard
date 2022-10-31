@@ -5,19 +5,6 @@ class ExerciseService {
     return http.get("/exercise/getAll", head);
   }
 
-  // get(id) {
-  //   return http.get(`/exercise/getOne/${id}`);
-  // }
-
-  // getDate(data) {
-  //   //console.log(data)
-  //   return http.get(`/exercise/searchByDate`, {params: data});
-  // }
-
-  // getDates(startDate, endDate) {
-  //   return http.get(`/exercise/getByDates/${startDate}-${endDate}`);
-  // }
-
   searchByDate(date, head) {
     return http.get(`/exercise/searchByDate`, {params: date, ...head});
   }
@@ -38,9 +25,9 @@ class ExerciseService {
     return http.delete(`/exercise/delete/${id}`, head);
   }
 
-  // deleteAll() {
-  //   return http.delete(`/exercise`);
-  // }
+  deleteAllExercise(head) {
+    return http.delete(`/exercise/deleteall`, head)
+  }
 }
 
 export default new ExerciseService();
