@@ -1,13 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import {Card} from 'react-bootstrap';
 import { connect, useSelector } from "react-redux";
 import { useEffect } from "react";
 import FoodBarGraph from "./GraphComponents/FoodBarGraph";
+import FoodBarGraphSelection from "./GraphComponents/FoodBarGraphSelection";
 import { getAllFood } from "../../reducers/foodSlice";
 
 function FoodGraph(props) {
     const userToken = useSelector((state) => state.userState.user.token)
     const foodArray = useSelector((state) => state.foodState.foodArray)
+    const [graphSelection, setGraphSelection] = useState('Weight');
 
     //array of last 30 dates - graph label
     function thirtyDates() {
@@ -44,6 +46,7 @@ function FoodGraph(props) {
 
   return (
     <>
+        <FoodBarGraphSelection graphSelection={graphSelection} setGraphSelection={setGraphSelection}/>
         <Card bg='light' border="secondary" style={{ width: '800px', padding: '25px', margin: "25px"}}>
             <FoodBarGraph graphLabel={thirtyDates()} dataArray={matchDataAndDateArrays(foodArray)} />
         </Card>
