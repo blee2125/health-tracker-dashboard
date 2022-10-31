@@ -47,6 +47,14 @@ export const addHeight = createAsyncThunk(
     }
 );
 
+export const addBirthday = createAsyncThunk(
+  "user/addbirthday",
+    async (data) => {
+      const res = await UserService.addBirthday(data, createHead(data.userToken));
+      return res.data;
+    }
+);
+
 const initialState = {
   isAuthenticated: false,
   user: null,
@@ -75,7 +83,9 @@ export const userSlice = createSlice({
     },
     [addHeight.fulfilled]: (state, action) => {
       state.user.height = action.payload.user.height
-      state.isAuthenticated = true
+    },
+    [addBirthday.fulfilled]: (state, action) => {
+      state.user.birthday = action.payload.user.birthday
     },
   },
 })
