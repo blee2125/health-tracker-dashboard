@@ -12,7 +12,7 @@ const HomePage = (props) => {
     const dateStringSplit = (`${dateString[1]} ${dateString[2]} ${dateString[3]}`).toString()
 
     return(
-        <div>
+        <div  style={{'display': 'inline-block'}}>
             <h1>{dateStringSplit}</h1>
             <p>Welcome {userData.username}</p>
             <div style={{'display': 'inline-flex'}}>
