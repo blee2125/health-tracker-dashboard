@@ -63,7 +63,9 @@ export const userSlice = createSlice({
   extraReducers: {
     [loginUser.fulfilled]: (state, action) => {
       state.user = action.payload
-      state.isAuthenticated = true
+      if (action.payload.message === "Sign in - Successful") {
+        state.isAuthenticated = true
+      }
     },
     [getUserData.fulfilled]: (state, action) => {
 
