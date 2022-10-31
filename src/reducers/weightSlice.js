@@ -69,7 +69,7 @@ export const weightSlice = createSlice({
   },
   extraReducers: {
     [createWeight.fulfilled]: (state, action) => {
-
+      state.currentWeight = action.payload
     },
     [getCurrentWeight.fulfilled]: (state, action) => {
       state.currentWeight = action.payload
