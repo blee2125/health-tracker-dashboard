@@ -3,14 +3,28 @@ import { connect, useSelector } from "react-redux";
 import {Link} from "react-router-dom";
 import { Table, Card } from "react-bootstrap";
 import AddHeight from "./AddHeight";
-import { addHeight } from "../../reducers/userSlice";
+import { addHeight, addBirthday } from "../../reducers/userSlice";
+import AddBirthday from "./AddBirthday";
+
 
 const UserInfo = (props) => {
     const userToken = useSelector((state) => state.userState.user.token)
     const [height, setHeight] = useState()
+    const [birthday, setBirthday] = useState()
 
     const addHeight = () => {
         props.addHeight({data: {height: height}, userToken})
+            .unwrap()
+            .then((data) => {
+                
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    }
+
+    const addBirthday = () => {
+        props.addBirthday({data: {birthday: birthday}, userToken})
             .unwrap()
             .then((data) => {
                 
@@ -71,6 +85,18 @@ const UserInfo = (props) => {
                         </tr>
                         <tr>
                             <td>
+                                Birthday:
+                            </td>
+                            <td>
+                                {props.userState.birthday ? props.userState.birthday : 
+                                <AddBirthday 
+                                    addBirthday={addBirthday} 
+                                    setBirthday={setBirthday} 
+                                />}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 Account Created:
                             </td>
                             <td>
@@ -90,4 +116,4 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps, {addHeight}) (UserInfo)
+export default connect(mapStateToProps, {addHeight, addBirthday}) (UserInfo)
