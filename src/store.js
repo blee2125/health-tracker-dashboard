@@ -4,10 +4,12 @@ import exerciseReducer from './reducers/exerciseSlice'
 import foodReducer from './reducers/foodSlice'
 import userReducer from './reducers/userSlice'
 import weightReducer from './reducers/weightSlice'
+import settingsReducer from './reducers/settingsSlice'
 
 export default configureStore({
   reducer: {
     userState: userReducer,
+    settingsState: settingsReducer,
     waterState: waterReducer,
     exerciseState: exerciseReducer,
     foodState: foodReducer,
