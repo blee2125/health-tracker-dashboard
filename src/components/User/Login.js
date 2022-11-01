@@ -7,6 +7,7 @@ import { getExerciseToday } from "../../reducers/exerciseSlice";
 import { getWaterByDate } from "../../reducers/waterSlice";
 import { getFoodToday } from "../../reducers/foodSlice";
 import { getCurrentWeight } from "../../reducers/weightSlice";
+import { getSettings } from "../../reducers/settingsSlice";
 
 function Login(props) {
     const [username, setUsername] = useState();
@@ -22,6 +23,7 @@ function Login(props) {
         props.loginUser({username, password})
             .unwrap()
             .then((data) => {
+                props.getSettings(data.token)
                 props.getExerciseToday({date: dateStringSplit, token: data.token})
                 props.getWaterByDate({date: {'time': dateStringSplit}, token: data.token})
                 props.getFoodToday({date: dateStringSplit, token: data.token})
@@ -60,4 +62,4 @@ function Login(props) {
     )
 }
 
-export default connect(null, { loginUser, getExerciseToday, getWaterByDate, getFoodToday, getCurrentWeight }) (Login)
+export default connect(null, { loginUser, getExerciseToday, getWaterByDate, getFoodToday, getCurrentWeight, getSettings }) (Login)
