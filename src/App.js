@@ -7,7 +7,8 @@ import Login from './components/User/Login';
 import Register from './components/User/Register';
 import UserInfo from './components/User/UserInfo';
 import EditUserPassword from './components/User/EditUserPassword';
-import DeleteData from './components/User/DeleteData';
+import Settings from './components/User/Settings/Settings';
+import DeleteData from './components/User/Settings/DeleteData';
 import SideBar from './views/SideBar';
 import HomePage from './views/Home';
 import AccessDeniedPage from './views/AccessDeniedPage';
@@ -25,7 +26,6 @@ import ExerciseGraph from './components/Exercise/ExerciseGraph';
 import Weight from './components/BodyMetrics/Weight/Weight';
 import WeightForm from './components/BodyMetrics/Weight/WeightForm';
 import WeightGraph from './components/BodyMetrics/Weight/WeightGraph';
-import { getWaterByDate } from "./reducers/waterSlice";
 
 function App(props) {
   const userData = useSelector((state) => state.userState)
@@ -67,7 +67,8 @@ function App(props) {
                 <Route path="/food/foodGraph" element={isAuth(<FoodGraph />)} />
               <Route path='userinfo' element={isAuth(<UserInfo />)} />
                 <Route path="userinfo/editpassword" element={isAuth(<EditUserPassword />)} />
-                <Route path="userinfo/deletedata" element={isAuth(<DeleteData />)} />
+                <Route path="userinfo/settings" element={isAuth(<Settings />)} />
+                <Route path="userinfo/settings/deletedata" element={isAuth(<DeleteData />)} />
               <Route path="/login" element={isNotAuth(<Login />)} />
               <Route path="/register" element={isNotAuth(<Register />)} />
               <Route path="/weight" element={isAuth(<Weight />)} />
@@ -80,4 +81,4 @@ function App(props) {
   );
 }
 
-export default connect(null, { getWaterByDate })(App);
+export default connect(null, null)(App);
