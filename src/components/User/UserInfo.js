@@ -104,10 +104,18 @@ const UserInfo = (props) => {
                         </tr>
                         <tr>
                             <td>
+                                Settings:
+                            </td>
+                            <td>
+                                <Link to="/userinfo/settings">Settings</Link>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 Delete Data:
                             </td>
                             <td>
-                                <Link to="/userinfo/deletedata">Delete</Link>
+                                <Link to="/userinfo/settings/deletedata">Delete</Link>
                             </td>
                         </tr>
                     </tbody>
