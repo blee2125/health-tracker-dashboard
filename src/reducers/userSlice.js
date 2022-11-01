@@ -55,6 +55,14 @@ export const addBirthday = createAsyncThunk(
     }
 );
 
+export const deleteUser = createAsyncThunk(
+  "user/delete",
+    async (userToken) => {
+      const res = await UserService.deleteUser(createHead(userToken));
+      return res.data;
+    }
+);
+
 const initialState = {
   isAuthenticated: false,
   user: null,
@@ -86,6 +94,9 @@ export const userSlice = createSlice({
     },
     [addBirthday.fulfilled]: (state, action) => {
       state.user.birthday = action.payload.user.birthday
+    },
+    [deleteUser.fulfilled]: () => {
+      return initialState
     },
   },
 })
