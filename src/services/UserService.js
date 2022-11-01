@@ -28,6 +28,9 @@ class UserService {
     return http.patch("/user/addbirthday", data, head);
   }
 
+  deleteUser(head) {
+    return http.delete("/user/delete", head);
+  }
 }
 
 export default new UserService();
