@@ -71,8 +71,8 @@ export const settingsSlice = createSlice({
       state.collectWaterData = action.payload[0].collectWaterData
       state.collectWeightData = action.payload[0].collectWeightData
     },
-    [deleteSettings.fulfilled]: (state, action) => {
-        console.log('delete settingsslice')
+    [deleteSettings.fulfilled]: () => {
+      return initialState
     },
   },
 })
