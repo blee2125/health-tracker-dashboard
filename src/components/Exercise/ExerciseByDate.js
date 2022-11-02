@@ -10,9 +10,10 @@ const ExerciseByDate = (props) => {
     let dispatch = useDispatch();
     const todayDate = new Date()
     const todayMonth = (todayDate.getMonth()+1).toString().padStart(2, "0")
-    const todayDate2 = `${todayDate.getFullYear()}-${todayMonth}-${todayDate.getDate()}`
+    const todayDate2 = `${todayDate.getFullYear()}-${todayMonth}-${todayDate.getDate().toString().padStart(2, "0")}`
     const userToken = useSelector((state) => state.userState.user.token)
     const searchDate = useSelector((state) => state.exerciseState.searchDate)
+    const exerciseByDayArray = useSelector((state) => state.exerciseState.exerciseByDayArray)
     const monthArray = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 
     const handleGetTodayRequest = () => {
@@ -69,15 +70,9 @@ const ExerciseByDate = (props) => {
                 />
                 </Form.Group>
             </Card>
-            <ExerciseList list={props.exerciseByDayArray}  handleDelete={handleDeleteExercise} handleEdit={selectEditExercise} />
+            <ExerciseList list={exerciseByDayArray}  handleDelete={handleDeleteExercise} handleEdit={selectEditExercise} />
         </>
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        exerciseByDayArray: state.exerciseState.exerciseByDayArray
-    };
-}
-
-export default connect(mapStateToProps, {getExerciseByDate, deleteExercise, updateSearchDate}) (ExerciseByDate)
+export default connect(null, {getExerciseByDate, deleteExercise, updateSearchDate}) (ExerciseByDate)
