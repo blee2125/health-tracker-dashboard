@@ -48,7 +48,7 @@ export const getExerciseByDate = createAsyncThunk(
 );
 
 export const getExerciseToday = createAsyncThunk(
-  "exercise/searchByDate",
+  "exercise/getExerciseToday",
     async (data) => {
       const res = await ExerciseService.getExerciseToday({date: data.date}, createHead(data.token));
       return res.data;
