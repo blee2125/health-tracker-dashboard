@@ -3,14 +3,14 @@ import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-function AddBirthday(props) {
+function AddGender(props) {
     
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleSubmit = () => {
-    props.addBirthday()
+    props.addGender()
     handleClose()
   }
 
@@ -22,16 +22,18 @@ function AddBirthday(props) {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Birthday</Modal.Title>
+          <Modal.Title>Add Gender</Modal.Title>
         </Modal.Header>
         <Modal.Body>
             <Form>
-            <Form.Group className="mb-3" controlId="formGroupBirthday">
-                    <Form.Control 
-                        type="date" 
-                        placeholder="date" 
-                        onChange={e => props.setBirthday(e.target.value)}
-                    />
+                <Form.Group className="mb-3" controlId="formGroupType">
+                    <Form.Select
+                        onChange={e => props.setGender(e.target.value)}
+                    >
+                        <option value=''></option>
+                        <option value='Female'>Female</option>
+                        <option value='Male'>Male</option>
+                    </Form.Select>
                 </Form.Group>
             </Form>
         </Modal.Body>
@@ -48,4 +50,4 @@ function AddBirthday(props) {
   );
 }
 
-export default (AddBirthday)
+export default (AddGender)
