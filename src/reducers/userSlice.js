@@ -55,6 +55,14 @@ export const addBirthday = createAsyncThunk(
     }
 );
 
+export const addGender = createAsyncThunk(
+  "user/addgender",
+    async (data) => {
+      const res = await UserService.addGender(data, createHead(data.userToken));
+      return res.data;
+    }
+);
+
 export const deleteUser = createAsyncThunk(
   "user/delete",
     async (userToken) => {
@@ -94,6 +102,9 @@ export const userSlice = createSlice({
     },
     [addBirthday.fulfilled]: (state, action) => {
       state.user.birthday = action.payload.user.birthday
+    },
+    [addGender.fulfilled]: (state, action) => {
+      state.user.gender = action.payload.user.gender
     },
     [deleteUser.fulfilled]: () => {
       return initialState
