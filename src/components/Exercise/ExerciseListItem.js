@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import DeleteConfirmation from "../../views/DeleteConfirmation";
+import DeleteConfirmation from "../Views/DeleteConfirmation";
 
 function ExerciseListItem(props) {
 

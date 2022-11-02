@@ -1,9 +1,9 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import WeightHome from '../components/BodyMetrics/Weight/WeightHome'
-import ExerciseHome from '../components/Exercise/ExerciseHome'
-import FoodHome from '../components/Food/FoodHome'
-import WaterHome from '../components/Water/WaterHome'
+import WeightHome from '../BodyMetrics/Weight/WeightHome'
+import ExerciseHome from '../Exercise/ExerciseHome'
+import FoodHome from '../Food/FoodHome'
+import WaterHome from '../Water/WaterHome'
 
 const HomePage = (props) => {
     const userData = useSelector((state) => state.userState.user)

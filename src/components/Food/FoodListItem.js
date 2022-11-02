@@ -1,6 +1,6 @@
 import React from "react";
 import Button from 'react-bootstrap/Button'
-import DeleteConfirmation from "../../views/DeleteConfirmation";
+import DeleteConfirmation from "../Views/DeleteConfirmation";
 
 function FoodListItem(props) {
 

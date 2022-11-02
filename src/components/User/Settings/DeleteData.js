@@ -6,7 +6,7 @@ import { deleteAllWater } from "../../../reducers/waterSlice";
 import { deleteAllWeight } from "../../../reducers/weightSlice";
 import { deleteAllFood } from "../../../reducers/foodSlice";
 import { deleteAllExercise } from "../../../reducers/exerciseSlice";
-import DeleteConfirmation from "../../../views/DeleteConfirmation";
+import DeleteConfirmation from "../../Views/DeleteConfirmation"
 import { deleteUser } from "../../../reducers/userSlice";
 import { deleteSettings } from "../../../reducers/settingsSlice";
 

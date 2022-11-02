@@ -2,11 +2,11 @@ import React from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button, Navbar, Container } from 'react-bootstrap';
-import { userLogout } from '../reducers/userSlice';
-import { waterReset } from '../reducers/waterSlice';
-import { foodLogout } from '../reducers/foodSlice';
-import { exerciseLogout } from '../reducers/exerciseSlice';
-import { settingsLogout } from '../reducers/settingsSlice';
+import { userLogout } from '../../reducers/userSlice';
+import { waterReset } from '../../reducers/waterSlice';
+import { foodLogout } from '../../reducers/foodSlice';
+import { exerciseLogout } from '../../reducers/exerciseSlice';
+import { settingsLogout } from '../../reducers/settingsSlice';
 
 const NavBar = (props) => {
     const userData = useSelector((state) => state.userState)
