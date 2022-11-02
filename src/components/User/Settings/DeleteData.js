@@ -10,25 +10,56 @@ import DeleteConfirmation from "../../../views/DeleteConfirmation";
 import { deleteUser } from "../../../reducers/userSlice";
 import { deleteSettings } from "../../../reducers/settingsSlice";
 
-
 const DeleteData = (props) => {
     const userToken = useSelector((state) => state.userState.user.token)
     const navigate = useNavigate();
 
     const deleteWaterData = () => {
         props.deleteAllWater(userToken)
+        .unwrap()
+        .then((data) => {
+            props.setDangerNotification(data)
+            props.setShowDangerNotification(true)
+        })
+        .catch((e) => {
+            console.log(e);
+        });
     }
 
     const deleteWeightData = () => {
         props.deleteAllWeight(userToken)
+        .unwrap()
+        .then((data) => {
+            props.setDangerNotification(data)
+            props.setShowDangerNotification(true)
+        })
+        .catch((e) => {
+            console.log(e);
+        });
     }
 
     const deleteFoodData = () => {
         props.deleteAllFood(userToken)
+        .unwrap()
+        .then((data) => {
+            props.setDangerNotification(data)
+            props.setShowDangerNotification(true)
+        })
+        .catch((e) => {
+            console.log(e);
+        });
     }
 
     const deleteExerciseData = () => {
         props.deleteAllExercise(userToken)
+        .unwrap()
+        .then((data) => {
+            props.setDangerNotification(data)
+            props.setShowDangerNotification(true)
+        })
+        .catch((e) => {
+            console.log(e);
+        });
     }
 
     const deleteAccountData = () => {
