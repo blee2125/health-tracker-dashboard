@@ -26,7 +26,7 @@ function AddBirthday(props) {
         </Modal.Header>
         <Modal.Body>
             <Form>
-            <Form.Group className="mb-3" controlId="formGroupHeight">
+            <Form.Group className="mb-3" controlId="formGroupBirthday">
                     <Form.Control 
                         type="date" 
                         placeholder="date" 
