@@ -28,6 +28,10 @@ class UserService {
     return http.patch("/user/addbirthday", data, head);
   }
 
+  addGender({data}, head) {
+    return http.patch("/user/addgender", data, head);
+  }
+
   deleteUser(head) {
     return http.delete("/user/delete", head);
   }
