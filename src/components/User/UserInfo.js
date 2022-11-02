@@ -3,13 +3,15 @@ import { connect, useSelector } from "react-redux";
 import {Link} from "react-router-dom";
 import { Table, Card } from "react-bootstrap";
 import AddHeight from "./AddHeight";
-import { addHeight, addBirthday } from "../../reducers/userSlice";
+import { addHeight, addBirthday, addGender } from "../../reducers/userSlice";
 import AddBirthday from "./AddBirthday";
+import AddGender from "./AddGender";
 
 const UserInfo = (props) => {
     const userToken = useSelector((state) => state.userState.user.token)
     const [height, setHeight] = useState()
     const [birthday, setBirthday] = useState()
+    const [gender, setGender] = useState()
 
     const addHeight = () => {
         props.addHeight({data: {height: height}, userToken})
@@ -24,6 +26,17 @@ const UserInfo = (props) => {
 
     const addBirthday = () => {
         props.addBirthday({data: {birthday: birthday}, userToken})
+            .unwrap()
+            .then((data) => {
+                
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    }
+
+    const addGender = () => {
+        props.addGender({data: {gender: gender}, userToken})
             .unwrap()
             .then((data) => {
                 
@@ -96,6 +109,18 @@ const UserInfo = (props) => {
                         </tr>
                         <tr>
                             <td>
+                                Gender:
+                            </td>
+                            <td>
+                                {props.userState.gender ? props.userState.gender : 
+                                <AddGender 
+                                    addGender={addGender} 
+                                    setGender={setGender} 
+                                />}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 Account Created:
                             </td>
                             <td>
@@ -131,4 +156,4 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps, {addHeight, addBirthday}) (UserInfo)
+export default connect(mapStateToProps, { addHeight, addBirthday, addGender }) (UserInfo)
