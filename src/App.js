@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import { useState } from 'react';
 import { connect, useSelector } from 'react-redux'
 import { Routes, Route } from "react-router-dom";
 import NavBar from './views/NavBar';
@@ -10,6 +11,7 @@ import EditUserPassword from './components/User/EditUserPassword';
 import Settings from './components/User/Settings/Settings';
 import DeleteData from './components/User/Settings/DeleteData';
 import SideBar from './views/SideBar';
+import DangerNotification from './views/DangerAlert';
 import HomePage from './views/Home';
 import AccessDeniedPage from './views/AccessDeniedPage';
 import Water from './components/Water/Water';
@@ -29,6 +31,9 @@ import WeightGraph from './components/BodyMetrics/Weight/WeightGraph';
 
 function App(props) {
   const userData = useSelector((state) => state.userState)
+
+  const [dangerNotification, setDangerNotification] = useState();
+  const [showDangerNotification, setShowDangerNotification] = useState(false);
 
   const isAuth = (element) => {
     if (userData.isAuthenticated === true) {
@@ -52,6 +57,7 @@ function App(props) {
         <div>
           <SideBar />
           <div className='main'>
+            <DangerNotification dangerNotification={dangerNotification} showDangerNotification={showDangerNotification} setShowDangerNotification={setShowDangerNotification}/>
             <Routes>
               <Route path="/" element={isAuth(<HomePage />)} />
               <Route path="/water" element={isAuth(<Water />)} />
@@ -68,7 +74,7 @@ function App(props) {
               <Route path='userinfo' element={isAuth(<UserInfo />)} />
                 <Route path="userinfo/editpassword" element={isAuth(<EditUserPassword />)} />
                 <Route path="userinfo/settings" element={isAuth(<Settings />)} />
-                <Route path="userinfo/settings/deletedata" element={isAuth(<DeleteData />)} />
+                <Route path="userinfo/settings/deletedata" element={isAuth(<DeleteData setShowDangerNotification={setShowDangerNotification} setDangerNotification={setDangerNotification} />)} />
               <Route path="/login" element={isNotAuth(<Login />)} />
               <Route path="/register" element={isNotAuth(<Register />)} />
               <Route path="/weight" element={isAuth(<Weight />)} />
