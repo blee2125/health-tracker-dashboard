@@ -3,6 +3,7 @@ import { connect, useSelector } from "react-redux";
 import {Card, Button, ButtonGroup} from 'react-bootstrap';
 import { createWater, updateWater, getWaterByDate, getSevenDays } from "../../reducers/waterSlice";
 import WaterBarGraph from "./WaterBarGraph";
+import DateFunctions from "../../functions/DateFunctions";
 
 function Water(props) {
   const glasses = useSelector((state) => state.waterState.glasses)
@@ -10,8 +11,7 @@ function Water(props) {
   const sevenDays = useSelector((state) => state.waterState.waterArray7days)
   const userToken = useSelector((state) => state.userState.user.token)
 
-  const dateString = new Date().toString().split(' ')
-  const dateStringSplit = (`${dateString[1]} ${dateString[2]} ${dateString[3]}`).toString()
+  const dateStringSplit = DateFunctions.createDateStringSplit()
 
   const handleAddGlasses = () => {
     //dispatch(increment())

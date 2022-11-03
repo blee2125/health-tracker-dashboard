@@ -8,6 +8,7 @@ import { getWaterByDate } from "../../reducers/waterSlice";
 import { getFoodToday } from "../../reducers/foodSlice";
 import { getCurrentWeight } from "../../reducers/weightSlice";
 import { getSettings } from "../../reducers/settingsSlice";
+import DateFunctions from "../../functions/DateFunctions";
 
 function Login(props) {
     const [username, setUsername] = useState();
@@ -15,8 +16,7 @@ function Login(props) {
 
     const navigate = useNavigate();
 
-    const dateString = new Date().toString().split(' ')
-    const dateStringSplit = (`${dateString[1]} ${dateString[2]} ${dateString[3]}`).toString()
+    const dateStringSplit = DateFunctions.createDateStringSplit()
 
     const handleSubmit = async e => {
         e.preventDefault();

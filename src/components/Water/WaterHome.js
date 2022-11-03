@@ -2,14 +2,14 @@ import React, {useEffect} from "react";
 import { connect, useSelector } from "react-redux";
 import {Card, Button, ButtonGroup} from 'react-bootstrap';
 import { createWater, updateWater, getWaterByDate } from "../../reducers/waterSlice";
+import DateFunctions from "../../functions/DateFunctions";
 
 function WaterHome(props) {
   const glasses = useSelector((state) => state.waterState.glasses)
   const id = useSelector((state) => state.waterState.id)
   const userToken = useSelector((state) => state.userState.user.token)
 
-  const dateString = new Date().toString().split(' ')
-  const dateStringSplit = (`${dateString[1]} ${dateString[2]} ${dateString[3]}`).toString()
+  const dateStringSplit = DateFunctions.createDateStringSplit()
 
   const handleAddGlasses = () => {
     if (id === null || undefined) {
