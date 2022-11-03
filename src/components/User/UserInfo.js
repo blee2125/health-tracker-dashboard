@@ -6,6 +6,7 @@ import AddHeight from "./AddHeight";
 import { addHeight, addBirthday, addGender } from "../../reducers/userSlice";
 import AddBirthday from "./AddBirthday";
 import AddGender from "./AddGender";
+import DateFunctions from "../../functions/DateFunctions";
 
 const UserInfo = (props) => {
     const userToken = useSelector((state) => state.userState.user.token)
@@ -44,13 +45,6 @@ const UserInfo = (props) => {
             .catch((e) => {
                 console.log(e);
             });
-    }
-
-    const processCreatedAt = (date) => {
-        const monthArray = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
-        const removeTime = date.split('T')
-        const newDate = removeTime[0].split('-')
-        return monthArray[newDate[1]-1]+" "+newDate[2]+" "+newDate[0]
     }
 
     return(
@@ -100,7 +94,7 @@ const UserInfo = (props) => {
                                 Birthday:
                             </td>
                             <td>
-                                {props.userState.birthday ? props.userState.birthday : 
+                                {props.userState.birthday ? DateFunctions.convertYMDtoMwordDY(props.userState.birthday) : 
                                 <AddBirthday 
                                     addBirthday={addBirthday} 
                                     setBirthday={setBirthday} 
@@ -124,7 +118,7 @@ const UserInfo = (props) => {
                                 Account Created:
                             </td>
                             <td>
-                                {processCreatedAt(props.userState.createdAt)}
+                                {DateFunctions.processCreatedAt(props.userState.createdAt)}
                             </td>
                         </tr>
                         <tr>
