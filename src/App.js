@@ -14,7 +14,6 @@ import SideBar from './components/Views/SideBar';
 import DangerNotification from './components/Views/DangerAlert';
 import HomePage from './components/Views/Home';
 import AccessDeniedPage from './components/Views/AccessDeniedPage';
-import Water from './components/Water/Water';
 import Food from './components/Food/Food';
 import FoodAdd from './components/Food/FoodAdd';
 import FoodEdit from './components/Food/FoodEdit';
@@ -27,6 +26,7 @@ import ExerciseByDate from './components/Exercise/ExerciseByDate';
 import ExerciseGraph from './components/Exercise/ExerciseGraph';
 import WeightHome from './components/BodyMetrics/Weight/WeightHome';
 import WeightGraph from './components/BodyMetrics/Weight/WeightGraph';
+import WaterHome from './components/Water/WaterHome';
 
 function App(props) {
   const userData = useSelector((state) => state.userState)
@@ -59,7 +59,7 @@ function App(props) {
             <DangerNotification dangerNotification={dangerNotification} showDangerNotification={showDangerNotification} setShowDangerNotification={setShowDangerNotification}/>
             <Routes>
               <Route path="/" element={isAuth(<HomePage />)} />
-              <Route path="/water" element={isAuth(<Water />)} />
+              <Route path="/water" element={isAuth(<WaterHome />)} />
               <Route path="/exercise" element={isAuth(<Exercise />)} />
                 <Route path="/exercise/edit/:id" element={isAuth(<ExerciseEdit />)} />
                 <Route path="/exercise/add" element={isAuth(<ExerciseAdd />)} />
