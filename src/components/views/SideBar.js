@@ -10,7 +10,7 @@ const SideBar = (props) => {
 
     const glasses = useSelector((state) => state.waterState.glasses)
     const id = useSelector((state) => state.waterState.id)
-    const userToken = useSelector((state) => state.userState.user.token)
+    const userToken = useSelector((state) => state.userState.user ? state.userState.user.token : '')
     const dateStringSplit = DateFunctions.createDateStringSplit()
 
     const handleAddGlasses = () => {
