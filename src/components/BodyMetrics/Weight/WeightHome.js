@@ -15,14 +15,6 @@ function WeightHome(props) {
   const [bmi, setBmi] = useState()
 
   const calcBMI = WeightFunctions.calcBMI(weight, userHeight)
-  // const calcBMI = () => {
-  //   const bmiFormula = (weight/(userHeight*userHeight))*703
-  //   if (bmiFormula > 0) {
-  //     setBmi(bmiFormula.toFixed(1))
-  //   } else {
-  //     setBmi('Missing Data')    
-  //   }
-  // }
 
   const getCurrent = () => {
     props.getCurrentWeight(userToken)
@@ -56,7 +48,7 @@ function WeightHome(props) {
       <Card bg='light' border="secondary" style={{ width: '275px', padding: '25px', margin: "25px"}}>
         <h3>Current Weight</h3>
         <p>{weight} pounds</p>
-
+        {weight > 0 ? <AddWeight /> : ''}
         <h3>Body Mass Index</h3>
         <p>{bmi}</p>
         {weight > 0 ? '' :
