@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button, Modal } from 'react-bootstrap';
+import { Form, Button, Modal, NavLink } from 'react-bootstrap';
 import { createWeight, updateNewTime, updateNewWeight } from "../../../reducers/weightSlice";
 import { connect, useSelector, useDispatch } from "react-redux";
 
@@ -36,9 +36,9 @@ function AddWeight(props) {
 
     return (
         <>
-        <Button onClick={handleShow}>
-            Add Weight
-        </Button>
+        {props.onSidebar ?
+        <NavLink onClick={handleShow} className='sidebar-sub-link'>Add Weight</NavLink>
+        : <Button onClick={handleShow}>Add Weight</Button>}
 
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
