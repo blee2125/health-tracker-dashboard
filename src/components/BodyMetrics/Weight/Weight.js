@@ -5,6 +5,7 @@ import { getCurrentWeight } from "../../../reducers/weightSlice";
 import AddHeight from "../../User/AddHeight";
 import { addHeight } from "../../../reducers/userSlice";
 import AddWeight from "./AddWeight";
+import WeightFunctions from "../../../functions/WeightFunctions";
 
 function BodyWeight(props) {
   const userToken = useSelector((state) => state.userState.user.token)
@@ -13,20 +14,13 @@ function BodyWeight(props) {
   const [height, setHeight] = useState()
   const [bmi, setBmi] = useState()
 
-  const calcBMI = () => {
-    const bmiFormula = (weight/(userHeight*userHeight))*703
-    if (bmiFormula > 0) {
-      setBmi(bmiFormula.toFixed(1))
-    } else {
-      setBmi('Missing Data')    
-    }
-  }
+  const calcBMI = WeightFunctions.calcBMI(weight, userHeight)
 
   const getCurrent = () => {
     props.getCurrentWeight(userToken)
       .unwrap()
         .then((data) => {
-          calcBMI()
+          setBmi(calcBMI)
         })
         .catch((e) => {
           console.log(e);
