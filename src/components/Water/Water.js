@@ -93,7 +93,7 @@ function Water(props) {
     handleGetTodayRequest()
     get7days()
     // eslint-disable-next-line
-  }, [])
+  }, [glasses])
 
   return (
     <div>
