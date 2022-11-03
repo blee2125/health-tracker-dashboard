@@ -73,7 +73,9 @@ export const deleteUser = createAsyncThunk(
 
 const initialState = {
   isAuthenticated: false,
-  user: null,
+  user: {
+    token: ''
+  },
 }
 
 export const userSlice = createSlice({
