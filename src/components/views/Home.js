@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import Weight from '../BodyMetrics/Weight/Weight'
 import ExerciseHome from '../Exercise/ExerciseHome'
 import FoodHome from '../Food/FoodHome'
-import WaterHome from '../Water/WaterHome'
+import Water from '../Water/Water'
 import DateFunctions from '../../functions/DateFunctions'
 
 const HomePage = (props) => {
@@ -17,7 +17,7 @@ const HomePage = (props) => {
             <p>Welcome {userData.username}</p>
             
             <div style={{'display': 'inline-flex'}}>
-                <WaterHome />
+                <Water />
                 <Weight />
             </div>
             <ExerciseHome />
