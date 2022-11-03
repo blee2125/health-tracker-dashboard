@@ -5,6 +5,7 @@ import ExerciseHome from '../Exercise/ExerciseHome'
 import FoodHome from '../Food/FoodHome'
 import Water from '../Water/Water'
 import DateFunctions from '../../functions/DateFunctions'
+import AddFoodModal from '../Food/AddFoodModal'
 
 const HomePage = (props) => {
     const userData = useSelector((state) => state.userState.user)
@@ -21,6 +22,7 @@ const HomePage = (props) => {
                 <Weight />
             </div>
             <ExerciseHome />
+            <AddFoodModal />
             <FoodHome />
         </div>
     )
