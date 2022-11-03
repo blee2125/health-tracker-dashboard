@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
-
 import { connect, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import FoodForm from "./FoodForm";
 import { createFood, getFoodToday } from "../../reducers/foodSlice";
-//import FoodSearchModal from "./FoodSearchModal";
 
 function AddFoodModal(props) {    
     const [show, setShow] = useState(false);
@@ -30,7 +27,6 @@ function AddFoodModal(props) {
     const todayDate = new Date()
     const todayMonth = (todayDate.getMonth()+1).toString().padStart(2, "0")
     const todayDate2 = `${todayDate.getFullYear()}-${todayMonth}-${todayDate.getDate().toString().padStart(2, "0")}`
-    const foodTodayArray = useSelector((state) => state.foodState.foodTodayArray)
     const monthArray = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 
     const updateData = (target, value) => {
@@ -47,9 +43,7 @@ function AddFoodModal(props) {
         const formattedDate = (`${monthArray[dateStringSplit[1] - 1]} ${dateStringSplit[2]} ${dateStringSplit[0]}`)
         props.getFoodToday({date: formattedDate, token: userToken})
           .unwrap()
-          .then((data) => {
-            //console.log(data)
-          })
+          .then((data) => {})
           .catch((e) => {
             console.log(e);
           });
