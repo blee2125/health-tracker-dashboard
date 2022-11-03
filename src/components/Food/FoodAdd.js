@@ -3,8 +3,8 @@ import { connect, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {Card, Button} from 'react-bootstrap';
 import FoodForm from "./FoodForm";
-import FoodSearch from "./FoodSearch";
 import { createFood } from "../../reducers/foodSlice";
+import FoodSearchModal from "./FoodSearchModal";
 
 function FoodAdd(props) {
     const [foodObject, setFoodObject] = useState({
@@ -58,11 +58,7 @@ function FoodAdd(props) {
     return (
         <div>
             <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
-                <h2>Search</h2>
-                <FoodSearch updateData={setFoodSearchResults} />
-            </Card>
-            <Button onClick={transferButton}>Transfer</Button>
-            <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
+            <FoodSearchModal  updateData={setFoodSearchResults} transferButton={transferButton} />
                 <h2>Add Food</h2>
                 <FoodForm foodObject={foodObject} updateData={updateData}/>
                 <Button onClick={handleSubmit}>Submit</Button>
