@@ -1,52 +1,15 @@
 import React, {useEffect} from "react";
 import { connect, useSelector } from "react-redux";
-import {Card, Button, ButtonGroup} from 'react-bootstrap';
-import { createWater, updateWater, getWaterByDate } from "../../reducers/waterSlice";
+import { getWaterByDate, getSevenDays } from "../../reducers/waterSlice";
+import WaterBarGraph from "./WaterBarGraph";
 import DateFunctions from "../../functions/DateFunctions";
+import Water from "./Water";
 
 function WaterHome(props) {
   const glasses = useSelector((state) => state.waterState.glasses)
-  const id = useSelector((state) => state.waterState.id)
   const userToken = useSelector((state) => state.userState.user.token)
-
+  const sevenDays = useSelector((state) => state.waterState.waterArray7days)
   const dateStringSplit = DateFunctions.createDateStringSplit()
-
-  const handleAddGlasses = () => {
-    if (id === null || undefined) {
-      handlePostRequest()
-    } else {
-    props.updateWater({id: id, data: {glasses: glasses+1}, token: userToken})
-      .unwrap()
-      .then((data) => {
-        
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-    }
-  };
-
-  const handleSubtractGlasses = () => {
-    props.updateWater({id: id, data: {glasses: glasses-1}, token: userToken})
-      .unwrap()
-      .then((data) => {
-        
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
-
-  const handlePostRequest = () => {
-    props.createWater({data: {glasses: glasses + 1, date: dateStringSplit}, token: userToken})
-      .unwrap()
-      .then((data) => {
-        
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }
 
   const handleGetTodayRequest = () => {
     props.getWaterByDate({date: {'time': dateStringSplit}, token: userToken})
@@ -62,23 +25,29 @@ function WaterHome(props) {
       });
   }
 
+  const get7days = () => {
+    props.getSevenDays(userToken)
+      .unwrap()
+      .then((data) => {
+        
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+
   useEffect(() => {
     handleGetTodayRequest()
+    get7days()
     // eslint-disable-next-line
-  }, [])
+  }, [glasses])
 
   return (
     <>
-      <Card bg='light' border="secondary" style={{ width: '200px', padding: '25px', margin: "25px"}}>
-        <h1>Water</h1>
-        <p>{ glasses }<br></br> Glasses (8oz)</p>
-        <ButtonGroup>       
-          {glasses > 0 ? <Button onClick={handleSubtractGlasses}>-</Button> : <Button onClick={handleSubtractGlasses} disabled>-</Button>}
-          <Button onClick={handleAddGlasses}>+</Button>
-        </ButtonGroup> 
-      </Card>
+      <Water />
+      <WaterBarGraph sevenDaysData={sevenDays} />
     </>
   )
 }
 
-export default connect(null, { createWater, updateWater, getWaterByDate })(WaterHome)
+export default connect(null, { getWaterByDate, getSevenDays })(WaterHome)
