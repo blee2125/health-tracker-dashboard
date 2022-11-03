@@ -73,7 +73,7 @@ function WaterHome(props) {
         <h1>Water</h1>
         <p>{ glasses }<br></br> Glasses (8oz)</p>
         <ButtonGroup>       
-          {glasses > 0 ? <Button onClick={handleSubtractGlasses}>-</Button> : <Button onClick={handleSubtractGlasses} disabled>-</Button>}
+          {glasses > 0 ? <Button variant="danger" onClick={handleSubtractGlasses}>-</Button> : <Button onClick={handleSubtractGlasses} variant="secondary" disabled>-</Button>}
           <Button onClick={handleAddGlasses}>+</Button>
         </ButtonGroup> 
       </Card>
