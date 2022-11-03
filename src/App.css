@@ -112,11 +112,11 @@ p::first-letter {
 }
 
 .form-control {
-  width: 50% !important;
+  width: 75% !important;
   margin: auto;
 }
 
 .form-select {
-  width: 50% !important;
+  width: 75% !important;
   margin: auto;
 }
