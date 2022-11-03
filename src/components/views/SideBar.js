@@ -5,6 +5,7 @@ import { Offcanvas, NavLink, Button, ButtonGroup } from 'react-bootstrap';
 import { connect, useSelector } from "react-redux";
 import { createWater, updateWater, getWaterByDate } from "../../reducers/waterSlice";
 import DateFunctions from '../../functions/DateFunctions';
+import AddWeight from '../BodyMetrics/Weight/AddWeight';
 
 const SideBar = (props) => {
 
@@ -103,9 +104,7 @@ const SideBar = (props) => {
                     <NavLink as={Link}  to="/weight" className='sidebar-link'>
                         Weight
                     </NavLink>
-                        <NavLink as={Link}  to="/weight/addWeight" className='sidebar-sub-link'>
-                            Add Weight
-                        </NavLink>
+                        <AddWeight onSidebar={true}/>
                         <NavLink as={Link}  to="/weight/weightGraph" className='sidebar-sub-link'>
                             Weight Graph
                         </NavLink>
