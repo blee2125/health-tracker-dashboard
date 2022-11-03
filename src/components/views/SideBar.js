@@ -1,58 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { Offcanvas, NavLink, Button, ButtonGroup } from 'react-bootstrap';
-
-import { connect, useSelector } from "react-redux";
-import { createWater, updateWater, getWaterByDate } from "../../reducers/waterSlice";
-import DateFunctions from '../../functions/DateFunctions';
+import { Offcanvas, NavLink } from 'react-bootstrap';
 import AddWeight from '../BodyMetrics/Weight/AddWeight';
+import WaterSidebar from '../Water/WaterSidebar';
 
 const SideBar = (props) => {
-
-    const glasses = useSelector((state) => state.waterState.glasses)
-    const id = useSelector((state) => state.waterState.id)
-    const userToken = useSelector((state) => state.userState.user ? state.userState.user.token : '')
-    const dateStringSplit = DateFunctions.createDateStringSplit()
-
-    const handleAddGlasses = () => {
-        if (id === null || undefined) {
-          handlePostRequest()
-        } else {
-        props.updateWater({id: id, data: {glasses: glasses+1}, token: userToken})
-          .unwrap()
-          .then((data) => {
-            
-          })
-          .catch((e) => {
-            console.log(e);
-          });
-        }
-    };
-
-    const handleSubtractGlasses = () => {
-        props.updateWater({id: id, data: {glasses: glasses-1}, token: userToken})
-          .unwrap()
-          .then((data) => {
-            
-          })
-          .catch((e) => {
-            console.log(e);
-          });
-    };
-    
-      const handlePostRequest = () => {
-        props.createWater({data: {glasses: glasses + 1, date: dateStringSplit}, token: userToken})
-          .unwrap()
-          .then((data) => {
-            
-          })
-          .catch((e) => {
-            console.log(e);
-          });
-    }
-    
-    
-
     // const [show, setShow] = useState(false);
 
     // const handleClose = () => setShow(false); //onHide={handleClose}
@@ -93,14 +45,9 @@ const SideBar = (props) => {
                             Food Graph
                         </NavLink>
                     <NavLink as={Link}  to="/water" className='sidebar-link'>
-                        Water 
-                        
+                        Water
                     </NavLink>
-                        <ButtonGroup>
-                            {glasses > 0 ? <Button variant="danger"  onClick={handleSubtractGlasses}>-</Button> : <Button variant="secondary" onClick={handleSubtractGlasses} disabled>-</Button>}
-                            <Button variant="secondary" disabled>{glasses}</Button>
-                            <Button onClick={handleAddGlasses}>+</Button>
-                        </ButtonGroup>
+                        <WaterSidebar />
                     <NavLink as={Link}  to="/weight" className='sidebar-link'>
                         Weight
                     </NavLink>
@@ -114,4 +61,4 @@ const SideBar = (props) => {
     )
 }
 
-export default connect(null, { createWater, updateWater, getWaterByDate }) (SideBar);
+export default (SideBar);
