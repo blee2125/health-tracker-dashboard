@@ -25,7 +25,7 @@ import ExerciseAdd from './components/Exercise/ExerciseAdd';
 import ExerciseEdit from './components/Exercise/ExerciseEdit';
 import ExerciseByDate from './components/Exercise/ExerciseByDate';
 import ExerciseGraph from './components/Exercise/ExerciseGraph';
-import Weight from './components/BodyMetrics/Weight/Weight';
+import WeightHome from './components/BodyMetrics/Weight/WeightHome';
 import WeightForm from './components/BodyMetrics/Weight/WeightForm';
 import WeightGraph from './components/BodyMetrics/Weight/WeightGraph';
 
@@ -77,7 +77,7 @@ function App(props) {
                 <Route path="userinfo/settings/deletedata" element={isAuth(<DeleteData setShowDangerNotification={setShowDangerNotification} setDangerNotification={setDangerNotification} />)} />
               <Route path="/login" element={isNotAuth(<Login />)} />
               <Route path="/register" element={isNotAuth(<Register />)} />
-              <Route path="/weight" element={isAuth(<Weight />)} />
+              <Route path="/weight" element={isAuth(<WeightHome />)} />
                 <Route path="/weight/addWeight" element={isAuth(<WeightForm />)} />
                 <Route path="/weight/weightGraph" element={isAuth(<WeightGraph />)} />
             </Routes>
