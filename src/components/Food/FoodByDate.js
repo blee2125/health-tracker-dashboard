@@ -10,7 +10,7 @@ const FoodByDate = (props) => {
     let dispatch = useDispatch();
     const todayDate = new Date()
     const todayMonth = (todayDate.getMonth()+1).toString().padStart(2, "0")
-    const todayDate2 = `${todayDate.getFullYear()}-${todayMonth}-${todayDate.getDate()}`
+    const todayDate2 = `${todayDate.getFullYear()}-${todayMonth}-${todayDate.getDate().toString().padStart(2, "0")}`
     const userToken = useSelector((state) => state.userState.user.token)
     const searchDate = useSelector((state) => state.foodState.searchDate)
     const monthArray = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
