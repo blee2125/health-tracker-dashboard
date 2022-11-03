@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import WeightHome from '../BodyMetrics/Weight/WeightHome'
+import Weight from '../BodyMetrics/Weight/Weight'
 import ExerciseHome from '../Exercise/ExerciseHome'
 import FoodHome from '../Food/FoodHome'
 import WaterHome from '../Water/WaterHome'
@@ -18,7 +18,7 @@ const HomePage = (props) => {
             
             <div style={{'display': 'inline-flex'}}>
                 <WaterHome />
-                <WeightHome />
+                <Weight />
             </div>
             <ExerciseHome />
             <FoodHome />
