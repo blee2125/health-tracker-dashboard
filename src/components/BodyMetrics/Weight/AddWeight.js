@@ -37,7 +37,7 @@ function AddWeight(props) {
     return (
         <>
         <Button onClick={handleShow}>
-            Add
+            Add Weight
         </Button>
 
         <Modal show={show} onHide={handleClose}>
