@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect, useSelector } from "react-redux";
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Modal, NavLink } from 'react-bootstrap';
 import ExerciseForm from "./ExerciseForm";
 import { createExercise, getAllExercises, getExerciseToday } from "../../reducers/exerciseSlice";
 
@@ -51,9 +51,10 @@ function ExerciseAddModal(props) {
 
     return (
         <>
-        <Button onClick={handleShow}>
-            Add Exercise
-        </Button>
+
+        {props.onSidebar ?
+        <NavLink onClick={handleShow} className='sidebar-sub-link'>Add Exercise</NavLink>
+        : <Button onClick={handleShow}>Add Exercise</Button>}
 
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
