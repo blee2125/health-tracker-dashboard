@@ -2,6 +2,7 @@ import React from "react";
 import { Table, Card } from "react-bootstrap";
 import FoodListItem from "./FoodListItem";
 import FoodListTotalCalories from "./FoodListTotalCalories";
+import FoodListTotalMacros from "./FoodListTotalMacros";
 
 function FoodList(props) {
     const listFoodItems = props.list.map((foodItem, index) => {
@@ -26,6 +27,7 @@ function FoodList(props) {
                 </tbody>
             </Table>
             <FoodListTotalCalories list={props.list}/>
+            <FoodListTotalMacros list={props.list} />
         </Card>
     );
 }

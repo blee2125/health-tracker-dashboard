@@ -3,7 +3,8 @@ import React from "react";
 function FoodListTotalCalories(props) {
 
     const calcTotal = props.list.reduce((accumulator, food) => {
-        return accumulator + food.calories;
+        const cal = food.calories > 0 ? food.calories : 0
+        return accumulator + cal;
       }, 0);
 
     return (
