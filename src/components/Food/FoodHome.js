@@ -5,6 +5,7 @@ import { getFoodToday, deleteFood, updateSearchDate } from "../../reducers/foodS
 import FoodList from "./FoodList";
 import DateFunctions from '../../functions/DateFunctions';
 import AddFoodModal from './AddFoodModal'
+import FoodMacrosPieChart from "./GraphComponents/FoodMacrosPieChart";
 
 const FoodHome = (props) => {
     let navigate = useNavigate();
@@ -53,6 +54,7 @@ const FoodHome = (props) => {
                 listTitle={"Food Today"} 
                 addModal={<AddFoodModal/>}
             />
+            <FoodMacrosPieChart />
         </>
     )
 }
