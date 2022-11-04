@@ -8,6 +8,7 @@ import { createFood, getAllFood, deleteFood } from "../../reducers/foodSlice";
 function Food(props) {
     let navigate = useNavigate(); 
     const userToken = useSelector((state) => state.userState.user.token)
+    const foodArray = useSelector((state) => state.foodState.foodArray)
 
     const handleDeleteFood = (id) => {
         props.deleteFood({id: id, userToken: userToken})
@@ -21,7 +22,7 @@ function Food(props) {
     }
 
     const selectEditFood = (id) => {
-        const objectToEdit = props.foodArray.filter(e => e._id === id)[0]
+        const objectToEdit = foodArray.filter(e => e._id === id)[0]
         let path = `edit/${id}`; 
         navigate(path, {state: {objectToEdit}});
     }
@@ -35,15 +36,9 @@ function Food(props) {
         <div>
             <h1>Food</h1>
             <Button onClick={() => navigate('/food/add')}>Add Food</Button>
-            <FoodList list={props.foodArray} handleDelete={handleDeleteFood} handleEdit={selectEditFood} />
+            <FoodList list={foodArray} handleDelete={handleDeleteFood} handleEdit={selectEditFood} />
         </div>
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        foodArray: state.foodState.foodArray
-    };
-}
-
-export default connect(mapStateToProps, { createFood, getAllFood, deleteFood }) (Food)
+export default connect(null, { createFood, getAllFood, deleteFood }) (Food)
