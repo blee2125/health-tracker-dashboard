@@ -5,6 +5,7 @@ import ExerciseHome from '../Exercise/ExerciseHome'
 import FoodHome from '../Food/FoodHome'
 import Water from '../Water/Water'
 import DateFunctions from '../../functions/DateFunctions'
+import { Container, Col, Row } from 'react-bootstrap'
 
 const HomePage = (props) => {
     const userData = useSelector((state) => state.userState.user)
@@ -12,17 +13,18 @@ const HomePage = (props) => {
     const dateStringSplit = DateFunctions.createDateStringSplit()
 
     return(
-        <div  style={{'display': 'inline-block'}}>
+        <Container>
+            <Row>
             <h1>{dateStringSplit}</h1>
             <p>Welcome {userData.username}</p>
-            
-            <div style={{'display': 'inline-flex'}}>
-                <Water />
-                <Weight />
-            </div>
-            <ExerciseHome />
-            <FoodHome />
-        </div>
+            </Row>
+            <Row >
+                <Col lg='auto'><Water /></Col>
+                <Col lg='auto'><Weight /></Col>
+            </Row>
+            <Row><ExerciseHome />
+            <FoodHome /></Row>
+        </Container>
     )
 }
 
