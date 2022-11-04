@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { connect, useSelector } from "react-redux";
-import FoodForm from "./FoodForm";
 import { createFood, getFoodToday } from "../../reducers/foodSlice";
+import FoodForm from "./FoodForm";
 import DateFunctions from '../../functions/DateFunctions';
 
 function AddFoodModal(props) {    
@@ -13,14 +13,10 @@ function AddFoodModal(props) {
     const [foodObject, setFoodObject] = useState({
         name: '',
         calories: '',
-        timeOfConsumption: '',
+        carbsg: '',
+        fatg: '',
+        proteing: '',
         meal: '',
-        placeOfConsumption: '',
-        withWhom: '',
-        activity: '',
-        mood: '',
-        hungerLevel: '',
-        fullness: '',
         amount: ''
     })
     const userToken = useSelector((state) => state.userState.user.token)

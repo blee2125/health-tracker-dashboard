@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { connect, useSelector } from "react-redux";
+import { createFood, getAllFood, deleteFood } from "../../reducers/foodSlice";
 import { useNavigate } from "react-router-dom";
 import {Button} from 'react-bootstrap'
 import FoodList from "./FoodList";
-import { createFood, getAllFood, deleteFood } from "../../reducers/foodSlice";
 
 function Food(props) {
     let navigate = useNavigate(); 
