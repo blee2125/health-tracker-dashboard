@@ -21,10 +21,13 @@ Backend built using Express.js and MongoDB - [Github Link](https://github.com/bl
     - Bar graph displaying minutes of exercise per day (currently limited to 30 days)
 
 * Track Food Consumption
-    - Data: Name, Calories, Meal, Amount, Date, and more...
+    - Data: Name, Calories, Meal, Amount, Carbs, Fat, Protein
     - Add, View, Edit, Delete
     - Search for food from ninja-api and transfer to add form
-    - Bar graph displaying calories consumed per day (currently limited to 30 days)
+    - Bar graph displaying food consumed per day (currently limited to 30 days)
+    - Bar graph data is dynamic and can be sorted by meal or calories/macros
+
+![foodbargraph](https://github.com/blee2125/health-tracker-dashboard/blob/main/public/images/foodbargraph.png)
 
 * Track Water Consumption
     - Data: Glasses per day, Date
