@@ -4,25 +4,21 @@ import { useNavigate } from "react-router-dom";
 import { Form, Card } from "react-bootstrap";
 import { getFoodByDate, deleteFood, updateSearchDate } from "../../reducers/foodSlice";
 import FoodList from "./FoodList";
+import DateFunctions from "../../functions/DateFunctions";
 
 const FoodByDate = (props) => {
     let navigate = useNavigate();
     let dispatch = useDispatch();
-    const todayDate = new Date()
-    const todayMonth = (todayDate.getMonth()+1).toString().padStart(2, "0")
-    const todayDate2 = `${todayDate.getFullYear()}-${todayMonth}-${todayDate.getDate().toString().padStart(2, "0")}`
     const userToken = useSelector((state) => state.userState.user.token)
     const searchDate = useSelector((state) => state.foodState.searchDate)
-    const monthArray = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+
+    const maxDate = DateFunctions.maxDateToday()
 
     const handleGetTodayRequest = () => {
-        const dateStringSplit = searchDate.split('-')
-        const formattedDate = (`${monthArray[dateStringSplit[1] - 1]} ${dateStringSplit[2]} ${dateStringSplit[0]}`)
+        const formattedDate = DateFunctions.formatInputDateForSearch(searchDate)
         props.getFoodByDate({date: formattedDate, token: userToken})
           .unwrap()
-          .then((data) => {
-            //console.log(data)
-          })
+          .then((data) => {})
           .catch((e) => {
             console.log(e);
           });
@@ -64,7 +60,7 @@ const FoodByDate = (props) => {
                     name="searchDate"
                     placeholder="Date"
                     defaultValue={searchDate}
-                    max={todayDate2}
+                    max={maxDate}
                     onChange={changeDate}
                 />
                 </Form.Group>

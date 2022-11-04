@@ -3,6 +3,7 @@ import { Button, Modal } from 'react-bootstrap';
 import { connect, useSelector } from "react-redux";
 import FoodForm from "./FoodForm";
 import { createFood, getFoodToday } from "../../reducers/foodSlice";
+import DateFunctions from '../../functions/DateFunctions';
 
 function AddFoodModal(props) {    
     const [show, setShow] = useState(false);
@@ -24,10 +25,7 @@ function AddFoodModal(props) {
     })
     const userToken = useSelector((state) => state.userState.user.token)
 
-    const todayDate = new Date()
-    const todayMonth = (todayDate.getMonth()+1).toString().padStart(2, "0")
-    const todayDate2 = `${todayDate.getFullYear()}-${todayMonth}-${todayDate.getDate().toString().padStart(2, "0")}`
-    const monthArray = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+    const formattedDate = DateFunctions.formatDateForSearch()
 
     const updateData = (target, value) => {
         let updatedValue = {};
@@ -38,9 +36,7 @@ function AddFoodModal(props) {
         }));        
     };
 
-    const handleGetTodayRequest = () => {
-        const dateStringSplit = todayDate2.split('-')
-        const formattedDate = (`${monthArray[dateStringSplit[1] - 1]} ${dateStringSplit[2]} ${dateStringSplit[0]}`)
+    const handleGetTodayRequest = () => {        
         props.getFoodToday({date: formattedDate, token: userToken})
           .unwrap()
           .then((data) => {})
