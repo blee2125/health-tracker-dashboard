@@ -1,13 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import {Card} from 'react-bootstrap';
 import { connect, useSelector } from "react-redux";
 import { useEffect } from "react";
 import ExerciseBarGraph from "./GraphComponents/ExerciseBarGraph";
 import { getAllExercises } from "../../reducers/exerciseSlice";
+import ExerciseGraphSelection from "./GraphComponents/ExerciseGraphSelection";
 
 function ExerciseGraph(props) {
     const userToken = useSelector((state) => state.userState.user.token)
     const exerciseArray = useSelector((state) => state.exerciseState.exerciseArray)
+    const [graphSelection, setGraphSelection] = useState('');
 
     //array of last 30 dates - graph label
     function thirtyDates() {
@@ -44,8 +46,9 @@ function ExerciseGraph(props) {
 
   return (
     <>
+        <ExerciseGraphSelection graphSelection={graphSelection} setGraphSelection={setGraphSelection}/>
         <Card bg='light' border="secondary" style={{ width: '800px', padding: '25px', margin: "25px"}}>
-            <ExerciseBarGraph graphLabel={thirtyDates()} dataArray={matchDataAndDateArrays(exerciseArray)} />
+            <ExerciseBarGraph graphLabel={thirtyDates()} dataArray={matchDataAndDateArrays(exerciseArray)} graphSelection={graphSelection}/>
         </Card>
     </>
   )

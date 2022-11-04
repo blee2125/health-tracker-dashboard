@@ -12,8 +12,14 @@ function ExerciseBarGraph(props) {
             if (element !== undefined) {
                 let dur = 0
                 element.forEach(exer => {
-                    if (exer.duration) {
-                        dur = dur + exer.duration
+                    if (props.graphSelection === 'All') {
+                        if (exer.duration) {
+                            dur = dur + exer.duration
+                        }
+                    } else if (exer.typeOfExercise === props.graphSelection) {
+                        if (exer.duration) {
+                            dur = dur + exer.duration
+                        }
                     }
                 })
                 durationArray.push(dur)
