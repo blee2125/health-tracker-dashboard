@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { getFoodToday, deleteFood, updateSearchDate } from "../../reducers/foodSlice";
 import FoodList from "./FoodList";
 import DateFunctions from '../../functions/DateFunctions';
+import AddFoodModal from './AddFoodModal'
 
 const FoodHome = (props) => {
     let navigate = useNavigate();
@@ -45,7 +46,13 @@ const FoodHome = (props) => {
 
     return (
         <>
-            <FoodList list={foodTodayArray}  handleDelete={handleDeleteFood} handleEdit={selectEditFood} listTitle={"Food Today"} />
+            <FoodList 
+                list={foodTodayArray}  
+                handleDelete={handleDeleteFood} 
+                handleEdit={selectEditFood} 
+                listTitle={"Food Today"} 
+                addModal={<AddFoodModal/>}
+            />
         </>
     )
 }
