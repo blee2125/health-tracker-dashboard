@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { connect, useSelector } from "react-redux";
+import { updateFood } from "../../reducers/foodSlice";
 import {useLocation, useParams, useNavigate } from 'react-router-dom';
 import {Card, Button} from 'react-bootstrap';
 import FoodForm from "./FoodForm";
-import { updateFood } from "../../reducers/foodSlice";
 
 function FoodEdit(props) {
     const location = useLocation();
@@ -13,14 +13,10 @@ function FoodEdit(props) {
     const [foodObject, setFoodObject] = useState({
         name: '',
         calories: '',
-        timeOfConsumption: '',
+        carbsg: '',
+        fatg: '',
+        proteing: '',
         meal: '',
-        placeOfConsumption: '',
-        withWhom: '',
-        activity: '',
-        mood: '',
-        hungerLevel: '',
-        fullness: '',
         amount: ''
     })
     const userToken = useSelector((state) => state.userState.user.token)

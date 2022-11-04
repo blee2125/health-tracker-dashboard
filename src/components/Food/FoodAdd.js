@@ -10,14 +10,10 @@ function FoodAdd(props) {
     const [foodObject, setFoodObject] = useState({
         name: '',
         calories: '',
-        timeOfConsumption: '',
+        carbsg: '',
+        fatg: '',
+        proteing: '',
         meal: '',
-        placeOfConsumption: '',
-        withWhom: '',
-        activity: '',
-        mood: '',
-        hungerLevel: '',
-        fullness: '',
         amount: ''
     })
     const [foodSearchResults, setFoodSearchResults] = useState({})
@@ -51,7 +47,13 @@ function FoodAdd(props) {
         console.log(foodSearchResults)
         setFoodObject(foodObject => ({
             ...foodObject,
-            ...foodSearchResults
+            ...{
+                name: foodSearchResults.name,
+                calories: foodSearchResults.calories,
+                carbsg: foodSearchResults.carbohydrates_total_g,
+                fatg: foodSearchResults.fat_total_g,
+                proteing: foodSearchResults.protein_g
+            }
         }));  
     }
 
