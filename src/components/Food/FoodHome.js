@@ -3,31 +3,26 @@ import { connect, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getFoodToday, deleteFood, updateSearchDate } from "../../reducers/foodSlice";
 import FoodList from "./FoodList";
+import DateFunctions from '../../functions/DateFunctions';
 
 const FoodHome = (props) => {
     let navigate = useNavigate();
-    const todayDate = new Date()
-    const todayMonth = (todayDate.getMonth()+1).toString().padStart(2, "0")
-    const todayDate2 = `${todayDate.getFullYear()}-${todayMonth}-${todayDate.getDate().toString().padStart(2, "0")}`
     const userToken = useSelector((state) => state.userState.user.token)
     const foodTodayArray = useSelector((state) => state.foodState.foodTodayArray)
-    const monthArray = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+
+    const formattedDate = DateFunctions.createDateStringSplit()
 
     const handleGetTodayRequest = () => {
-        const dateStringSplit = todayDate2.split('-')
-        const formattedDate = (`${monthArray[dateStringSplit[1] - 1]} ${dateStringSplit[2]} ${dateStringSplit[0]}`)
         props.getFoodToday({date: formattedDate, token: userToken})
           .unwrap()
-          .then((data) => {
-            //console.log(data)
-          })
+          .then((data) => {})
           .catch((e) => {
             console.log(e);
           });
     }
 
     const selectEditFood = (id) => {
-        const objectToEdit = props.foodTodayArray.filter(e => e._id === id)[0]
+        const objectToEdit = foodTodayArray.filter(e => e._id === id)[0]
         let path = `../food/edit/${id}`; 
         navigate(path, {state: {objectToEdit}});
     }
