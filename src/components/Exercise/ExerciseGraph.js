@@ -9,7 +9,7 @@ import ExerciseGraphSelection from "./GraphComponents/ExerciseGraphSelection";
 function ExerciseGraph(props) {
     const userToken = useSelector((state) => state.userState.user.token)
     const exerciseArray = useSelector((state) => state.exerciseState.exerciseArray)
-    const [graphSelection, setGraphSelection] = useState('');
+    const [graphSelection, setGraphSelection] = useState('All');
 
     //array of last 30 dates - graph label
     function thirtyDates() {
