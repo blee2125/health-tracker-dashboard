@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Offcanvas, NavLink } from 'react-bootstrap';
 import AddWeight from '../BodyMetrics/Weight/AddWeight';
 import WaterSidebar from '../Water/WaterSidebar';
+import ExerciseAddModal from '../Exercise/ExerciseAddModal';
 
 const SideBar = (props) => {
     // const [show, setShow] = useState(false);
@@ -23,9 +24,7 @@ const SideBar = (props) => {
                     <NavLink as={Link}  to="/exercise" className='sidebar-link'>
                         Exercise
                     </NavLink>
-                        <NavLink as={Link}  to="/exercise/add" className='sidebar-sub-link'>
-                            Add Exercise
-                        </NavLink>
+                        <ExerciseAddModal onSidebar={true}/>
                         <NavLink as={Link}  to="/exercise/byDate" className='sidebar-sub-link'>
                             View By Date
                         </NavLink>
