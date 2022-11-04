@@ -10,19 +10,20 @@ function FoodBarGraph(props) {
         const caloriesArray = []
         props.dataArray.forEach(element => {
             if (element !== undefined) {
-                let cal = 0
+                let total = 0
+                const key = props.graphSelectionMacros
                 element.forEach(food => {
-                    if (props.graphSelection === 'All') {
-                        if (food.calories) {
-                            cal = cal + food.calories
+                    if (props.graphSelectionMeal === 'All') {
+                        if (food[key]) {
+                            total = total + food[key]
                         }
-                    } else if (food.meal === props.graphSelection) {
-                        if (food.calories) {
-                            cal = cal + food.calories
+                    } else if (food.meal === props.graphSelectionMeal) {
+                        if (food[key]) {
+                            total = total + food[key]
                         }
                     }
                 })
-                caloriesArray.push(cal)
+                caloriesArray.push(total)
             } else {
                 caloriesArray.push(element)
             }
@@ -30,11 +31,26 @@ function FoodBarGraph(props) {
         return caloriesArray
     }
 
+    const macrosName = () => {
+        switch(props.graphSelectionMacros) {
+            case 'calories':
+                return 'Calories'
+            case 'carbsg':
+                return 'Carbs'
+            case 'fatg':
+                return 'Fat'
+            case 'proteing':
+                return 'Protein'
+            default:
+                return ''
+          }
+    }
+
     const graphData = {
         labels: props.graphLabel,
         datasets: [
             {
-                label: 'Total Calories',
+                label: `Total ${macrosName()}`,
                 backgroundColor: 'lightblue',
                 borderColor: 'rgba(0,0,0,1)',
                 borderWidth: 1,
@@ -53,7 +69,7 @@ function FoodBarGraph(props) {
                 plugins: {
                     title:{
                     display:true,
-                    text:'Calories Per Day (last 30 days)',
+                    text:`${macrosName()} Per Day (last 30 days)`,
                     fontSize:20
                     },
                     legend:{
