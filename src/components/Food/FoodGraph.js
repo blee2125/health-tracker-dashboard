@@ -9,7 +9,8 @@ import { getAllFood } from "../../reducers/foodSlice";
 function FoodGraph(props) {
     const userToken = useSelector((state) => state.userState.user.token)
     const foodArray = useSelector((state) => state.foodState.foodArray)
-    const [graphSelection, setGraphSelection] = useState('All');
+    const [graphSelectionMeal, setGraphSelectionMeal] = useState('All');
+    const [graphSelectionMacros, setGraphSelectionMacros] = useState('calories');
 
     //array of last 30 dates - graph label
     function thirtyDates() {
@@ -46,9 +47,9 @@ function FoodGraph(props) {
 
   return (
     <>
-        <FoodBarGraphSelection graphSelection={graphSelection} setGraphSelection={setGraphSelection}/>
+        <FoodBarGraphSelection graphSelectionMeal={graphSelectionMeal} setGraphSelectionMeal={setGraphSelectionMeal} graphSelectionMacros={graphSelectionMacros} setGraphSelectionMacros={setGraphSelectionMacros}/>
         <Card bg='light' border="secondary" style={{ width: '800px', padding: '25px', margin: "25px"}}>
-            <FoodBarGraph graphLabel={thirtyDates()} dataArray={matchDataAndDateArrays(foodArray)} graphSelection={graphSelection}/>
+            <FoodBarGraph graphLabel={thirtyDates()} dataArray={matchDataAndDateArrays(foodArray)} graphSelectionMeal={graphSelectionMeal} graphSelectionMacros={graphSelectionMacros}/>
         </Card>
     </>
   )
