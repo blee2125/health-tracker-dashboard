@@ -23,9 +23,36 @@ class DateFunctions {
         return monthArray[newDate[1]-1]+" "+newDate[2]+" "+newDate[0]
     }
 
+    // returns today as 'Jan 01 2022' - includes leading zero
+    formatDateForSearch = () => {
+        const todayDate = new Date()
+        const todayMonth = (todayDate.getMonth()+1).toString().padStart(2, "0")
+        const todayDate2 = `${todayDate.getFullYear()}-${todayMonth}-${todayDate.getDate().toString().padStart(2, "0")}`
+        const dateStringSplit = todayDate2.split('-')
+        const formattedDate = (`${monthArray[dateStringSplit[1] - 1]} ${dateStringSplit[2]} ${dateStringSplit[0]}`)
+        return formattedDate
+    }
+
+    // returns input date as 'Jan 01 2022' from '2022-01-01'
+    formatInputDateForSearch = (input) => {
+        const searchDate = input.toString()
+        const dateStringSplit = searchDate.split('-')
+        const formattedDate = (`${monthArray[dateStringSplit[1] - 1]} ${dateStringSplit[2]} ${dateStringSplit[0]}`)
+        return formattedDate
+    }
+
+    // returns today as '2022-01-30'
+    maxDateToday = () => {
+        const todayDate = new Date()
+        const todayMonth = (todayDate.getMonth()+1).toString().padStart(2, "0")
+        const maxDate = `${todayDate.getFullYear()}-${todayMonth}-${todayDate.getDate().toString().padStart(2, "0")}`
+        return maxDate
+    }
+
     
 
 
+    
 
 }
 
