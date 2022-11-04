@@ -1,13 +1,14 @@
 import React from "react";
-import {Form, Card} from "react-bootstrap";
+import {Form, Card, Col, Row} from "react-bootstrap";
 
 function FoodBarGraphSelection(props) {
 
   return (
     <>
-        <Card bg='light' border="secondary" style={{ width: '300px', padding: '25px', margin: "25px"}}>
+        <Card bg='light' border="secondary" style={{ width: '800px', padding: '25px', margin: "25px"}}>
         <Form>
-            <Form.Group className="mb-3" controlId="formGroupGraphData">
+            <Row>
+            <Col>
             <Form.Label>Meal</Form.Label>
                 <Form.Select
                     value={props.graphSelection}
@@ -20,8 +21,8 @@ function FoodBarGraphSelection(props) {
                     <option value='Snack'>Snack</option>
                     <option value=''>No Assigned Meal</option>
                 </Form.Select>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formGroupGraphData">
+            </Col>
+            <Col>
             <Form.Label>Calories/Macros</Form.Label>
                 <Form.Select
                     value={props.GraphSelectionMacros}
@@ -32,7 +33,8 @@ function FoodBarGraphSelection(props) {
                     <option value='fatg'>Fat</option>
                     <option value='proteing'>Protein</option>
                 </Form.Select>
-            </Form.Group>
+            </Col>
+            </Row>
         </Form>
         </Card>
     </>
