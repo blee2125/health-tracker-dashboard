@@ -12,8 +12,14 @@ function FoodBarGraph(props) {
             if (element !== undefined) {
                 let cal = 0
                 element.forEach(food => {
-                    if (food.calories) {
-                        cal = cal + food.calories
+                    if (props.graphSelection === 'All') {
+                        if (food.calories) {
+                            cal = cal + food.calories
+                        }
+                    } else if (food.meal === props.graphSelection) {
+                        if (food.calories) {
+                            cal = cal + food.calories
+                        }
                     }
                 })
                 caloriesArray.push(cal)
