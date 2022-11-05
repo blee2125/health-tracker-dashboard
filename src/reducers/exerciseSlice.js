@@ -95,7 +95,20 @@ export const exerciseSlice = createSlice({
       state.exerciseTodayArray = action.payload;
     },
     [updateExercise.fulfilled]: (state, action) => {
+      const dayindex = state.exerciseByDayArray.findIndex((exercise) => {
+        return exercise._id === action.payload._id
+      })
+      state.exerciseByDayArray[dayindex] = action.payload
+      
+      const allindex = state.exerciseArray.findIndex((exercise) => {
+        return exercise._id === action.payload._id
+      })
+      state.exerciseArray[allindex] = action.payload
 
+      const todayindex = state.exerciseTodayArray.findIndex((exercise) => {
+        return exercise._id === action.payload._id
+      })
+      state.exerciseTodayArray[todayindex] = action.payload
     },
     [deleteExercise.fulfilled]: (state, action) => ({
       ...state,
