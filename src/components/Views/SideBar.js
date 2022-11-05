@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Offcanvas, NavLink } from 'react-bootstrap';
 import AddWeight from '../BodyMetrics/Weight/AddWeight';
 import WaterSidebar from '../Water/WaterSidebar';
-import ExerciseAddModal from '../Exercise/ExerciseAddModal';
+import ExerciseAddModal from '../Exercise/FormComponents/ExerciseAddModal';
 
 const SideBar = (props) => {
     // const [show, setShow] = useState(false);

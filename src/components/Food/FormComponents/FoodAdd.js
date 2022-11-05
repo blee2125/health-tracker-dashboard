@@ -3,8 +3,8 @@ import { connect, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {Card, Button} from 'react-bootstrap';
 import FoodForm from "./FoodForm";
-import { createFood } from "../../reducers/foodSlice";
-import FoodSearchModal from "./FoodSearchModal";
+import { createFood } from "../../../reducers/foodSlice";
+import FoodSearchModal from "../FoodSearchModal";
 
 function FoodAdd(props) {
     const [foodObject, setFoodObject] = useState({

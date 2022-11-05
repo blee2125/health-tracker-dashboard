@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect, useSelector } from "react-redux";
 import { Button, Modal, NavLink } from 'react-bootstrap';
 import ExerciseForm from "./ExerciseForm";
-import { createExercise, getAllExercises, getExerciseToday } from "../../reducers/exerciseSlice";
+import { createExercise, getAllExercises, getExerciseToday } from "../../../reducers/exerciseSlice";
 
 function ExerciseAddModal(props) {
     const [exerciseObject, setExerciseObject] = useState({

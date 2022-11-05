@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { getExerciseToday, deleteExercise, updateSearchDate } from "../../reducers/exerciseSlice";
 import ExerciseList from "./ExerciseList";
 import DateFunctions from '../../functions/DateFunctions';
-import ExerciseAddModal from './ExerciseAddModal'
+import ExerciseAddModal from './FormComponents/ExerciseAddModal'
 
 const ExerciseHome = (props) => {
     let navigate = useNavigate();

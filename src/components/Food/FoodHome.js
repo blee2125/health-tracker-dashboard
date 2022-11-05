@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { getFoodToday, deleteFood, updateSearchDate } from "../../reducers/foodSlice";
 import FoodList from "./FoodList";
 import DateFunctions from '../../functions/DateFunctions';
-import AddFoodModal from './AddFoodModal'
+import AddFoodModal from './FormComponents/AddFoodModal'
 import FoodMacrosPieChart from "./GraphComponents/FoodMacrosPieChart";
 
 const FoodHome = (props) => {

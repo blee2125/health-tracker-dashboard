@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect, useSelector } from "react-redux";
 import { Button, Modal, NavLink } from 'react-bootstrap';
 import HealthGoalForm from "./HealthGoalForm";
-import { updateHealthGoal, getAllHealthGoal } from "../../reducers/healthGoalSlice";
+import { updateHealthGoal, getAllHealthGoal } from "../../../reducers/healthGoalSlice";
 
 function HealthGoalEditModal(props) {
     const [healthGoalObject, setHealthGoalObject] = useState({

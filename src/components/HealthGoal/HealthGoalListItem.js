@@ -1,6 +1,6 @@
 import React from "react";
 import DeleteConfirmation from "../Views/DeleteConfirmation";
-import HealthGoalEditModal from "./HealthGoalEditModal";
+import HealthGoalEditModal from "./FormComponents/HealthGoalEditModal";
 import CompletedButton from "./CompletedButton";
 
 function HealthGoalListItem(props) {

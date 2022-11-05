@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { connect, useSelector } from "react-redux";
-import { createFood, getFoodToday } from "../../reducers/foodSlice";
+import { createFood, getFoodToday } from "../../../reducers/foodSlice";
 import FoodForm from "./FoodForm";
-import DateFunctions from '../../functions/DateFunctions';
+import DateFunctions from '../../../functions/DateFunctions';
 
 function AddFoodModal(props) {    
     const [show, setShow] = useState(false);
