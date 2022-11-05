@@ -17,6 +17,8 @@ function HealthGoalList(props) {
                 <thead>
                     <tr>
                         <td><b>Goal</b></td>
+                        <td><b>Category</b></td>
+                        <td><b>Completed</b></td>
                         <td></td>
                     </tr>
                 </thead>
