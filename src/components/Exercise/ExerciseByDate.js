@@ -1,12 +1,10 @@
 import React, { useEffect } from "react";
 import { connect, useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { Form, Card } from "react-bootstrap";
 import { getExerciseByDate, deleteExercise, updateSearchDate } from "../../reducers/exerciseSlice";
 import ExerciseList from "./ExerciseList";
 
 const ExerciseByDate = (props) => {
-    let navigate = useNavigate();
     let dispatch = useDispatch();
     const todayDate = new Date()
     const todayMonth = (todayDate.getMonth()+1).toString().padStart(2, "0")
@@ -27,12 +25,6 @@ const ExerciseByDate = (props) => {
           .catch((e) => {
             console.log(e);
           });
-    }
-
-    const selectEditExercise = (id) => {
-        const objectToEdit = props.exerciseByDayArray.filter(e => e._id === id)[0]
-        let path = `../exercise/edit/${id}`; 
-        navigate(path, {state: {objectToEdit}});
     }
 
     const handleDeleteExercise = (id) => {
@@ -70,7 +62,7 @@ const ExerciseByDate = (props) => {
                 />
                 </Form.Group>
             </Card>
-            <ExerciseList list={exerciseByDayArray}  handleDelete={handleDeleteExercise} handleEdit={selectEditExercise} />
+            <ExerciseList list={exerciseByDayArray}  handleDelete={handleDeleteExercise} />
         </>
     )
 }

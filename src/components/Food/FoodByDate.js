@@ -1,16 +1,15 @@
 import React, { useEffect } from "react";
 import { connect, useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { Form, Card } from "react-bootstrap";
 import { getFoodByDate, deleteFood, updateSearchDate } from "../../reducers/foodSlice";
 import FoodList from "./FoodList";
 import DateFunctions from "../../functions/DateFunctions";
 
 const FoodByDate = (props) => {
-    let navigate = useNavigate();
     let dispatch = useDispatch();
     const userToken = useSelector((state) => state.userState.user.token)
     const searchDate = useSelector((state) => state.foodState.searchDate)
+    const foodByDayArray = useSelector((state) => state.foodState.foodByDayArray)
 
     const maxDate = DateFunctions.maxDateToday()
 
@@ -22,12 +21,6 @@ const FoodByDate = (props) => {
           .catch((e) => {
             console.log(e);
           });
-    }
-
-    const selectEditFood = (id) => {
-        const objectToEdit = props.foodByDayArray.filter(e => e._id === id)[0]
-        let path = `../food/edit/${id}`; 
-        navigate(path, {state: {objectToEdit}});
     }
 
     const handleDeleteFood = (id) => {
@@ -65,15 +58,9 @@ const FoodByDate = (props) => {
                 />
                 </Form.Group>
             </Card>
-            <FoodList list={props.foodByDayArray}  handleDelete={handleDeleteFood} handleEdit={selectEditFood} />
+            <FoodList list={foodByDayArray}  handleDelete={handleDeleteFood} />
         </>
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        foodByDayArray: state.foodState.foodByDayArray
-    };
-}
-
-export default connect(mapStateToProps, {getFoodByDate, deleteFood, updateSearchDate}) (FoodByDate)
+export default connect(null, {getFoodByDate, deleteFood, updateSearchDate}) (FoodByDate)

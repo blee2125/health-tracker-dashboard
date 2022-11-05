@@ -95,7 +95,20 @@ export const foodSlice = createSlice({
       state.foodArray = action.payload;
     },
     [updateFood.fulfilled]: (state, action) => {
+      const dayindex = state.foodByDayArray.findIndex((food) => {
+        return food._id === action.payload._id
+      })
+      state.foodByDayArray[dayindex] = action.payload
+      
+      const allindex = state.foodArray.findIndex((food) => {
+        return food._id === action.payload._id
+      })
+      state.foodArray[allindex] = action.payload
 
+      const todayindex = state.foodTodayArray.findIndex((food) => {
+        return food._id === action.payload._id
+      })
+      state.foodTodayArray[todayindex] = action.payload
     },
     [deleteFood.fulfilled]: (state, action) => ({
       ...state,

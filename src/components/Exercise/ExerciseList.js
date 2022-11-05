@@ -5,7 +5,12 @@ import ExerciseListItem from "./ExerciseListItem";
 function ExerciseList(props) { 
     const listExerciseItems = props.list.map((exerciseItem, index) => {
         return (
-            <ExerciseListItem exerciseData={exerciseItem} key={index} id={index} deleteButton={props.handleDelete} editButton={props.handleEdit}/>
+            <ExerciseListItem 
+                exerciseData={exerciseItem} 
+                key={index} 
+                id={exerciseItem._id} 
+                deleteButton={props.handleDelete} 
+            />
         )
     })
 
