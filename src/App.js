@@ -16,11 +16,9 @@ import HomePage from './components/Views/Home';
 import AccessDeniedPage from './components/Views/AccessDeniedPage';
 import Food from './components/Food/Food';
 import FoodAdd from './components/Food/FormComponents/FoodAdd';
-import FoodEdit from './components/Food/FormComponents/FoodEdit';
 import FoodByDate from './components/Food/FoodByDate';
 import FoodGraph from './components/Food/FoodGraph';
 import Exercise from './components/Exercise/Exercise';
-import ExerciseEdit from './components/Exercise/FormComponents/ExerciseEdit';
 import ExerciseByDate from './components/Exercise/ExerciseByDate';
 import ExerciseGraph from './components/Exercise/ExerciseGraph';
 import WeightHome from './components/BodyMetrics/Weight/WeightHome';
@@ -61,11 +59,9 @@ function App(props) {
               <Route path="/" element={isAuth(<HomePage />)} />
               <Route path="/water" element={isAuth(<WaterHome />)} />
               <Route path="/exercise" element={isAuth(<Exercise />)} />
-                <Route path="/exercise/edit/:id" element={isAuth(<ExerciseEdit />)} />
                 <Route path="/exercise/byDate" element={isAuth(<ExerciseByDate />)} />
                 <Route path="/exercise/exerciseGraph" element={isAuth(<ExerciseGraph />)} />
               <Route path="/food" element={isAuth(<Food />)} />
-                <Route path="/food/edit/:id" element={isAuth(<FoodEdit />)} />
                 <Route path="/food/add" element={isAuth(<FoodAdd />)} />
                 <Route path="/food/byDate" element={isAuth(<FoodByDate />)} />
                 <Route path="/food/foodGraph" element={isAuth(<FoodGraph />)} />
