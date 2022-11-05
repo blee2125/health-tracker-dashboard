@@ -5,7 +5,7 @@ export const HealthGoalForm = (props) => {
 
     return (
       <Form >
-        <Form.Group className="mb-3" controlId="formGroupName">
+        <Form.Group className="mb-3" controlId="formGroupGoal">
           <Form.Label>Goal</Form.Label>
           <Form.Control 
             type="text" 
@@ -14,10 +14,11 @@ export const HealthGoalForm = (props) => {
             onChange={e => props.updateData('goal', e.target.value)}
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formGroupType">
+        <Form.Group className="mb-3" controlId="formGroupCategory">
           <Form.Label>Category</Form.Label>
           <Form.Select
             value={props.healthGoalObject.category || ''}
+            placeholder="Category" 
             onChange={e => props.updateData('category', e.target.value)}
           >
             <option value=''></option>
@@ -27,15 +28,6 @@ export const HealthGoalForm = (props) => {
             <option value='Weight'>Weight</option>
             <option value='General'>General</option>
           </Form.Select>
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formGroupDuration">
-          <Form.Label>Timeframe</Form.Label>
-          <Form.Control 
-            type="number" 
-            placeholder="Duration" 
-            defaultValue={props.healthGoalObject.timeframe}
-            onChange={e => props.updateData('timeframe', e.target.value)}
-          />
         </Form.Group>
       </Form>
     );
