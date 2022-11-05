@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { connect, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
 import ExerciseList from "./ExerciseList";
 import { getAllExercises, deleteExercise, updateExercise } from "../../reducers/exerciseSlice";
 
@@ -34,7 +33,6 @@ function Exercise(props) {
     return (
         <div>
             <h1>Exercise</h1>
-            <Button onClick={() => navigate('/exercise/add')}>Add Exercise</Button>
             <ExerciseList list={props.exerciseArray}  handleDelete={handleDeleteExercise} handleEdit={selectEditExercise} />
         </div>
     )
