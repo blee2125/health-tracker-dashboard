@@ -1,11 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { Offcanvas, NavLink } from 'react-bootstrap';
 import AddWeight from '../BodyMetrics/Weight/AddWeight';
 import WaterSidebar from '../Water/WaterSidebar';
 import ExerciseAddModal from '../Exercise/FormComponents/ExerciseAddModal';
 
 const SideBar = (props) => {
+    const isAuthenticated = useSelector((state) => state.userState.isAuthenticated)
     // const [show, setShow] = useState(false);
 
     // const handleClose = () => setShow(false); //onHide={handleClose}
@@ -17,6 +19,7 @@ const SideBar = (props) => {
                 <Offcanvas.Header>
                     <Offcanvas.Title><b>Health Tracker</b></Offcanvas.Title>
                 </Offcanvas.Header>
+            {isAuthenticated ? 
                 <Offcanvas.Body>
                     <NavLink as={Link} to="/" className='sidebar-link'>
                         Dashboard Home
@@ -58,6 +61,7 @@ const SideBar = (props) => {
                         Health Goals
                     </NavLink>
                 </Offcanvas.Body>
+            : '' }
             </Offcanvas>
         </>
     )
