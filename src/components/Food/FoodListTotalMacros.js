@@ -19,7 +19,7 @@ function FoodListTotalMacros(props) {
 
     return (
         <div>
-            <p>Carbs:{calcTotalCarbs} - Fat:{calcTotalFat} - Protein:{calcTotalProtein}</p>
+            <p>Carbs:{calcTotalCarbs.toFixed(1)} - Fat:{calcTotalFat.toFixed(1)} - Protein:{calcTotalProtein.toFixed(1)}</p>
         </div>
     );
 }
