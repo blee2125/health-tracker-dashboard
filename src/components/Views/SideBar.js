@@ -54,6 +54,9 @@ const SideBar = (props) => {
                         <NavLink as={Link}  to="/weight/weightGraph" className='sidebar-sub-link'>
                             Weight Graph
                         </NavLink>
+                    <NavLink as={Link}  to="/healthGoals" className='sidebar-link'>
+                        Health Goals
+                    </NavLink>
                 </Offcanvas.Body>
             </Offcanvas>
         </>
