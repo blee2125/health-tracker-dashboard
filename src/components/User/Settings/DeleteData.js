@@ -9,6 +9,7 @@ import { deleteAllExercise } from "../../../reducers/exerciseSlice";
 import DeleteConfirmation from "../../Views/DeleteConfirmation"
 import { deleteUser } from "../../../reducers/userSlice";
 import { deleteSettings } from "../../../reducers/settingsSlice";
+import { deleteAllHealthGoal } from "../../../reducers/healthGoalSlice";
 
 const DeleteData = (props) => {
     const userToken = useSelector((state) => state.userState.user.token)
@@ -62,6 +63,18 @@ const DeleteData = (props) => {
         });
     }
 
+    const deleteGoalData = () => {
+        props.deleteAllHealthGoal(userToken)
+        .unwrap()
+        .then((data) => {
+            props.setDangerNotification(data)
+            props.setShowDangerNotification(true)
+        })
+        .catch((e) => {
+            console.log(e);
+        });
+    }
+
     const deleteAccountData = () => {
         props.deleteAllExercise(userToken)
         props.deleteAllFood(userToken)
@@ -69,6 +82,7 @@ const DeleteData = (props) => {
         props.deleteAllWeight(userToken)
         props.deleteSettings(userToken)
         props.deleteUser(userToken)
+        props.deleteAllHealthGoal(userToken)
         navigate('/register')
     }
 
@@ -121,7 +135,18 @@ const DeleteData = (props) => {
                                     info={'All Weight Data'} 
                                 />
                             </td>
-                        </tr>  
+                        </tr>
+                        <tr>
+                            <td>
+                                Goal Data
+                            </td>
+                            <td>
+                                <DeleteConfirmation 
+                                    deleteItem={() => deleteGoalData(userToken)} 
+                                    info={'All Goal Data'} 
+                                />
+                            </td>
+                        </tr>
                         <tr>
                             <td>
                                 Account User Data
@@ -140,4 +165,4 @@ const DeleteData = (props) => {
     )
 }
 
-export default connect(null, {deleteAllWater, deleteAllExercise, deleteAllFood, deleteAllWeight, deleteUser, deleteSettings}) (DeleteData)
+export default connect(null, {deleteAllWater, deleteAllExercise, deleteAllFood, deleteAllWeight, deleteUser, deleteSettings, deleteAllHealthGoal }) (DeleteData)
