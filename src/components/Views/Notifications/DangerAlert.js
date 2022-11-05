@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useEffect} from 'react';
 import { Alert } from 'react-bootstrap';
 
-function DangerNotification(props) {
+function DangerNotification(props) {      
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      props.setShowDangerNotification(false);
+    }, 3000);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line
+  }, [props.showDangerNotification])
 
   return (
     <>
