@@ -11,7 +11,7 @@ import EditUserPassword from './components/User/EditUserPassword';
 import Settings from './components/User/Settings/Settings';
 import DeleteData from './components/User/Settings/DeleteData';
 import SideBar from './components/Views/SideBar';
-import DangerNotification from './components/Views/DangerAlert';
+import DangerNotification from './components/Views/Notifications/DangerAlert';
 import HomePage from './components/Views/Home';
 import AccessDeniedPage from './components/Views/AccessDeniedPage';
 import Food from './components/Food/Food';
