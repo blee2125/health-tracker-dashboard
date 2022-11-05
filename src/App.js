@@ -26,6 +26,7 @@ import ExerciseGraph from './components/Exercise/ExerciseGraph';
 import WeightHome from './components/BodyMetrics/Weight/WeightHome';
 import WeightGraph from './components/BodyMetrics/Weight/WeightGraph';
 import WaterHome from './components/Water/WaterHome';
+import HealthGoal from './components/HealthGoal/HealthGoal'
 
 function App(props) {
   const userData = useSelector((state) => state.userState)
@@ -76,6 +77,7 @@ function App(props) {
               <Route path="/register" element={isNotAuth(<Register />)} />
               <Route path="/weight" element={isAuth(<WeightHome />)} />
                 <Route path="/weight/weightGraph" element={isAuth(<WeightGraph />)} />
+              <Route path="/healthGoals" element={isAuth(<HealthGoal />)} />
             </Routes>
           </div>
         </div>
