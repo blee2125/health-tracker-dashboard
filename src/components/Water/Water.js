@@ -14,45 +14,32 @@ function Water(props) {
     if (id === null || undefined) {
       handlePostRequest()
     } else {
-    props.updateWater({id: id, data: {glasses: glasses+1}, token: userToken})
+      props.updateWater({id: id, data: {glasses: glasses+1}, token: userToken})
       .unwrap()
       .then((data) => {})
-      .catch((e) => {console.log(e);});
+      .catch((e) => {console.log(e)});
     }
   };
 
   const handleSubtractGlasses = () => {
     props.updateWater({id: id, data: {glasses: glasses-1}, token: userToken})
-      .unwrap()
-      .then((data) => {})
-      .catch((e) => {console.log(e);});
+    .unwrap()
+    .then((data) => {})
+    .catch((e) => {console.log(e)});
   };
 
   const handlePostRequest = () => {
     props.createWater({data: {glasses: glasses + 1, date: dateStringSplit}, token: userToken})
-      .unwrap()
-      .then((data) => {})
-      .catch((e) => {console.log(e);});
-  }
-
-  // eslint-disable-next-line
-  const handleUpdateRequest = () => {
-    props.updateWater({id: id, data: {glasses}, token: userToken})
-      .unwrap()
-      .then((data) => {})
-      .catch((e) => {console.log(e);});
+    .unwrap()
+    .then((data) => {})
+    .catch((e) => {console.log(e)});
   }
 
   const handleGetTodayRequest = () => {
     props.getWaterByDate({date: {'time': dateStringSplit}, token: userToken})
-      .unwrap()
-      .then((data) => {})
-      .catch((e) => {
-        console.log(e);
-        if (e.typeof === undefined) {
-          //handlePostRequest()
-        }
-      });
+    .unwrap()
+    .then((data) => {})
+    .catch((e) => {console.log(e)});
   }
 
   useEffect(() => {

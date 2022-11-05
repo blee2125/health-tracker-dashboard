@@ -22,9 +22,7 @@ const DeleteData = (props) => {
             props.setDangerNotification(data)
             props.setShowDangerNotification(true)
         })
-        .catch((e) => {
-            console.log(e);
-        });
+        .catch((e) => {console.log(e)});
     }
 
     const deleteWeightData = () => {
@@ -34,9 +32,7 @@ const DeleteData = (props) => {
             props.setDangerNotification(data)
             props.setShowDangerNotification(true)
         })
-        .catch((e) => {
-            console.log(e);
-        });
+        .catch((e) => {console.log(e)});
     }
 
     const deleteFoodData = () => {
@@ -46,9 +42,7 @@ const DeleteData = (props) => {
             props.setDangerNotification(data)
             props.setShowDangerNotification(true)
         })
-        .catch((e) => {
-            console.log(e);
-        });
+        .catch((e) => {console.log(e)});
     }
 
     const deleteExerciseData = () => {
@@ -58,9 +52,7 @@ const DeleteData = (props) => {
             props.setDangerNotification(data)
             props.setShowDangerNotification(true)
         })
-        .catch((e) => {
-            console.log(e);
-        });
+        .catch((e) => {console.log(e)});
     }
 
     const deleteGoalData = () => {
@@ -70,9 +62,7 @@ const DeleteData = (props) => {
             props.setDangerNotification(data)
             props.setShowDangerNotification(true)
         })
-        .catch((e) => {
-            console.log(e);
-        });
+        .catch((e) => {console.log(e)});
     }
 
     const deleteAccountData = () => {

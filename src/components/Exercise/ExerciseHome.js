@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getExerciseToday, deleteExercise, updateSearchDate } from "../../reducers/exerciseSlice";
-import ExerciseList from "./ExerciseList";
+import ExerciseList from "./ListComponents/ExerciseList";
 import DateFunctions from '../../functions/DateFunctions';
 import ExerciseAddModal from './FormComponents/ExerciseAddModal'
 
@@ -15,11 +15,9 @@ const ExerciseHome = (props) => {
 
     const handleGetTodayRequest = () => {
         props.getExerciseToday({date: formattedDate, token: userToken})
-          .unwrap()
-          .then((data) => {})
-          .catch((e) => {
-            console.log(e);
-          });
+        .unwrap()
+        .then((data) => {})
+        .catch((e) => {console.log(e)});
     }
 
     const selectEditExercise = (id) => {
@@ -30,13 +28,11 @@ const ExerciseHome = (props) => {
 
     const handleDeleteExercise = (id) => {
         props.deleteExercise({id: id, userToken: userToken})
-            .unwrap()
-            .then((data) => {
-                handleGetTodayRequest()
-            })
-            .catch((e) => {
-                console.log(e);
-            });
+        .unwrap()
+        .then((data) => {
+            handleGetTodayRequest()
+        })
+        .catch((e) => {console.log(e)});
     }
 
     useEffect(() => {

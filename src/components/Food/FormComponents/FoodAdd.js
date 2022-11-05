@@ -33,13 +33,11 @@ function FoodAdd(props) {
     const handleSubmit = () => {
         if (foodObject.name !== '') {
             props.createFood({foodObject, userToken})
-                .unwrap()
-                .then((data) => {
-                    navigate('/food')
-                })
-                .catch((e) => {
-                    console.log(e);
-                });
+            .unwrap()
+            .then((data) => {
+                navigate('/food')
+            })
+            .catch((e) => {console.log(e)});
         }
     }
 

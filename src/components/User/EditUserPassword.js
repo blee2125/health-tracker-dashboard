@@ -14,13 +14,11 @@ function EditUserPassword(props) {
     const handleSubmitRegister = async e => {
         e.preventDefault();
         props.editPassword({data: {currentPassword, newPassword}, userToken: userToken})
-            .unwrap()
-            .then((data) => {
-                navigate('/userinfo')
-            })
-            .catch((e) => {
-              console.log(e);
-            });
+        .unwrap()
+        .then((data) => {
+            navigate('/userinfo')
+        })
+        .catch((e) => {console.log(e)});
     }
 
     return (

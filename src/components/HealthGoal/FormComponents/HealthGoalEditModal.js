@@ -19,14 +19,12 @@ function HealthGoalEditModal(props) {
     const handleSubmit = () => {
         if (healthGoalObject.goal !== '') {
             props.updateHealthGoal({id: props.healthGoalObject._id, data: healthGoalObject, userToken: userToken})
-                .unwrap()
-                .then((data) => {
-                    handleClose()
-                    props.getAllHealthGoal(userToken)
-                })
-                .catch((e) => {
-                    console.log(e);
-                });
+            .unwrap()
+            .then((data) => {
+                handleClose()
+                props.getAllHealthGoal(userToken)
+            })
+            .catch((e) => {console.log(e)});
         }
     }
 

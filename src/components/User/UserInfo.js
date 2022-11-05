@@ -10,41 +10,30 @@ import DateFunctions from "../../functions/DateFunctions";
 
 const UserInfo = (props) => {
     const userToken = useSelector((state) => state.userState.user.token)
+    const userState = useSelector((state) => state.userState.user)
     const [height, setHeight] = useState()
     const [birthday, setBirthday] = useState()
     const [gender, setGender] = useState()
 
     const addHeight = () => {
         props.addHeight({data: {height: height}, userToken})
-            .unwrap()
-            .then((data) => {
-                
-            })
-            .catch((e) => {
-                console.log(e);
-            });
+        .unwrap()
+        .then((data) => {})
+        .catch((e) => {console.log(e)});
     }
 
     const addBirthday = () => {
         props.addBirthday({data: {birthday: birthday}, userToken})
-            .unwrap()
-            .then((data) => {
-                
-            })
-            .catch((e) => {
-                console.log(e);
-            });
+        .unwrap()
+        .then((data) => {})
+        .catch((e) => {console.log(e)});
     }
 
     const addGender = () => {
         props.addGender({data: {gender: gender}, userToken})
-            .unwrap()
-            .then((data) => {
-                
-            })
-            .catch((e) => {
-                console.log(e);
-            });
+        .unwrap()
+        .then((data) => {})
+        .catch((e) => {console.log(e)});
     }
 
     return(
@@ -58,7 +47,7 @@ const UserInfo = (props) => {
                                 Username:
                             </td>
                             <td>
-                            {props.userState.username}
+                            {userState.username}
                             </td>
                         </tr>
                         <tr>
@@ -66,7 +55,7 @@ const UserInfo = (props) => {
                                 Email:
                             </td>
                             <td>
-                                {props.userState.email}
+                                {userState.email}
                             </td>
                         </tr>
                         <tr>
@@ -82,7 +71,7 @@ const UserInfo = (props) => {
                                 Height:
                             </td>
                             <td>
-                                {props.userState.height > 0 ? props.userState.height : 
+                                {userState.height > 0 ? userState.height : 
                                 <AddHeight 
                                     addHeight={addHeight} 
                                     setHeight={setHeight} 
@@ -94,7 +83,7 @@ const UserInfo = (props) => {
                                 Birthday:
                             </td>
                             <td>
-                                {props.userState.birthday ? DateFunctions.convertYMDtoMwordDY(props.userState.birthday) : 
+                                {userState.birthday ? DateFunctions.convertYMDtoMwordDY(userState.birthday) : 
                                 <AddBirthday 
                                     addBirthday={addBirthday} 
                                     setBirthday={setBirthday} 
@@ -106,7 +95,7 @@ const UserInfo = (props) => {
                                 Gender:
                             </td>
                             <td>
-                                {props.userState.gender ? props.userState.gender : 
+                                {userState.gender ? userState.gender : 
                                 <AddGender 
                                     addGender={addGender} 
                                     setGender={setGender} 
@@ -118,7 +107,7 @@ const UserInfo = (props) => {
                                 Account Created:
                             </td>
                             <td>
-                                {DateFunctions.processCreatedAt(props.userState.createdAt)}
+                                {DateFunctions.processCreatedAt(userState.createdAt)}
                             </td>
                         </tr>
                         <tr>
@@ -144,10 +133,4 @@ const UserInfo = (props) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        userState: state.userState.user
-    };
-}
-
-export default connect(mapStateToProps, { addHeight, addBirthday, addGender }) (UserInfo)
+export default connect(null, { addHeight, addBirthday, addGender }) (UserInfo)

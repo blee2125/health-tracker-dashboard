@@ -13,27 +13,16 @@ function WaterHome(props) {
 
   const handleGetTodayRequest = () => {
     props.getWaterByDate({date: {'time': dateStringSplit}, token: userToken})
-      .unwrap()
-      .then((data) => {
-        
-      })
-      .catch((e) => {
-        console.log(e);
-        if (e.typeof === undefined) {
-          //handlePostRequest()
-        }
-      });
+    .unwrap()
+    .then((data) => {})
+    .catch((e) => {console.log(e)});
   }
 
   const get7days = () => {
     props.getSevenDays(userToken)
-      .unwrap()
-      .then((data) => {
-        
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    .unwrap()
+    .then((data) => {})
+    .catch((e) => {console.log(e)});
   }
 
   useEffect(() => {

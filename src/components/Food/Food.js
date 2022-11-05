@@ -3,7 +3,7 @@ import { connect, useSelector } from "react-redux";
 import { createFood, getAllFood, deleteFood } from "../../reducers/foodSlice";
 import { useNavigate } from "react-router-dom";
 import {Button} from 'react-bootstrap'
-import FoodList from "./FoodList";
+import FoodList from "./ListComponents/FoodList";
 
 function Food(props) {
     let navigate = useNavigate(); 
@@ -13,9 +13,7 @@ function Food(props) {
     const handleDeleteFood = (id) => {
         props.deleteFood({id: id, userToken: userToken})
             .unwrap()
-            .then((data) => {
-                //console.log(data);
-            })
+            .then((data) => {})
             .catch((e) => {
                 console.log(e);
             });

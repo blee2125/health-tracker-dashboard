@@ -15,13 +15,11 @@ function Register(props) {
     const handleSubmitRegister = async e => {
         e.preventDefault();
         props.createUser({username, email, password, height})
-            .unwrap()
-            .then((data) => {
-                navigate('/login')
-            })
-            .catch((e) => {
-              console.log(e);
-            });
+        .unwrap()
+        .then((data) => {
+            navigate('/login')
+        })
+        .catch((e) => {console.log(e)});
     }
 
     return (

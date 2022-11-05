@@ -28,13 +28,11 @@ function ExerciseAdd(props) {
     const handleSubmit = () => {
         if (exerciseObject.exerciseName !== '') {
             props.createExercise({exerciseObject, userToken})
-                .unwrap()
-                .then((data) => {
-                    navigate('/exercise')
-                })
-                .catch((e) => {
-                console.log(e);
-                });
+            .unwrap()
+            .then((data) => {
+                navigate('/exercise')
+            })
+            .catch((e) => {console.log(e)});
         }
     }
 

@@ -34,24 +34,20 @@ function AddFoodModal(props) {
 
     const handleGetTodayRequest = () => {        
         props.getFoodToday({date: formattedDate, token: userToken})
-          .unwrap()
-          .then((data) => {})
-          .catch((e) => {
-            console.log(e);
-          });
+        .unwrap()
+        .then((data) => {})
+        .catch((e) => {console.log(e)});
     }
 
     const handleAddSubmit = () => {
         if (foodObject.name !== '') {
             props.createFood({foodObject, userToken})
-                .unwrap()
-                .then((data) => {
-                    handleGetTodayRequest()
-                    handleClose()
-                })
-                .catch((e) => {
-                    console.log(e);
-                });
+            .unwrap()
+            .then((data) => {
+                handleGetTodayRequest()
+                handleClose()
+            })
+            .catch((e) => {console.log(e)});
         }
     }
 

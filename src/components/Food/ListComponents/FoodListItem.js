@@ -1,6 +1,6 @@
 import React from "react";
-import DeleteConfirmation from "../Views/DeleteConfirmation";
-import EditFoodModal from "./FormComponents/EditFoodModal";
+import DeleteConfirmation from "../../Views/DeleteConfirmation";
+import EditFoodModal from "../FormComponents/EditFoodModal";
 
 function FoodListItem(props) {
 

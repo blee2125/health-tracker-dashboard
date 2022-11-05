@@ -11,12 +11,8 @@ function Settings(props) {
     const updateSettings = () => {
         props.updateSettings({settings, userToken})
         .unwrap()
-        .then((data) => {
-            
-        })
-        .catch((e) => {
-            console.log(e);
-        });
+        .then((data) => {})
+        .catch((e) => {console.log(e)});
     }
 
     useEffect(() => {

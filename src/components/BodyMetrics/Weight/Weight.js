@@ -18,24 +18,18 @@ function Weight(props) {
 
   const getCurrent = () => {
     props.getCurrentWeight(userToken)
-      .unwrap()
-        .then((data) => {
-          setBmi(calcBMI)
-        })
-        .catch((e) => {
-          console.log(e);
-        });
+    .unwrap()
+    .then((data) => {
+      setBmi(calcBMI)
+    })
+    .catch((e) => {console.log(e)});
   }
 
   const addHeight = () => {
     props.addHeight({data: {height: height}, userToken})
-        .unwrap()
-        .then((data) => {
-            
-        })
-        .catch((e) => {
-            console.log(e);
-        });
+    .unwrap()
+    .then((data) => {})
+    .catch((e) => {console.log(e)});
   }
 
   useEffect(() => {
