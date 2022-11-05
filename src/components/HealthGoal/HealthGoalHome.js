@@ -5,7 +5,7 @@ import { getAllHealthGoal, deleteHealthGoal } from "../../reducers/healthGoalSli
 import HealthGoalAddModal from './FormComponents/HealthGoalAddModal'
 import ListCompletedFilter from "./ListComponents/ListCompletedFilter";
 
-function HealthGoal(props) {
+function HealthGoalHome(props) {
     const userToken = useSelector((state) => state.userState.user.token)
     const healthGoalArray = useSelector((state) => state.healthGoalState.healthGoalArray)
     const [goalCompletedFilter, setGoalCompletedFilter] = useState('In Progress')
@@ -40,13 +40,12 @@ function HealthGoal(props) {
     useEffect(() => {
         props.getAllHealthGoal(userToken)
         // eslint-disable-next-line
-      }, [])
+    }, [])
 
     return (
         <div>
             
-            <h1>Goals</h1>
-            <HealthGoalList 
+            <HealthGoalList
                 list={filterCompleted()}
                 listFilter={<ListCompletedFilter goalCompletedFilter={goalCompletedFilter} setGoalCompletedFilter={setGoalCompletedFilter} />}
                 handleDelete={handleDeleteHealthGoal}
@@ -56,4 +55,4 @@ function HealthGoal(props) {
     )
 }
 
-export default connect(null, { getAllHealthGoal, deleteHealthGoal })(HealthGoal)
+export default connect(null, { getAllHealthGoal, deleteHealthGoal })(HealthGoalHome)

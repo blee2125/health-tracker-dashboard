@@ -6,6 +6,7 @@ import FoodHome from '../Food/FoodHome'
 import Water from '../Water/Water'
 import DateFunctions from '../../functions/DateFunctions'
 import { Container, Col, Row } from 'react-bootstrap'
+import HealthGoalHome from '../HealthGoal/HealthGoalHome'
 
 const HomePage = (props) => {
     const userData = useSelector((state) => state.userState.user)
@@ -22,8 +23,11 @@ const HomePage = (props) => {
                 <Col lg='auto'><Water /></Col>
                 <Col lg='auto'><Weight /></Col>
             </Row>
-            <Row><ExerciseHome />
-            <FoodHome /></Row>
+            <Row>
+                <ExerciseHome />
+                <FoodHome />
+                <HealthGoalHome />
+            </Row>
         </Container>
     )
 }
