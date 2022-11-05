@@ -13,11 +13,12 @@ function HealthGoalList(props) {
         <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
             <h2>{props.listTitle ? props.listTitle : "Goal List"}</h2>
             {props.addModal ? props.addModal : ''}
+            {props.listFilter ? props.listFilter : ''}
             <Table>
                 <thead>
                     <tr>
-                        <td><b>Goal</b></td>
                         <td><b>Category</b></td>
+                        <td><b>Goal</b></td>
                         <td><b>Completed</b></td>
                         <td></td>
                     </tr>
