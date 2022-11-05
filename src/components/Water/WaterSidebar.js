@@ -14,37 +14,25 @@ const WaterSidebar = (props) => {
         if (id === null || undefined) {
           handlePostRequest()
         } else {
-        props.updateWater({id: id, data: {glasses: glasses+1}, token: userToken})
+          props.updateWater({id: id, data: {glasses: glasses+1}, token: userToken})
           .unwrap()
-          .then((data) => {
-            
-          })
-          .catch((e) => {
-            console.log(e);
-          });
+          .then((data) => {})
+          .catch((e) => {console.log(e)});
         }
     };
 
     const handleSubtractGlasses = () => {
         props.updateWater({id: id, data: {glasses: glasses-1}, token: userToken})
-          .unwrap()
-          .then((data) => {
-            
-          })
-          .catch((e) => {
-            console.log(e);
-          });
+        .unwrap()
+        .then((data) => {})
+        .catch((e) => {console.log(e)});
     };
     
     const handlePostRequest = () => {
         props.createWater({data: {glasses: glasses + 1, date: dateStringSplit}, token: userToken})
-          .unwrap()
-          .then((data) => {
-            
-          })
-          .catch((e) => {
-            console.log(e);
-          });
+        .unwrap()
+        .then((data) => {})
+        .catch((e) => {console.log(e)});
     }
 
     return (

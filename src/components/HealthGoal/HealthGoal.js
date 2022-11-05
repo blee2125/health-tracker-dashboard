@@ -14,9 +14,7 @@ function HealthGoal(props) {
         props.deleteHealthGoal({id: id, userToken: userToken})
             .unwrap()
             .then((data) => {})
-            .catch((e) => {
-                console.log(e);
-            });
+            .catch((e) => {console.log(e)});
     }
 
     function filterCompleted() {

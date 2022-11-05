@@ -20,13 +20,11 @@ function ExerciseEditModal(props) {
     const handleSubmit = () => {
         if (exerciseObject.exerciseName !== '') {
             props.updateExercise({id: props.exerciseData._id, data: exerciseObject, userToken: userToken})
-                .unwrap()
-                .then((data) => {
-                    handleClose()
-                })
-                .catch((e) => {
-                    console.log(e);
-                });
+            .unwrap()
+            .then((data) => {
+                handleClose()
+            })
+            .catch((e) => {console.log(e)});
         }
     }
 

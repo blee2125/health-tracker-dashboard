@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import ExerciseList from "./ExerciseList";
+import ExerciseList from "./ListComponents/ExerciseList";
 import { getAllExercises, deleteExercise, updateExercise } from "../../reducers/exerciseSlice";
 
 function Exercise(props) {
@@ -10,13 +10,9 @@ function Exercise(props) {
 
     const handleDeleteExercise = (id) => {
         props.deleteExercise({id: id, userToken: userToken})
-            .unwrap()
-            .then((data) => {
-                //console.log(data);
-            })
-            .catch((e) => {
-                console.log(e);
-            });
+        .unwrap()
+        .then((data) => {})
+        .catch((e) => {console.log(e)});
     }
 
     const selectEditExercise = (id) => {
@@ -28,7 +24,7 @@ function Exercise(props) {
     useEffect(() => {
         props.getAllExercises(userToken)
         // eslint-disable-next-line
-      }, [])
+    }, [])
 
     return (
         <div>

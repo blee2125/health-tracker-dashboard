@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getFoodToday, deleteFood, updateSearchDate } from "../../reducers/foodSlice";
-import FoodList from "./FoodList";
+import FoodList from "./ListComponents/FoodList";
 import DateFunctions from '../../functions/DateFunctions';
 import AddFoodModal from './FormComponents/AddFoodModal'
 import FoodMacrosPieChart from "./GraphComponents/FoodMacrosPieChart";

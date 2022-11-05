@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect, useSelector, useDispatch } from "react-redux";
 import { Form, Card } from "react-bootstrap";
 import { getExerciseByDate, deleteExercise, updateSearchDate } from "../../reducers/exerciseSlice";
-import ExerciseList from "./ExerciseList";
+import ExerciseList from "./ListComponents/ExerciseList";
 
 const ExerciseByDate = (props) => {
     let dispatch = useDispatch();
@@ -18,24 +18,18 @@ const ExerciseByDate = (props) => {
         const dateStringSplit = searchDate.split('-')
         const formattedDate = (`${monthArray[dateStringSplit[1] - 1]} ${dateStringSplit[2]} ${dateStringSplit[0]}`)
         props.getExerciseByDate({date: formattedDate, token: userToken})
-          .unwrap()
-          .then((data) => {
-            //console.log(data)
-          })
-          .catch((e) => {
-            console.log(e);
-          });
+        .unwrap()
+        .then((data) => {})
+        .catch((e) => {console.log(e)});
     }
 
     const handleDeleteExercise = (id) => {
         props.deleteExercise({id: id, userToken: userToken})
-            .unwrap()
-            .then((data) => {
-                handleGetTodayRequest()
-            })
-            .catch((e) => {
-                console.log(e);
-            });
+        .unwrap()
+        .then((data) => {
+            handleGetTodayRequest()
+        })
+        .catch((e) => {console.log(e)});
     }
     
     const changeDate = (e) => {

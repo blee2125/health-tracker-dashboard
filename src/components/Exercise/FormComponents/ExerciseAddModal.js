@@ -28,15 +28,13 @@ function ExerciseAddModal(props) {
     const handleSubmit = () => {
         if (exerciseObject.exerciseName !== '') {
             props.createExercise({exerciseObject, userToken})
-                .unwrap()
-                .then((data) => {
-                    handleClose()
-                    props.getAllExercises(userToken)
-                    props.getExerciseToday({date: formattedDate, token: userToken})
-                })
-                .catch((e) => {
-                    console.log(e);
-                });
+            .unwrap()
+            .then((data) => {
+                handleClose()
+                props.getAllExercises(userToken)
+                props.getExerciseToday({date: formattedDate, token: userToken})
+            })
+            .catch((e) => {console.log(e)});
         }
     }
 

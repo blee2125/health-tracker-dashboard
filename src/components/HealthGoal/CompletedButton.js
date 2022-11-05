@@ -12,9 +12,7 @@ function CompletedButton(props) {
             .then((data) => {
                 props.getAllHealthGoal(userToken)
             })
-            .catch((e) => {
-                console.log(e);
-            });
+            .catch((e) => {console.log(e)});
     }
 
 

@@ -21,18 +21,16 @@ function Login(props) {
     const handleSubmit = async e => {
         e.preventDefault();
         props.loginUser({username, password})
-            .unwrap()
-            .then((data) => {
-                props.getSettings(data.token)
-                props.getExerciseToday({date: dateStringSplit, token: data.token})
-                props.getWaterByDate({date: {'time': dateStringSplit}, token: data.token})
-                props.getFoodToday({date: dateStringSplit, token: data.token})
-                props.getCurrentWeight(data.token)
-                navigate('/')
-            })
-            .catch((e) => {
-                console.log(e);
-            });
+        .unwrap()
+        .then((data) => {
+            props.getSettings(data.token)
+            props.getExerciseToday({date: dateStringSplit, token: data.token})
+            props.getWaterByDate({date: {'time': dateStringSplit}, token: data.token})
+            props.getFoodToday({date: dateStringSplit, token: data.token})
+            props.getCurrentWeight(data.token)
+            navigate('/')
+        })
+        .catch((e) => {console.log(e)});
     }
 
     return (

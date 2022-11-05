@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect, useSelector, useDispatch } from "react-redux";
 import { Form, Card } from "react-bootstrap";
 import { getFoodByDate, deleteFood, updateSearchDate } from "../../reducers/foodSlice";
-import FoodList from "./FoodList";
+import FoodList from "./ListComponents/FoodList";
 import DateFunctions from "../../functions/DateFunctions";
 
 const FoodByDate = (props) => {

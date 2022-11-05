@@ -1,6 +1,6 @@
 import React from "react";
-import DeleteConfirmation from "../Views/DeleteConfirmation";
-import ExerciseEditModal from './FormComponents/ExerciseEditModal'
+import DeleteConfirmation from "../../Views/DeleteConfirmation";
+import ExerciseEditModal from '../FormComponents/ExerciseEditModal'
 
 function ExerciseListItem(props) {
 

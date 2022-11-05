@@ -19,14 +19,12 @@ function HealthGoalAddModal(props) {
     const handleSubmit = () => {
         if (healthGoalObject.goal !== '') {
             props.createHealthGoal({healthGoalObject, userToken})
-                .unwrap()
-                .then((data) => {
-                    handleClose()
-                    props.getAllHealthGoal(userToken)
-                })
-                .catch((e) => {
-                    console.log(e);
-                });
+            .unwrap()
+            .then((data) => {
+                handleClose()
+                props.getAllHealthGoal(userToken)
+            })
+            .catch((e) => {console.log(e)});
         }
     }
 

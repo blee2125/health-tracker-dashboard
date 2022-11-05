@@ -23,14 +23,12 @@ function FoodEditModal(props) {
     const handleSubmit = () => {
         if (foodObject.name !== '') {
             props.updateFood({id: props.foodObject._id, data: foodObject, userToken: userToken})
-                .unwrap()
-                .then((data) => {
-                    console.log(data)
-                    handleClose()
-                })
-                .catch((e) => {
-                    console.log(e);
-                });
+            .unwrap()
+            .then((data) => {
+                console.log(data)
+                handleClose()
+            })
+            .catch((e) => {console.log(e)});
         }
     }
 

@@ -30,13 +30,11 @@ function ExerciseEdit(props) {
     const handleEditExercise = () => {
         if (exerciseObject.exerciseName !== '') {
             props.updateExercise({id: params.id, data: {exerciseObject}, userToken: userToken})
-                .unwrap()
-                .then((data) => {
-                    navigate('/exercise')
-                })
-                .catch((e) => {
-                console.log(e);
-                });
+            .unwrap()
+            .then((data) => {
+                navigate('/exercise')
+            })
+            .catch((e) => {console.log(e)});
         }
     }
 

@@ -33,13 +33,11 @@ function FoodEdit(props) {
     const handleEditFood = () => {
         if (foodObject.name !== '') {
             props.updateFood({id: params.id, data: {foodObject}, userToken: userToken})
-                .unwrap()
-                .then((data) => {
-                    navigate('/food')
-                })
-                .catch((e) => {
-                console.log(e);
-                });
+            .unwrap()
+            .then((data) => {
+                navigate('/food')
+            })
+            .catch((e) => {console.log(e)});
         }
     }
 

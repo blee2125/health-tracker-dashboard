@@ -13,13 +13,9 @@ export const WeightForm = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         props.createWeight({data: {weight: weight, time: time}, token: userToken})
-            .unwrap()
-            .then((data) => {
-                console.log(data)
-            })
-            .catch((e) => {
-                console.log(e);
-            });
+        .unwrap()
+        .then((data) => {})
+        .catch((e) => {console.log(e)});
     }
 
     const changeWeight = (e) => {
