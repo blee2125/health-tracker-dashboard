@@ -50,7 +50,7 @@ export const getHealthGoalByDate = createAsyncThunk(
 export const deleteAllHealthGoal = createAsyncThunk(
   "healthgoal/deleteall",
     async (data) => {
-      const res = await HealthGoalService.deleteAllHealthGoal(createHead(data));
+      const res = await HealthGoalService.deleteAllHealthGoals(createHead(data));
       return res.data;
     }
 );
