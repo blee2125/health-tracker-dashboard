@@ -7,8 +7,8 @@ function HealthGoalListItem(props) {
 
     return (
         <tr>
-            <td>{props.healthGoal.goal}</td>
             <td>{props.healthGoal.category}</td>
+            <td>{props.healthGoal.goal}</td>
             <td>{props.healthGoal.completed ? 'yes' : 'no'}</td>
             <td>
                 {props.healthGoal.completed ? '' : <CompletedButton id={props.healthGoal._id}/>}
