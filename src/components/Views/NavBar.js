@@ -7,6 +7,7 @@ import { waterReset } from '../../reducers/waterSlice';
 import { foodLogout } from '../../reducers/foodSlice';
 import { exerciseLogout } from '../../reducers/exerciseSlice';
 import { settingsLogout } from '../../reducers/settingsSlice';
+import { healthGoalLogout } from '../../reducers/healthGoalSlice';
 
 const NavBar = (props) => {
     const userData = useSelector((state) => state.userState)
@@ -20,6 +21,7 @@ const NavBar = (props) => {
         dispatch(exerciseLogout())
         dispatch(userLogout())
         dispatch(settingsLogout())
+        dispatch(healthGoalLogout())
         navigate('/login')
     }
 
