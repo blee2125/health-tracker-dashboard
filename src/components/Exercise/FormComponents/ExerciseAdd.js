@@ -1,15 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect, useSelector } from "react-redux";
-import {useLocation, useParams, useNavigate} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import {Card, Button} from 'react-bootstrap';
 import ExerciseForm from "./ExerciseForm";
-import { updateExercise } from "../../reducers/exerciseSlice";
+import { createExercise } from "../../../reducers/exerciseSlice";
 
-function ExerciseEdit(props) {
-    const location = useLocation();
-    const params = useParams()
-    const navigate = useNavigate();
-
+function ExerciseAdd(props) {
     const [exerciseObject, setExerciseObject] = useState({
         exerciseName: "",
         duration: '',
@@ -17,6 +13,8 @@ function ExerciseEdit(props) {
         typeOfExercise: ''
     })
     const userToken = useSelector((state) => state.userState.user.token)
+
+    const navigate = useNavigate();
 
     const updateData = (target, value) => {
         let updatedValue = {};
@@ -27,9 +25,9 @@ function ExerciseEdit(props) {
         }));        
     };
 
-    const handleEditExercise = () => {
+    const handleSubmit = () => {
         if (exerciseObject.exerciseName !== '') {
-            props.updateExercise({id: params.id, data: {exerciseObject}, userToken: userToken})
+            props.createExercise({exerciseObject, userToken})
                 .unwrap()
                 .then((data) => {
                     navigate('/exercise')
@@ -40,25 +38,15 @@ function ExerciseEdit(props) {
         }
     }
 
-    const importData =  {
-        ...exerciseObject,
-        ...(location.state.objectToEdit)
-    };
-
-    useEffect(() => {
-        setExerciseObject(importData)
-        // eslint-disable-next-line
-    }, [])
-
     return (
         <div>
+            <h1>Add Exercise</h1>
             <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
-                <h2>Exercise Edit</h2>
                 <ExerciseForm  exerciseObject={exerciseObject} updateData={updateData} />
-                <Button onClick={handleEditExercise}>Submit</Button>
             </Card>
+            <Button onClick={handleSubmit}>Submit</Button>
         </div>
     )
 }
 
-export default connect(null, { updateExercise })(ExerciseEdit)
+export default connect(null, { createExercise })(ExerciseAdd)

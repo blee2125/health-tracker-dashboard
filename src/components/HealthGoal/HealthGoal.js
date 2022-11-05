@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect, useSelector } from "react-redux";
 import HealthGoalList from "./HealthGoalList";
 import { getAllHealthGoal, deleteHealthGoal } from "../../reducers/healthGoalSlice";
-import HealthGoalAddModal from './HealthGoalAddModal'
+import HealthGoalAddModal from './FormComponents/HealthGoalAddModal'
 
 function HealthGoal(props) {
     const userToken = useSelector((state) => state.userState.user.token)

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect, useSelector } from "react-redux";
-import { updateFood } from "../../reducers/foodSlice";
+import { updateFood } from "../../../reducers/foodSlice";
 import {useLocation, useParams, useNavigate } from 'react-router-dom';
 import {Card, Button} from 'react-bootstrap';
 import FoodForm from "./FoodForm";
