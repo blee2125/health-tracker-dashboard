@@ -31,7 +31,7 @@ function SuccessNotification(props) {
     return (
         <>
         <Alert show={show} variant={notification.type} onClick={() => {setShow(false)}}>
-            {notification.message ? notification.message : ""}
+            <b>{notification.message ? notification.message : ""}</b>
         </Alert>
         </>
     );
