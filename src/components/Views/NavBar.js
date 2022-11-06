@@ -54,6 +54,7 @@ const NavBar = (props) => {
                         {authCheckFalse(<Button onClick={() => navigate('/login')}>Sign In</Button>)}
                         {authCheckFalse(<Button onClick={() => navigate('/register')}>Register</Button>)}
                         {authCheckTrue(<Button onClick={handleLogout}>Logout</Button>)}
+                        {authCheckTrue(<Button variant='dark' onClick={() => navigate('/userinfo/settings')}>⛭</Button>)}
                     </Navbar.Text>
                 </Navbar.Collapse>
             </Container>
