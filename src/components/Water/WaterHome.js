@@ -4,6 +4,7 @@ import { getWaterByDate, getSevenDays } from "../../reducers/waterSlice";
 import WaterBarGraph from "./WaterBarGraph";
 import DateFunctions from "../../functions/DateFunctions";
 import Water from "./Water";
+import { Row } from "react-bootstrap";
 
 function WaterHome(props) {
   const glasses = useSelector((state) => state.waterState.glasses)
@@ -32,10 +33,10 @@ function WaterHome(props) {
   }, [glasses])
 
   return (
-    <>
+    <Row>
       <Water />
       <WaterBarGraph sevenDaysData={sevenDays} />
-    </>
+    </Row>
   )
 }
 
