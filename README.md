@@ -44,13 +44,19 @@ Backend built using Express.js and MongoDB - [Github Link](https://github.com/bl
 
 ![bmigraph](https://github.com/blee2125/health-tracker-dashboard/blob/main/public/images/bmigraph.png)
 
+* Health Goals
+    - Add by category (Exercise, Food, Water, Weight, General)
+    - Sort by completion
+
+* Notifications
+    - Displays notifications when data is added or deleted
+
 
 ## Future improvements
 
 * Body Stats - Heart Rate, Blood Pressure
 * Daily Supplements - Vitamins and Minerals
-* Health Goals
-* Notes on Health
+* Daily Health Journal
 * Sleep Tracking
 * Medications
 * And More...
