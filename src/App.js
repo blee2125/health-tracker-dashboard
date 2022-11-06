@@ -12,6 +12,7 @@ import Settings from './components/User/Settings/Settings';
 import DeleteData from './components/User/Settings/DeleteData';
 import SideBar from './components/Views/SideBar';
 import DangerNotification from './components/Views/Notifications/DangerAlert';
+import SuccessNotification from './components/Views/Notifications/SuccessAlert';
 import HomePage from './components/Views/Home';
 import AccessDeniedPage from './components/Views/AccessDeniedPage';
 import Food from './components/Food/Food';
@@ -54,7 +55,8 @@ function App(props) {
         <div>
           <SideBar />
           <div className='main'>
-            <DangerNotification dangerNotification={dangerNotification} showDangerNotification={showDangerNotification} setShowDangerNotification={setShowDangerNotification}/>
+          <DangerNotification dangerNotification={dangerNotification} showDangerNotification={showDangerNotification} setShowDangerNotification={setShowDangerNotification}/>
+          <SuccessNotification />
             <Routes>
               <Route path="/" element={isAuth(<HomePage />)} />
               <Route path="/water" element={isAuth(<WaterHome />)} />
