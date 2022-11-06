@@ -5,6 +5,7 @@ import { Offcanvas, NavLink } from 'react-bootstrap';
 import AddWeight from '../BodyMetrics/Weight/AddWeight';
 import WaterSidebar from '../Water/WaterSidebar';
 import ExerciseAddModal from '../Exercise/FormComponents/ExerciseAddModal';
+import AddFoodModal from '../Food/FormComponents/AddFoodModal';
 
 const SideBar = (props) => {
     const isAuthenticated = useSelector((state) => state.userState.isAuthenticated)
@@ -37,9 +38,7 @@ const SideBar = (props) => {
                     <NavLink as={Link}  to="/food" className='sidebar-link'>
                         Food
                     </NavLink>
-                        <NavLink as={Link}  to="/food/add" className='sidebar-sub-link'>
-                            Add Food
-                        </NavLink>
+                        <AddFoodModal onSidebar={true}/>
                         <NavLink as={Link}  to="/food/byDate" className='sidebar-sub-link'>
                             View By Date
                         </NavLink>
