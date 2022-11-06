@@ -3,7 +3,7 @@ import { connect, useSelector, useDispatch } from "react-redux";
 import { Button, Modal, NavLink } from 'react-bootstrap';
 import { updateFood } from "../../../reducers/foodSlice";
 import FoodForm from "./FoodForm";
-import {success} from '../../../reducers/notificationSlice'
+import {notify} from '../../../reducers/notificationSlice'
 
 function FoodEditModal(props) {
     const [show, setShow] = useState(false);
@@ -27,7 +27,7 @@ function FoodEditModal(props) {
             props.updateFood({id: props.foodObject._id, data: foodObject, userToken: userToken})
             .unwrap()
             .then((data) => {
-                dispatch(success({message: 'Food Updated',type: 'success'}))
+                dispatch(notify({message: 'Food Updated',type: 'success'}))
                 handleClose()
             })
             .catch((e) => {console.log(e)});
@@ -80,4 +80,4 @@ function FoodEditModal(props) {
     );
 }
 
-export default connect(null, { success, updateFood }) (FoodEditModal)
+export default connect(null, { notify, updateFood }) (FoodEditModal)

@@ -4,7 +4,7 @@ import { Button, Modal, NavLink } from 'react-bootstrap';
 import { createFood, getFoodToday } from "../../../reducers/foodSlice";
 import FoodForm from "./FoodForm";
 import DateFunctions from '../../../functions/DateFunctions';
-import {success} from '../../../reducers/notificationSlice'
+import {notify} from '../../../reducers/notificationSlice'
 import FoodSearchModal from "../FoodSearchModal";
 
 function AddFoodModal(props) {    
@@ -63,7 +63,7 @@ function AddFoodModal(props) {
             .unwrap()
             .then((data) => {
                 handleGetTodayRequest()
-                dispatch(success({message: 'Food Added',type: 'success'}))
+                dispatch(notify({message: 'Food Added',type: 'success'}))
                 handleClose()
             })
             .catch((e) => {console.log(e)});
@@ -108,4 +108,4 @@ function AddFoodModal(props) {
     );
 }
 
-export default connect(null, { success, createFood, getFoodToday }) (AddFoodModal)
+export default connect(null, { notify, createFood, getFoodToday }) (AddFoodModal)

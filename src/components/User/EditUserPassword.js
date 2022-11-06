@@ -1,14 +1,16 @@
 import React, {useState} from "react";
-import { connect, useSelector } from "react-redux";
+import { connect, useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import { editPassword } from "../../reducers/userSlice";
+import { notify } from "../../reducers/notificationSlice";
 
 function EditUserPassword(props) {
     const [currentPassword, setCurrentPassword] = useState();
     const [newPassword, setNewPassword] = useState();
     const userToken = useSelector((state) => state.userState.user.token)
 
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleSubmitRegister = async e => {
@@ -17,6 +19,7 @@ function EditUserPassword(props) {
         .unwrap()
         .then((data) => {
             navigate('/userinfo')
+            dispatch(notify({message: 'Password Updated',type: 'success'}))
         })
         .catch((e) => {console.log(e)});
     }
@@ -48,4 +51,4 @@ function EditUserPassword(props) {
     )
 }
 
-export default connect(null, {editPassword}) (EditUserPassword)
+export default connect(null, { notify, editPassword}) (EditUserPassword)

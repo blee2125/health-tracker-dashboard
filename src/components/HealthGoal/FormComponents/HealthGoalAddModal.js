@@ -3,7 +3,7 @@ import { connect, useSelector, useDispatch } from "react-redux";
 import { Button, Modal, NavLink } from 'react-bootstrap';
 import HealthGoalForm from "./HealthGoalForm";
 import { createHealthGoal, getAllHealthGoal } from "../../../reducers/healthGoalSlice";
-import {success} from '../../../reducers/notificationSlice'
+import {notify} from '../../../reducers/notificationSlice'
 
 function HealthGoalAddModal(props) {
     const [healthGoalObject, setHealthGoalObject] = useState({
@@ -24,7 +24,7 @@ function HealthGoalAddModal(props) {
             .unwrap()
             .then((data) => {
                 handleClose()
-                dispatch(success({message: 'Goal Added',type: 'success'}))
+                dispatch(notify({message: 'Goal Added',type: 'success'}))
                 props.getAllHealthGoal(userToken)
             })
             .catch((e) => {console.log(e)});
@@ -67,4 +67,4 @@ function HealthGoalAddModal(props) {
     );
 }
 
-export default connect(null, { success, createHealthGoal, getAllHealthGoal }) (HealthGoalAddModal)
+export default connect(null, { notify, createHealthGoal, getAllHealthGoal }) (HealthGoalAddModal)
