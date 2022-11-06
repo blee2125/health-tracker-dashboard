@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { connect, useSelector } from "react-redux";
+import { connect, useSelector, useDispatch } from "react-redux";
 import { Button, Modal, NavLink } from 'react-bootstrap';
 import { updateExercise } from "../../../reducers/exerciseSlice";
 import ExerciseForm from "./ExerciseForm";
+import {success} from '../../../reducers/notificationSlice'
 
 function ExerciseEditModal(props) {
     const [show, setShow] = useState(false);
@@ -16,6 +17,7 @@ function ExerciseEditModal(props) {
         typeOfExercise: ''
     })
     const userToken = useSelector((state) => state.userState.user.token)
+    const dispatch = useDispatch();
 
     const handleSubmit = () => {
         if (exerciseObject.exerciseName !== '') {
@@ -23,6 +25,7 @@ function ExerciseEditModal(props) {
             .unwrap()
             .then((data) => {
                 handleClose()
+                dispatch(success({message: 'Exercise Updated',type: 'success'}))
             })
             .catch((e) => {console.log(e)});
         }
@@ -74,4 +77,4 @@ function ExerciseEditModal(props) {
     );
 }
 
-export default connect(null, { updateExercise }) (ExerciseEditModal)
+export default connect(null, { success, updateExercise }) (ExerciseEditModal)

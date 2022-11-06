@@ -6,10 +6,12 @@ import userReducer from './reducers/userSlice'
 import weightReducer from './reducers/weightSlice'
 import settingsReducer from './reducers/settingsSlice'
 import healthGoalReducer from './reducers/healthGoalSlice'
+import notificationReducer from './reducers/notificationSlice'
 
 export default configureStore({
   reducer: {
     userState: userReducer,
+    notificationState: notificationReducer,
     settingsState: settingsReducer,
     waterState: waterReducer,
     exerciseState: exerciseReducer,

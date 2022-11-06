@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { connect, useSelector } from "react-redux";
+import { connect, useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {Card, Button} from 'react-bootstrap';
 import ExerciseForm from "./ExerciseForm";
 import { createExercise } from "../../../reducers/exerciseSlice";
+import {success} from '../../../reducers/notificationSlice'
 
 function ExerciseAdd(props) {
     const [exerciseObject, setExerciseObject] = useState({
@@ -13,6 +14,7 @@ function ExerciseAdd(props) {
         typeOfExercise: ''
     })
     const userToken = useSelector((state) => state.userState.user.token)
+    const dispatch = useDispatch();
 
     const navigate = useNavigate();
 
@@ -30,6 +32,7 @@ function ExerciseAdd(props) {
             props.createExercise({exerciseObject, userToken})
             .unwrap()
             .then((data) => {
+                dispatch(success({message: 'Exercise Added',type: 'success'}))
                 navigate('/exercise')
             })
             .catch((e) => {console.log(e)});
@@ -47,4 +50,4 @@ function ExerciseAdd(props) {
     )
 }
 
-export default connect(null, { createExercise })(ExerciseAdd)
+export default connect(null, { success, createExercise })(ExerciseAdd)

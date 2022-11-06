@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Form, Card } from "react-bootstrap";
 import { connect, useSelector, useDispatch } from "react-redux";
 import { getSettings, updateSettings, deleteSettings, changeCollectExercise, changeCollectFood, changeCollectWater, changeCollectWeight } from "../../../reducers/settingsSlice";
+import {success} from '../../../reducers/notificationSlice'
 
 function Settings(props) {
     const dispatch = useDispatch();
@@ -9,6 +10,7 @@ function Settings(props) {
     const settings = useSelector((state) => state.settingsState);
 
     const updateSettings = () => {
+        
         props.updateSettings({settings, userToken})
         .unwrap()
         .then((data) => {})
@@ -36,7 +38,9 @@ function Settings(props) {
                         type="switch"
                         id="custom-switch"
                         checked={settings.collectFoodData}
-                        onChange={() => dispatch(changeCollectFood())}
+                        onChange={() => 
+                            dispatch(changeCollectFood())
+                        }
                         label="Food"
                     />
                     <Form.Check 
@@ -59,4 +63,4 @@ function Settings(props) {
     )
 }
 
-export default connect(null, { getSettings, updateSettings, deleteSettings }) (Settings)
+export default connect(null, { success, getSettings, updateSettings, deleteSettings }) (Settings)
