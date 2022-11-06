@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { connect, useSelector } from "react-redux";
+import { connect, useSelector, useDispatch } from "react-redux";
 import {Link} from "react-router-dom";
 import { Table, Card } from "react-bootstrap";
 import AddHeight from "./AddHeight";
@@ -7,6 +7,7 @@ import { addHeight, addBirthday, addGender } from "../../reducers/userSlice";
 import AddBirthday from "./AddBirthday";
 import AddGender from "./AddGender";
 import DateFunctions from "../../functions/DateFunctions";
+import { notify } from "../../reducers/notificationSlice";
 
 const UserInfo = (props) => {
     const userToken = useSelector((state) => state.userState.user.token)
@@ -14,25 +15,26 @@ const UserInfo = (props) => {
     const [height, setHeight] = useState()
     const [birthday, setBirthday] = useState()
     const [gender, setGender] = useState()
+    const dispatch = useDispatch();
 
     const addHeight = () => {
         props.addHeight({data: {height: height}, userToken})
         .unwrap()
-        .then((data) => {})
+        .then((data) => {dispatch(notify({message: 'Height Added',type: 'success'}))})
         .catch((e) => {console.log(e)});
     }
 
     const addBirthday = () => {
         props.addBirthday({data: {birthday: birthday}, userToken})
         .unwrap()
-        .then((data) => {})
+        .then((data) => {dispatch(notify({message: 'Birthday Added',type: 'success'}))})
         .catch((e) => {console.log(e)});
     }
 
     const addGender = () => {
         props.addGender({data: {gender: gender}, userToken})
         .unwrap()
-        .then((data) => {})
+        .then((data) => {dispatch(notify({message: 'Gender Added',type: 'success'}))})
         .catch((e) => {console.log(e)});
     }
 
@@ -133,4 +135,4 @@ const UserInfo = (props) => {
     )
 }
 
-export default connect(null, { addHeight, addBirthday, addGender }) (UserInfo)
+export default connect(null, { notify, addHeight, addBirthday, addGender }) (UserInfo)

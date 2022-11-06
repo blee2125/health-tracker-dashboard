@@ -1,8 +1,9 @@
 import React, {useState} from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import { createUser } from "../../reducers/userSlice";
+import { notify } from "../../reducers/notificationSlice";
 
 function Register(props) {
     const [username, setUsername] = useState();
@@ -11,6 +12,7 @@ function Register(props) {
     const [height, setHeight] = useState();
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleSubmitRegister = async e => {
         e.preventDefault();
@@ -18,6 +20,7 @@ function Register(props) {
         .unwrap()
         .then((data) => {
             navigate('/login')
+            dispatch(notify({message: `Account Created - ${username} - Please Sign In`,type: 'success'}))
         })
         .catch((e) => {console.log(e)});
     }
@@ -32,6 +35,7 @@ function Register(props) {
                     <Form.Control 
                         type="text" 
                         placeholder="Username" 
+                        required='true'
                         onChange={e => setUsername(e.target.value)}
                     />
                 </Form.Group>
@@ -47,7 +51,8 @@ function Register(props) {
                     <Form.Label>Email</Form.Label>
                     <Form.Control 
                         type="email" 
-                        placeholder="Email" 
+                        placeholder="Email"
+                        required='true'
                         onChange={e => setEmail(e.target.value)}
                     />
                 </Form.Group>
@@ -55,7 +60,8 @@ function Register(props) {
                     <Form.Label>Password</Form.Label>
                     <Form.Control 
                         type="password" 
-                        placeholder="Password" 
+                        placeholder="Password"
+                        required='true'
                         onChange={e => setPassword(e.target.value)}
                     />
                 </Form.Group>
@@ -65,4 +71,4 @@ function Register(props) {
     )
 }
 
-export default connect(null, { createUser }) (Register)
+export default connect(null, { notify, createUser }) (Register)

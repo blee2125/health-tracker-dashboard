@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import { loginUser } from "../../reducers/userSlice";
@@ -9,12 +9,14 @@ import { getFoodToday } from "../../reducers/foodSlice";
 import { getCurrentWeight } from "../../reducers/weightSlice";
 import { getSettings } from "../../reducers/settingsSlice";
 import DateFunctions from "../../functions/DateFunctions";
+import { notify } from "../../reducers/notificationSlice";
 
 function Login(props) {
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const dateStringSplit = DateFunctions.createDateStringSplit()
 
@@ -29,6 +31,7 @@ function Login(props) {
             props.getFoodToday({date: dateStringSplit, token: data.token})
             props.getCurrentWeight(data.token)
             navigate('/')
+            dispatch(notify({message: `Welcome ${username}`,type: 'primary'}))
         })
         .catch((e) => {console.log(e)});
     }
@@ -60,4 +63,4 @@ function Login(props) {
     )
 }
 
-export default connect(null, { loginUser, getExerciseToday, getWaterByDate, getFoodToday, getCurrentWeight, getSettings }) (Login)
+export default connect(null, { notify, loginUser, getExerciseToday, getWaterByDate, getFoodToday, getCurrentWeight, getSettings }) (Login)

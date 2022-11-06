@@ -3,13 +3,27 @@ import { Alert } from 'react-bootstrap';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import {notificationReset} from '../../../reducers/notificationSlice'
 
-function SuccessNotification(props) {
+function Notification(props) {
     const dispatch = useDispatch();
     const [show, setShow] = useState(false)
     const notification = useSelector((state) => state.notificationState)
 
     function alertCheck() {
         if (notification.type === 'success') {
+            setShow(true)
+        } else if (notification.type === 'primary') {
+            setShow(true)
+        } else if (notification.type === 'danger') {
+            setShow(true)
+        } else if (notification.type === 'secondary') {
+            setShow(true)
+        } else if (notification.type === 'warning') {
+            setShow(true)
+        } else if (notification.type === 'info') {
+            setShow(true)
+        } else if (notification.type === 'light') {
+            setShow(true)
+        } else if (notification.type === 'dark') {
             setShow(true)
         }
     }
@@ -37,4 +51,4 @@ function SuccessNotification(props) {
     );
 }
 
-export default connect(null, {notificationReset}) (SuccessNotification)
+export default connect(null, {notificationReset}) (Notification)

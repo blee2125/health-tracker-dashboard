@@ -12,11 +12,10 @@ import Settings from './components/User/Settings/Settings';
 import DeleteData from './components/User/Settings/DeleteData';
 import SideBar from './components/Views/SideBar';
 import DangerNotification from './components/Views/Notifications/DangerAlert';
-import SuccessNotification from './components/Views/Notifications/SuccessAlert';
+import Notification from './components/Views/Notifications/Notification';
 import HomePage from './components/Views/Home';
 import AccessDeniedPage from './components/Views/AccessDeniedPage';
 import Food from './components/Food/Food';
-import FoodAdd from './components/Food/FormComponents/FoodAdd';
 import FoodByDate from './components/Food/FoodByDate';
 import FoodGraph from './components/Food/FoodGraph';
 import Exercise from './components/Exercise/Exercise';
@@ -56,7 +55,7 @@ function App(props) {
           <SideBar />
           <div className='main'>
           <DangerNotification dangerNotification={dangerNotification} showDangerNotification={showDangerNotification} setShowDangerNotification={setShowDangerNotification}/>
-          <SuccessNotification />
+          <Notification />
             <Routes>
               <Route path="/" element={isAuth(<HomePage />)} />
               <Route path="/water" element={isAuth(<WaterHome />)} />
@@ -64,7 +63,6 @@ function App(props) {
                 <Route path="/exercise/byDate" element={isAuth(<ExerciseByDate />)} />
                 <Route path="/exercise/exerciseGraph" element={isAuth(<ExerciseGraph />)} />
               <Route path="/food" element={isAuth(<Food />)} />
-                <Route path="/food/add" element={isAuth(<FoodAdd />)} />
                 <Route path="/food/byDate" element={isAuth(<FoodByDate />)} />
                 <Route path="/food/foodGraph" element={isAuth(<FoodGraph />)} />
               <Route path='userinfo' element={isAuth(<UserInfo />)} />
