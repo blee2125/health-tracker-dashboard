@@ -14,7 +14,7 @@ function DangerNotification(props) {
   return (
     <>
       <Alert show={props.showDangerNotification} variant="danger" onClick={() => props.setShowDangerNotification(false)}>
-          {props.dangerNotification ? props.dangerNotification : "no message yet"}
+          <b>{props.dangerNotification ? props.dangerNotification : ""}</b>
       </Alert>
     </>
   );
