@@ -10,7 +10,7 @@ export const ExerciseForm = (props) => {
           <Form.Control 
             type="text" 
             placeholder="Name" 
-            defaultValue={props.exerciseObject.exerciseName}
+            value={props.exerciseObject.exerciseName}
             onChange={e => props.updateData('exerciseName', e.target.value)}
           />
         </Form.Group>
@@ -19,7 +19,7 @@ export const ExerciseForm = (props) => {
           <Form.Control 
             type="number" 
             placeholder="Duration" 
-            defaultValue={props.exerciseObject.duration}
+            value={props.exerciseObject.duration}
             onChange={e => props.updateData('duration', e.target.value)}
           />
         </Form.Group>
@@ -28,7 +28,7 @@ export const ExerciseForm = (props) => {
           <Form.Control 
             type="time" 
             placeholder="Time" 
-            defaultValue={props.exerciseObject.timeOfExercise}
+            value={props.exerciseObject.timeOfExercise}
             onChange={e => props.updateData('timeOfExercise', e.target.value)}
           />
         </Form.Group>
