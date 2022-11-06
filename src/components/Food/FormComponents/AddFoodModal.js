@@ -1,16 +1,32 @@
 import React, { useState } from 'react';
 import { connect, useSelector, useDispatch } from "react-redux";
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Modal, NavLink } from 'react-bootstrap';
 import { createFood, getFoodToday } from "../../../reducers/foodSlice";
 import FoodForm from "./FoodForm";
 import DateFunctions from '../../../functions/DateFunctions';
 import {success} from '../../../reducers/notificationSlice'
+import FoodSearchModal from "../FoodSearchModal";
 
 function AddFoodModal(props) {    
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
+    const handleClose = () => {setShow(false); clearForm()}
     const handleShow = () => setShow(true);
     const dispatch = useDispatch();
+
+    const [foodSearchResults, setFoodSearchResults] = useState({})
+    const transferButton = () => {
+        console.log(foodSearchResults)
+        setFoodObject(foodObject => ({
+            ...foodObject,
+            ...{
+                name: foodSearchResults.name,
+                calories: foodSearchResults.calories,
+                carbsg: foodSearchResults.carbohydrates_total_g,
+                fatg: foodSearchResults.fat_total_g,
+                proteing: foodSearchResults.protein_g
+            }
+        }));  
+    }
 
     const [foodObject, setFoodObject] = useState({
         name: '',
@@ -54,15 +70,27 @@ function AddFoodModal(props) {
         }
     }
 
+    const clearForm = () => {
+        setFoodObject({
+            name: '',
+            calories: '',
+            carbsg: '',
+            fatg: '',
+            proteing: '',
+            meal: '',
+            amount: ''
+        })
+    }
+
     return (
         <>
-        <Button onClick={handleShow}>
-            Add Food
-        </Button>
+        {props.onSidebar ?
+        <NavLink onClick={handleShow} className='sidebar-sub-link'>Add Food</NavLink>
+        : <Button onClick={handleShow}>Add Food</Button>}
 
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-            <Modal.Title>Add Food</Modal.Title>
+            <Modal.Title>Add Food - <FoodSearchModal  updateData={setFoodSearchResults} transferButton={transferButton} /> <Button onClick={clearForm}>Clear</Button></Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <FoodForm foodObject={foodObject} updateData={updateData}/>

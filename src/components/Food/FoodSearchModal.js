@@ -35,7 +35,7 @@ function FoodSearchModal(props) {
 
     return (
         <>
-        <Button onClick={handleShow}>
+        <Button variant="success" onClick={handleShow}>
             Food Search
         </Button>
 

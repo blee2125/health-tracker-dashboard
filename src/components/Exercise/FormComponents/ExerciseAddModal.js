@@ -4,6 +4,7 @@ import { Button, Modal, NavLink } from 'react-bootstrap';
 import ExerciseForm from "./ExerciseForm";
 import { createExercise, getAllExercises, getExerciseToday } from "../../../reducers/exerciseSlice";
 import {success} from '../../../reducers/notificationSlice'
+import DateFunctions from '../../../functions/DateFunctions';
 
 function ExerciseAddModal(props) {
     const [exerciseObject, setExerciseObject] = useState({
@@ -15,16 +16,10 @@ function ExerciseAddModal(props) {
     const userToken = useSelector((state) => state.userState.user.token)
     const dispatch = useDispatch();
 
-    const todayDate = new Date()
-    const todayMonth = (todayDate.getMonth()+1).toString().padStart(2, "0")
-    const todayDate2 = `${todayDate.getFullYear()}-${todayMonth}-${todayDate.getDate().toString().padStart(2, "0")}`
-    const monthArray = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
-    const dateStringSplit = todayDate2.split('-')
-    const formattedDate = (`${monthArray[dateStringSplit[1] - 1]} ${dateStringSplit[2]} ${dateStringSplit[0]}`)
+    const formattedDate = DateFunctions.formatDateForSearch()
     
     const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
+    const handleClose = () => {setShow(false); clearForm()}
     const handleShow = () => setShow(true);
 
     const handleSubmit = () => {
@@ -50,6 +45,15 @@ function ExerciseAddModal(props) {
         }));        
     };
 
+    const clearForm = () => {
+        setExerciseObject({
+            exerciseName: "",
+            duration: '',
+            timeOfExercise: '',
+            typeOfExercise: ''
+        })
+    }
+
     return (
         <>
 
@@ -59,7 +63,7 @@ function ExerciseAddModal(props) {
 
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-            <Modal.Title>Add Exercise</Modal.Title>
+            <Modal.Title>Add Exercise - <Button onClick={clearForm}>Clear</Button></Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <ExerciseForm exerciseObject={exerciseObject} updateData={updateData}/>

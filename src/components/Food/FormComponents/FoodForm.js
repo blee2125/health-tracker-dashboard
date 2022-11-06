@@ -11,7 +11,7 @@ export const FoodForm = (props) => {
             <Form.Control 
               type="text" 
               placeholder="Name" 
-              defaultValue={props.foodObject.name}
+              value={props.foodObject.name}
               onChange={e => props.updateData('name', e.target.value)}
             />
           </Col>
@@ -22,7 +22,7 @@ export const FoodForm = (props) => {
             <Form.Control 
               type="text" 
               placeholder="Amount" 
-              defaultValue={props.foodObject.amount}
+              value={props.foodObject.amount}
               onChange={e => props.updateData('amount', e.target.value)}
             />
           </Col>
@@ -33,7 +33,7 @@ export const FoodForm = (props) => {
             <Form.Control 
               type="number" 
               placeholder="Calories" 
-              defaultValue={props.foodObject.calories}
+              value={props.foodObject.calories}
               onChange={e => props.updateData('calories', e.target.value)}
             />
           </Col>
@@ -44,7 +44,7 @@ export const FoodForm = (props) => {
             <Form.Control 
               type="number" 
               placeholder="Carbs (g)" 
-              defaultValue={props.foodObject.carbsg}
+              value={props.foodObject.carbsg}
               onChange={e => props.updateData('carbsg', e.target.value)}
             />
           </Col>
@@ -55,7 +55,7 @@ export const FoodForm = (props) => {
             <Form.Control 
               type="number" 
               placeholder="Fat (g)" 
-              defaultValue={props.foodObject.fatg}
+              value={props.foodObject.fatg}
               onChange={e => props.updateData('fatg', e.target.value)}
             />
           </Col>
@@ -66,7 +66,7 @@ export const FoodForm = (props) => {
             <Form.Control 
               type="number" 
               placeholder="Protein (g)" 
-              defaultValue={props.foodObject.proteing}
+              value={props.foodObject.proteing}
               onChange={e => props.updateData('proteing', e.target.value)}
             />
           </Col>
