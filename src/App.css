@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: grey;
 }
 
 .App-logo {
@@ -87,6 +88,7 @@
 
     .main {
       width: calc(100% - var(--offcanvas-width)) !important;
+      background-color: grey;
     }
 
     .side-bar
@@ -99,7 +101,9 @@
 }
 
 
-
+.offcanvas {
+  border-color: black;
+}
 
 p::first-letter {
     text-transform:capitalize;
