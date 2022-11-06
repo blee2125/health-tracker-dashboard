@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form, Button, Modal, NavLink } from 'react-bootstrap';
 import { createWeight, updateNewTime, updateNewWeight } from "../../../reducers/weightSlice";
 import { connect, useSelector, useDispatch } from "react-redux";
+import {success} from '../../../reducers/notificationSlice'
 
 function AddWeight(props) {
     const dispatch = useDispatch();
@@ -20,6 +21,7 @@ function AddWeight(props) {
         .unwrap()
         .then((data) => {
             handleClose()
+            dispatch(success({message: 'Weight Added',type: 'success'}))
         })
         .catch((e) => {console.log(e)});
     }
@@ -75,4 +77,4 @@ function AddWeight(props) {
     );
 }
 
-export default connect(null, {createWeight, updateNewTime, updateNewWeight}) (AddWeight)
+export default connect(null, { success, createWeight, updateNewTime, updateNewWeight}) (AddWeight)

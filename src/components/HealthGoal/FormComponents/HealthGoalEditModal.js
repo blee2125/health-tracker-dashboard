@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { connect, useSelector } from "react-redux";
+import { connect, useSelector, useDispatch } from "react-redux";
 import { Button, Modal, NavLink } from 'react-bootstrap';
 import HealthGoalForm from "./HealthGoalForm";
 import { updateHealthGoal, getAllHealthGoal } from "../../../reducers/healthGoalSlice";
+import {success} from '../../../reducers/notificationSlice'
 
 function HealthGoalEditModal(props) {
     const [healthGoalObject, setHealthGoalObject] = useState({
@@ -11,6 +12,7 @@ function HealthGoalEditModal(props) {
         timeframe: props.healthGoalObject.timeframe
     })
     const userToken = useSelector((state) => state.userState.user.token)
+    const dispatch = useDispatch();
     
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -22,6 +24,7 @@ function HealthGoalEditModal(props) {
             .unwrap()
             .then((data) => {
                 handleClose()
+                dispatch(success({message: 'Goal Updated',type: 'success'}))
                 props.getAllHealthGoal(userToken)
             })
             .catch((e) => {console.log(e)});
@@ -64,4 +67,4 @@ function HealthGoalEditModal(props) {
     );
 }
 
-export default connect(null, { updateHealthGoal, getAllHealthGoal }) (HealthGoalEditModal)
+export default connect(null, { success, updateHealthGoal, getAllHealthGoal }) (HealthGoalEditModal)

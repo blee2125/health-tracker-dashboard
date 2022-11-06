@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { connect, useSelector } from "react-redux";
+import { connect, useSelector, useDispatch } from "react-redux";
 import { Button, Modal, NavLink } from 'react-bootstrap';
 import ExerciseForm from "./ExerciseForm";
 import { createExercise, getAllExercises, getExerciseToday } from "../../../reducers/exerciseSlice";
+import {success} from '../../../reducers/notificationSlice'
 
 function ExerciseAddModal(props) {
     const [exerciseObject, setExerciseObject] = useState({
@@ -12,6 +13,7 @@ function ExerciseAddModal(props) {
         typeOfExercise: ''
     })
     const userToken = useSelector((state) => state.userState.user.token)
+    const dispatch = useDispatch();
 
     const todayDate = new Date()
     const todayMonth = (todayDate.getMonth()+1).toString().padStart(2, "0")
@@ -31,6 +33,7 @@ function ExerciseAddModal(props) {
             .unwrap()
             .then((data) => {
                 handleClose()
+                dispatch(success({message: 'Exercise Added',type: 'success'}))
                 props.getAllExercises(userToken)
                 props.getExerciseToday({date: formattedDate, token: userToken})
             })
@@ -74,4 +77,4 @@ function ExerciseAddModal(props) {
     );
 }
 
-export default connect(null, { createExercise, getAllExercises, getExerciseToday }) (ExerciseAddModal)
+export default connect(null, { success, createExercise, getAllExercises, getExerciseToday }) (ExerciseAddModal)

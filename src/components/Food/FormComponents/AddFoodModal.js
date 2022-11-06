@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
+import { connect, useSelector, useDispatch } from "react-redux";
 import { Button, Modal } from 'react-bootstrap';
-import { connect, useSelector } from "react-redux";
 import { createFood, getFoodToday } from "../../../reducers/foodSlice";
 import FoodForm from "./FoodForm";
 import DateFunctions from '../../../functions/DateFunctions';
+import {success} from '../../../reducers/notificationSlice'
 
 function AddFoodModal(props) {    
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const dispatch = useDispatch();
 
     const [foodObject, setFoodObject] = useState({
         name: '',
@@ -45,6 +47,7 @@ function AddFoodModal(props) {
             .unwrap()
             .then((data) => {
                 handleGetTodayRequest()
+                dispatch(success({message: 'Food Added',type: 'success'}))
                 handleClose()
             })
             .catch((e) => {console.log(e)});
@@ -77,4 +80,4 @@ function AddFoodModal(props) {
     );
 }
 
-export default connect(null, { createFood, getFoodToday }) (AddFoodModal)
+export default connect(null, { success, createFood, getFoodToday }) (AddFoodModal)
