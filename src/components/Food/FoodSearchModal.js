@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Row, Col, Button, Modal } from 'react-bootstrap';
+import { Form, Row, Col, Button, Modal, Table } from 'react-bootstrap';
 import http from "../../http-common";
 
 function FoodSearchModal(props) {    
@@ -60,7 +60,25 @@ function FoodSearchModal(props) {
                         <Col xs={'auto'}><Button type="submit" >Search</Button></Col>
                     </Row>
                 </Form>
-                <p>Name - {foodSearchResults.name}, Calories - {foodSearchResults.calories}</p>
+                <Table>
+                    <tbody>
+                        <tr>
+                            <td>Name</td><td>{foodSearchResults.name}</td>
+                        </tr>
+                        <tr>
+                            <td>Calories</td><td>{foodSearchResults.calories}</td>
+                        </tr>
+                        <tr>
+                            <td>Carbs</td><td>{foodSearchResults.carbohydrates_total_g}</td>
+                        </tr>
+                        <tr>
+                            <td>Fat</td><td>{foodSearchResults.fat_total_g}</td>
+                        </tr>
+                        <tr>
+                            <td>Protein</td><td>{foodSearchResults.protein_g}</td>
+                        </tr>
+                    </tbody>
+                </Table>
             </Modal.Body>
             <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
