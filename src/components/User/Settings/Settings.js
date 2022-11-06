@@ -10,11 +10,30 @@ function Settings(props) {
     const settings = useSelector((state) => state.settingsState);
 
     const updateSettings = () => {
-        
         props.updateSettings({settings, userToken})
         .unwrap()
         .then((data) => {})
         .catch((e) => {console.log(e)});
+    }
+
+    const exerciseSettingSwitch = () => {
+        dispatch(changeCollectExercise())
+        dispatch(success({message: 'Exercise Settings Updated',type: 'success'}))
+    }
+
+    const foodSettingSwitch = () => {
+        dispatch(changeCollectFood())
+        dispatch(success({message: 'Food Settings Updated',type: 'success'}))
+    }
+
+    const waterSettingSwitch = () => {
+        dispatch(changeCollectWater())
+        dispatch(success({message: 'Water Settings Updated',type: 'success'}))
+    }
+
+    const weightSettingSwitch = () => {
+        dispatch(changeCollectWeight())
+        dispatch(success({message: 'Weight Settings Updated',type: 'success'}))
     }
 
     useEffect(() => {
@@ -31,30 +50,28 @@ function Settings(props) {
                         type="switch"
                         id="custom-switch"
                         checked={settings.collectExerciseData}
-                        onChange={() => dispatch(changeCollectExercise())}
+                        onChange={() => exerciseSettingSwitch()}
                         label="Exercise"
                     />
                     <Form.Check 
                         type="switch"
                         id="custom-switch"
                         checked={settings.collectFoodData}
-                        onChange={() => 
-                            dispatch(changeCollectFood())
-                        }
+                        onChange={() => foodSettingSwitch()}
                         label="Food"
                     />
                     <Form.Check 
                         type="switch"
                         id="custom-switch"
                         checked={settings.collectWaterData}
-                        onChange={() => dispatch(changeCollectWater())}
+                        onChange={() => waterSettingSwitch()}
                         label="Water"
                     />
                     <Form.Check 
                         type="switch"
                         id="custom-switch"
                         checked={settings.collectWeightData}
-                        onChange={() => dispatch(changeCollectWeight())}
+                        onChange={() => weightSettingSwitch()}
                         label="Weight"
                     />
                 </Form>
