@@ -46,8 +46,8 @@ function ExerciseGraph(props) {
 
   return (
     <>
-        <ExerciseGraphSelection graphSelection={graphSelection} setGraphSelection={setGraphSelection}/>
         <Card bg='light' border="secondary" style={{ width: '800px', padding: '25px', margin: "25px"}}>
+            <ExerciseGraphSelection graphSelection={graphSelection} setGraphSelection={setGraphSelection}/>
             <ExerciseBarGraph graphLabel={thirtyDates()} dataArray={matchDataAndDateArrays(exerciseArray)} graphSelection={graphSelection}/>
         </Card>
     </>
