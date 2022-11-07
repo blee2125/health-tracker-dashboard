@@ -134,3 +134,18 @@ p::first-letter {
   margin-top: 4px;
   padding: 8px;
 }
+
+
+.tablescrollable  {
+  position: relative;
+  height: 400px;
+  overflow: auto;
+  display: block;
+}
+.tablescrollable thead {
+  position: sticky; 
+  top: 0; 
+  z-index: 1;
+  background-color: lightgray;
+  opacity: 95%;
+}
