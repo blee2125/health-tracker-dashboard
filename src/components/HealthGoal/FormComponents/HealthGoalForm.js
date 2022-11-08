@@ -1,6 +1,6 @@
 import React from "react";
 import { Form } from "react-bootstrap";
-
+import { useSelector } from "react-redux";
 import ExerciseGoalsForm from "./ExerciseGoalsForm";
 import FoodGoalsForm from './FoodGoalsForm';
 import GeneralGoalsForm from './GeneralGoalsForm';
@@ -8,6 +8,7 @@ import WaterGoalsForm from "./WaterGoalsForm";
 import WeightGoalsForm from "./WeightGoalsForm";
 
 export const HealthGoalForm = (props) => {
+  const waterGoal = useSelector((state) => state.healthGoalState.waterGoal.goal)
 
     return (
       <Form >
@@ -21,7 +22,7 @@ export const HealthGoalForm = (props) => {
             <option value=''></option>
             <option value='Exercise'>Exercise</option>
             <option value='Food'>Food</option>
-            <option value='Water'>Water</option>
+            {waterGoal > 0 ? '' : <option value='Water'>Water</option>}
             <option value='Weight'>Weight</option>
             <option value='General'>General</option>
           </Form.Select>
