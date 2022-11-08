@@ -8,14 +8,13 @@ import {notify} from '../../../reducers/notificationSlice'
 function HealthGoalAddModal(props) {
     const [healthGoalObject, setHealthGoalObject] = useState({
         goal: "",
-        category: '',
-        timeframe: ''
+        category: ''
     })
     const userToken = useSelector((state) => state.userState.user.token)
     const dispatch = useDispatch();
     
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
+    const handleClose = () => {setShow(false); clearForm()}
     const handleShow = () => setShow(true);
 
     const handleSubmit = () => {
@@ -39,6 +38,13 @@ function HealthGoalAddModal(props) {
             ...updatedValue
         }));        
     };
+
+    const clearForm = () => {
+        setHealthGoalObject({
+            goal: "",
+            category: ''
+        })
+    }
 
     return (
         <>
