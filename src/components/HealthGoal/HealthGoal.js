@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect, useSelector } from "react-redux";
-import HealthGoalList from "./HealthGoalList";
+import HealthGoalList from "./ListComponents/HealthGoalList";
 import { getAllHealthGoal, deleteHealthGoal } from "../../reducers/healthGoalSlice";
 import HealthGoalAddModal from './FormComponents/HealthGoalAddModal'
 import ListCompletedFilter from "./ListComponents/ListCompletedFilter";
