@@ -35,7 +35,12 @@ const initialState = {
     collectExerciseData: true,
     collectFoodData: true,
     collectWaterData: true,
-    collectWeightData: true
+    collectWeightData: true,
+    exerciseNotification: true,
+    foodNotification: true,
+    waterNotification: true,
+    weightNotification: true,
+    goalNotification: true
 }
 
 export const settingsSlice = createSlice({
@@ -57,6 +62,10 @@ export const settingsSlice = createSlice({
     changeCollectWeight: (state) => {
       state.collectWeightData = (state.collectWeightData ? false : true)
     },
+    toggleNotification: (state, action) => {
+      const setting = action.payload.setting
+      state[setting] = (state[setting] ? false : true)
+    }
   },
   extraReducers: {
     [getSettings.fulfilled]: (state, action) => {
@@ -77,6 +86,6 @@ export const settingsSlice = createSlice({
   },
 })
 
-export const { settingsLogout, changeCollectExercise, changeCollectFood, changeCollectWater, changeCollectWeight } = settingsSlice.actions
+export const { toggleNotification, settingsLogout, changeCollectExercise, changeCollectFood, changeCollectWater, changeCollectWeight } = settingsSlice.actions
 
 export default settingsSlice.reducer

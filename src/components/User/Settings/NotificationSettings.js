@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import { Form, Card } from "react-bootstrap";
 import { connect, useSelector, useDispatch } from "react-redux";
-import { getSettings, updateSettings, deleteSettings, changeCollectExercise, changeCollectFood, changeCollectWater, changeCollectWeight } from "../../../reducers/settingsSlice";
+import { getSettings, updateSettings, deleteSettings, toggleNotification } from "../../../reducers/settingsSlice";
 import {notify} from '../../../reducers/notificationSlice'
-import NotificationSettings from "./NotificationSettings";
 
-function Settings(props) {
+function NotificationSettings(props) {
     const dispatch = useDispatch();
     const userToken = useSelector((state) => state.userState.user.token);
     const settings = useSelector((state) => state.settingsState);
@@ -18,23 +17,28 @@ function Settings(props) {
     }
 
     const exerciseSettingSwitch = () => {
-        dispatch(changeCollectExercise())
-        dispatch(notify({message: 'Exercise Settings Updated',type: 'success'}))
+        dispatch(toggleNotification({setting: 'exerciseNotification'}))
+        dispatch(notify({message: 'Exercise Notification Updated',type: 'success'}))
     }
 
     const foodSettingSwitch = () => {
-        dispatch(changeCollectFood())
-        dispatch(notify({message: 'Food Settings Updated',type: 'success'}))
+        dispatch(toggleNotification({setting: 'foodNotification'}))
+        dispatch(notify({message: 'Food Notification Updated',type: 'success'}))
     }
 
     const waterSettingSwitch = () => {
-        dispatch(changeCollectWater())
-        dispatch(notify({message: 'Water Settings Updated',type: 'success'}))
+        dispatch(toggleNotification({setting: 'waterNotification'}))
+        dispatch(notify({message: 'Water Notification Updated',type: 'success'}))
     }
 
     const weightSettingSwitch = () => {
-        dispatch(changeCollectWeight())
-        dispatch(notify({message: 'Weight Settings Updated',type: 'success'}))
+        dispatch(toggleNotification({setting: 'weightNotification'}))
+        dispatch(notify({message: 'Weight Notification Updated',type: 'success'}))
+    }
+
+    const goalSettingSwitch = () => {
+        dispatch(toggleNotification({setting: 'goalNotification'}))
+        dispatch(notify({message: 'Goal Notification Updated',type: 'success'}))
     }
 
     useEffect(() => {
@@ -45,41 +49,47 @@ function Settings(props) {
     return (
         <>
             <Card bg='light' border="secondary" style={{ width: '300px', padding: '25px', margin: "25px"}}>
-                <h3>Collect Data</h3>
+                <h3>Notifications</h3>
                 <Form >
                     <Form.Check 
                         type="switch"
                         id="custom-switch"
-                        checked={settings.collectExerciseData}
+                        checked={settings.exerciseNotification}
                         onChange={() => exerciseSettingSwitch()}
                         label="Exercise"
                     />
                     <Form.Check 
                         type="switch"
                         id="custom-switch"
-                        checked={settings.collectFoodData}
+                        checked={settings.foodNotification}
                         onChange={() => foodSettingSwitch()}
                         label="Food"
                     />
                     <Form.Check 
                         type="switch"
                         id="custom-switch"
-                        checked={settings.collectWaterData}
+                        checked={settings.waterNotification}
                         onChange={() => waterSettingSwitch()}
                         label="Water"
                     />
                     <Form.Check 
                         type="switch"
                         id="custom-switch"
-                        checked={settings.collectWeightData}
+                        checked={settings.weightNotification}
                         onChange={() => weightSettingSwitch()}
                         label="Weight"
                     />
+                    <Form.Check 
+                        type="switch"
+                        id="custom-switch"
+                        checked={settings.goalNotification}
+                        onChange={() => goalSettingSwitch()}
+                        label="Goal"
+                    />
                 </Form>
             </Card>
-            <NotificationSettings />
         </>
     )
 }
 
-export default connect(null, { notify, getSettings, updateSettings, deleteSettings }) (Settings)
+export default connect(null, { notify, getSettings, updateSettings, deleteSettings }) (NotificationSettings)

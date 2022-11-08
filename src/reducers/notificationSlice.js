@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   message: '',
-  type: ''
+  type: '',
+  notifyArray: []
 }
 
 export const notificationSlice = createSlice({
@@ -12,9 +13,22 @@ export const notificationSlice = createSlice({
     notificationReset: () => {
       return initialState
     },
+    notificationNext: (state) => {
+      state.notifyArray.shift()
+      if (state.notifyArray.length > 0) {
+        state.message = state.notifyArray[0].message
+        state.type = state.notifyArray[0].type
+      } else {
+        state.message = ''
+        state.type = ''
+      }
+    },
     notify: (state, action) => {
-      state.message = action.payload.message
-      state.type = action.payload.type
+      state.notifyArray.push(action.payload)
+      if (state.notifyArray.length > 0) {
+        state.message = state.notifyArray[0].message
+        state.type = state.notifyArray[0].type
+      }
     },
     success: (state, action) => {
         state.message = action.payload.message
@@ -25,7 +39,6 @@ export const notificationSlice = createSlice({
   },
 })
 
-// Action creators are generated for each case reducer function
-export const { notify, success, notificationReset } = notificationSlice.actions
+export const { notify, success, notificationReset, notificationNext } = notificationSlice.actions
 
 export default notificationSlice.reducer
