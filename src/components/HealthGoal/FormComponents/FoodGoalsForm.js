@@ -5,7 +5,7 @@ export const FoodGoalsForm = (props) => {
 
     return (
         <Form.Group className="mb-3" controlId="formGroupCalories">
-          <Form.Label>Calories per Day</Form.Label>
+          <Form.Label>Max Calories per Day</Form.Label>
           <Form.Control 
             type="number" 
             placeholder="Calories" 
