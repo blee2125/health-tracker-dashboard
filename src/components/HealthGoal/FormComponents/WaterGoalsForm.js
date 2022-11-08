@@ -9,14 +9,14 @@ export const WaterGoalsForm = (props) => {
           <Form.Label>Glasses per Day</Form.Label>
           <Form.Control 
             type="number" 
-            min='0'
+            min='1'
             max='12'
             placeholder="Glasses" 
             defaultValue={props.healthGoalObject.goal}
             onChange={e => props.updateData('goal', e.target.value)}
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formGroupRepeat">
+        {/* <Form.Group className="mb-3" controlId="formGroupRepeat">
         <Form.Label>Repeat Daily</Form.Label>
         <Form.Check
             inline
@@ -34,7 +34,7 @@ export const WaterGoalsForm = (props) => {
             id={`inline-radio-2`}
             onChange={() => props.updateData('repeat', false)}
           />
-      </Form.Group>
+      </Form.Group> */}
       </div>
     );
 }
