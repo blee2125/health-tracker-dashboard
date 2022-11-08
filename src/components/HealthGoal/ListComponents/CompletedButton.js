@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { connect, useSelector } from "react-redux";
-import { updateHealthGoal, getAllHealthGoal } from "../../reducers/healthGoalSlice";
+import { updateHealthGoal, getAllHealthGoal } from "../../../reducers/healthGoalSlice";
 
 function CompletedButton(props) {
     const userToken = useSelector((state) => state.userState.user.token)
