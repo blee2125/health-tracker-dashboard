@@ -146,6 +146,6 @@ p::first-letter {
   position: sticky; 
   top: 0; 
   z-index: 1;
-  background-color: lightgray;
+  background-color: #fff;
   opacity: 95%;
 }
