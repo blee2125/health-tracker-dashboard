@@ -52,7 +52,7 @@ function HealthGoalEditModal(props) {
             <Modal.Title>Edit Goal</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <HealthGoalForm healthGoalObject={healthGoalObject} updateData={updateData}/>
+                <HealthGoalForm healthGoalObject={healthGoalObject} updateData={updateData} editGoal={true}/>
             </Modal.Body>
             <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
