@@ -1,14 +1,16 @@
 import React, {useEffect} from "react";
-import { connect, useSelector } from "react-redux";
+import { connect, useSelector, useDispatch } from "react-redux";
 import {Card, Button, ButtonGroup} from 'react-bootstrap';
-import { createWater, updateWater, getWaterByDate } from "../../reducers/waterSlice";
+import { createWater, updateWater, getWaterByDate, waterReset } from "../../reducers/waterSlice";
 import DateFunctions from "../../functions/DateFunctions";
 
 function Water(props) {
   const glasses = useSelector((state) => state.waterState.glasses)
   const id = useSelector((state) => state.waterState.id)
+  const objDate = useSelector((state) => state.waterState.date)
   const userToken = useSelector((state) => state.userState.user.token)
   const dateStringSplit = DateFunctions.createDateStringSplit()
+  const dispatch = useDispatch()
 
   const handleAddGlasses = () => {
     if (id === null || undefined) {
@@ -42,10 +44,17 @@ function Water(props) {
     .catch((e) => {console.log(e)});
   }
 
+  const matchDates = () => {
+    if (objDate !== dateStringSplit) {
+      dispatch(waterReset)
+    }
+  }
+
   useEffect(() => {
     handleGetTodayRequest()
+    matchDates()
     // eslint-disable-next-line
-  }, [])
+  }, [dateStringSplit])
 
   return (
     <>
@@ -61,4 +70,4 @@ function Water(props) {
   )
 }
 
-export default connect(null, { createWater, updateWater, getWaterByDate })(Water)
+export default connect(null, { createWater, updateWater, getWaterByDate, waterReset })(Water)
