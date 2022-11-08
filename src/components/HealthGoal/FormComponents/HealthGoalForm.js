@@ -1,6 +1,12 @@
 import React from "react";
 import { Form } from "react-bootstrap";
 
+import ExerciseGoalsForm from "./ExerciseGoalsForm";
+import FoodGoalsForm from './FoodGoalsForm';
+import GeneralGoalsForm from './GeneralGoalsForm';
+import WaterGoalsForm from "./WaterGoalsForm";
+import WeightGoalsForm from "./WeightGoalsForm";
+
 export const HealthGoalForm = (props) => {
 
     return (
@@ -20,15 +26,22 @@ export const HealthGoalForm = (props) => {
             <option value='General'>General</option>
           </Form.Select>
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formGroupGoal">
-          <Form.Label>Goal</Form.Label>
-          <Form.Control 
-            type="text" 
-            placeholder="Goal" 
-            defaultValue={props.healthGoalObject.goal}
-            onChange={e => props.updateData('goal', e.target.value)}
-          />
-        </Form.Group>
+
+        {props.healthGoalObject.category === 'Exercise' ?
+        <ExerciseGoalsForm healthGoalObject={props.healthGoalObject} updateData={props.updateData}/> : ''}
+
+        {props.healthGoalObject.category === 'Food' ?
+        <FoodGoalsForm healthGoalObject={props.healthGoalObject} updateData={props.updateData}/> : ''}
+
+        {props.healthGoalObject.category === 'General' ?
+        <GeneralGoalsForm healthGoalObject={props.healthGoalObject} updateData={props.updateData}/> : ''}
+
+        {props.healthGoalObject.category === 'Water' ?
+        <WaterGoalsForm healthGoalObject={props.healthGoalObject} updateData={props.updateData}/> : ''}
+
+        {props.healthGoalObject.category === 'Weight' ?
+        <WeightGoalsForm healthGoalObject={props.healthGoalObject} updateData={props.updateData}/> : ''}
+
       </Form>
     );
 }
