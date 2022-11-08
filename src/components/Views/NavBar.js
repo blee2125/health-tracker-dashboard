@@ -9,6 +9,7 @@ import { exerciseLogout } from '../../reducers/exerciseSlice';
 import { settingsLogout } from '../../reducers/settingsSlice';
 import { healthGoalLogout } from '../../reducers/healthGoalSlice';
 import WaterGoalNotification from './Notifications/WaterGoalNotification';
+import FoodGoalNotification from './Notifications/FoodGoalNotification';
 
 const NavBar = (props) => {
     const userData = useSelector((state) => state.userState)
@@ -62,6 +63,7 @@ const NavBar = (props) => {
             </Container>
         </Navbar>
         <WaterGoalNotification />
+        <FoodGoalNotification />
         </div>
     )
 }
