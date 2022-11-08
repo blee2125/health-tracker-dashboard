@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Alert } from 'react-bootstrap';
 import { connect, useDispatch, useSelector } from 'react-redux';
-import {notificationReset} from '../../../reducers/notificationSlice'
+import {notificationReset, notificationNext} from '../../../reducers/notificationSlice'
 
 function Notification(props) {
     const dispatch = useDispatch();
@@ -29,8 +29,10 @@ function Notification(props) {
     }
 
     function resetAlert() {
-        setShow(false)
-        dispatch(notificationReset())
+        if (notification.success === '') {
+            setShow(false)
+        }
+        dispatch(notificationNext())
     }
 
     useEffect(() => {
@@ -40,15 +42,15 @@ function Notification(props) {
         }, 2000);
         return () => {clearTimeout(timer)};
         // eslint-disable-next-line
-    }, [notification])
+    }, [notification.notifyArray])
 
     return (
         <>
-        <Alert show={show} variant={notification.type} onClick={() => {setShow(false)}}>
+        <Alert show={show} variant={notification.type} onClick={() => {resetAlert()}}>
             <b>{notification.message ? notification.message : ""}</b>
         </Alert>
         </>
     );
 }
 
-export default connect(null, {notificationReset}) (Notification)
+export default connect(null, {notificationReset, notificationNext}) (Notification)
