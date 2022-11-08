@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import {useEffect} from "react";
 import { useSelector, useDispatch, connect } from "react-redux";
 import { notify } from "../../../reducers/notificationSlice";
 
@@ -21,11 +21,6 @@ function WaterGoalNotification() {
         // eslint-disable-next-line
     }, [water])
 
-    return(
-        <div>
-            water goals - {waterGoal.goal}
-        </div>
-    )
 }
 
 export default connect(null, {notify}) (WaterGoalNotification)
