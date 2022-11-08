@@ -10,6 +10,7 @@ import WeightGoalsForm from "./WeightGoalsForm";
 export const HealthGoalForm = (props) => {
   const waterGoal = useSelector((state) => state.healthGoalState.waterGoal.goal)
   const foodGoal = useSelector((state) => state.healthGoalState.foodGoal.goal)
+  const weightGoal = useSelector((state) => state.healthGoalState.weightGoal.goal)
 
     return (
       <Form >
@@ -23,9 +24,9 @@ export const HealthGoalForm = (props) => {
           >
             <option value=''></option>
             <option value='Exercise'>Exercise</option>
-            {foodGoal >= 0 ? '' : <option value='Food'>Food</option>}
-            {waterGoal >= 0 ? '' : <option value='Water'>Water</option>}
-            <option value='Weight'>Weight</option>
+            {foodGoal > 0 ? '' : <option value='Food'>Food</option>}
+            {waterGoal > 0 ? '' : <option value='Water'>Water</option>}
+            {weightGoal > 0 ? '' : <option value='Weight'>Weight</option>}
             <option value='General'>General</option>
           </Form.Select>
         </Form.Group>}
