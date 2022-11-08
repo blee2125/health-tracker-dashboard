@@ -8,6 +8,7 @@ import { foodLogout } from '../../reducers/foodSlice';
 import { exerciseLogout } from '../../reducers/exerciseSlice';
 import { settingsLogout } from '../../reducers/settingsSlice';
 import { healthGoalLogout } from '../../reducers/healthGoalSlice';
+import WaterGoalNotification from './Notifications/WaterGoalNotification';
 
 const NavBar = (props) => {
     const userData = useSelector((state) => state.userState)
@@ -46,6 +47,7 @@ const NavBar = (props) => {
     }
     
     return(
+        <div>
         <Navbar bg="primary" variant="dark" fixed="top">
             <Container>
                 <Navbar.Collapse className="justify-content-end">
@@ -59,6 +61,8 @@ const NavBar = (props) => {
                 </Navbar.Collapse>
             </Container>
         </Navbar>
+        <WaterGoalNotification />
+        </div>
     )
 }
 
