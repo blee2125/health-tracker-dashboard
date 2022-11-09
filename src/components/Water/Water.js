@@ -53,7 +53,6 @@ function Water(props) {
   useEffect(() => {
     handleGetTodayRequest()
     matchDates(objDate, dateStringSplit)
-    //console.log(objDate, dateStringSplit)
     // eslint-disable-next-line
   }, [dateStringSplit])
 
