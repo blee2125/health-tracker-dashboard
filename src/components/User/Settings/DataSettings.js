@@ -4,74 +4,62 @@ import { connect, useSelector, useDispatch } from "react-redux";
 import { toggleSettings } from "../../../reducers/settingsSlice";
 import {notify} from '../../../reducers/notificationSlice'
 
-function NotificationSettings(props) {
+function DataSettings(props) {
     const dispatch = useDispatch();
     const settings = useSelector((state) => state.settingsState.settings);
 
     const exerciseSettingSwitch = () => {
-        dispatch(toggleSettings({setting: 'exerciseNotification'}))
-        dispatch(notify({message: 'Exercise Notification Updated',type: 'success'}))
+        dispatch(toggleSettings({setting: 'collectExerciseData'}))
+        dispatch(notify({message: 'Exercise Data Settings Updated',type: 'success'}))
     }
 
     const foodSettingSwitch = () => {
-        dispatch(toggleSettings({setting: 'foodNotification'}))
-        dispatch(notify({message: 'Food Notification Updated',type: 'success'}))
+        dispatch(toggleSettings({setting: 'collectFoodData'}))
+        dispatch(notify({message: 'Food Settings Updated',type: 'success'}))
     }
 
     const waterSettingSwitch = () => {
-        dispatch(toggleSettings({setting: 'waterNotification'}))
-        dispatch(notify({message: 'Water Notification Updated',type: 'success'}))
+        dispatch(toggleSettings({setting: 'collectWaterData'}))
+        dispatch(notify({message: 'Water Settings Updated',type: 'success'}))
     }
 
     const weightSettingSwitch = () => {
-        dispatch(toggleSettings({setting: 'weightNotification'}))
-        dispatch(notify({message: 'Weight Notification Updated',type: 'success'}))
-    }
-
-    const goalSettingSwitch = () => {
-        dispatch(toggleSettings({setting: 'goalNotification'}))
-        dispatch(notify({message: 'Goal Notification Updated',type: 'success'}))
+        dispatch(toggleSettings({setting: 'collectWeightData'}))
+        dispatch(notify({message: 'Weight Settings Updated',type: 'success'}))
     }
 
     return (
         <>
             <Card bg='light' border="secondary" style={{ width: '300px', padding: '25px', margin: "25px"}}>
-                <h3>Notifications</h3>
+                <h3>Collect Data</h3>
                 <Form >
                     <Form.Check 
                         type="switch"
                         id="custom-switch"
-                        checked={settings.exerciseNotification}
+                        checked={settings.collectExerciseData}
                         onChange={() => exerciseSettingSwitch()}
                         label="Exercise"
                     />
                     <Form.Check 
                         type="switch"
                         id="custom-switch"
-                        checked={settings.foodNotification}
+                        checked={settings.collectFoodData}
                         onChange={() => foodSettingSwitch()}
                         label="Food"
                     />
                     <Form.Check 
                         type="switch"
                         id="custom-switch"
-                        checked={settings.waterNotification}
+                        checked={settings.collectWaterData}
                         onChange={() => waterSettingSwitch()}
                         label="Water"
                     />
                     <Form.Check 
                         type="switch"
                         id="custom-switch"
-                        checked={settings.weightNotification}
+                        checked={settings.collectWeightData}
                         onChange={() => weightSettingSwitch()}
                         label="Weight"
-                    />
-                    <Form.Check 
-                        type="switch"
-                        id="custom-switch"
-                        checked={settings.goalNotification}
-                        onChange={() => goalSettingSwitch()}
-                        label="Goal"
                     />
                 </Form>
             </Card>
@@ -79,4 +67,4 @@ function NotificationSettings(props) {
     )
 }
 
-export default connect(null, { notify, toggleSettings }) (NotificationSettings)
+export default connect(null, { notify, toggleSettings }) (DataSettings)

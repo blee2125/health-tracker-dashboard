@@ -32,6 +32,7 @@ export const deleteSettings = createAsyncThunk(
 );
 
 const initialState = {
+  settings: {
     collectExerciseData: true,
     collectFoodData: true,
     collectWaterData: true,
@@ -41,7 +42,7 @@ const initialState = {
     waterNotification: true,
     weightNotification: true,
     goalNotification: true
-}
+}}
 
 export const settingsSlice = createSlice({
   name: 'settings',
@@ -50,35 +51,17 @@ export const settingsSlice = createSlice({
     settingsLogout: () => {
       return initialState
     },
-    changeCollectExercise: (state) => {
-      state.collectExerciseData = (state.collectExerciseData ? false : true)
-    },
-    changeCollectFood: (state) => {
-      state.collectFoodData = (state.collectFoodData ? false : true)
-    },
-    changeCollectWater: (state) => {
-      state.collectWaterData = (state.collectWaterData ? false : true)
-    },
-    changeCollectWeight: (state) => {
-      state.collectWeightData = (state.collectWeightData ? false : true)
-    },
-    toggleNotification: (state, action) => {
+    toggleSettings: (state, action) => {
       const setting = action.payload.setting
-      state[setting] = (state[setting] ? false : true)
+      state.settings[setting] = (state.settings[setting] ? false : true)
     }
   },
   extraReducers: {
     [getSettings.fulfilled]: (state, action) => {
-      state.collectExerciseData = action.payload[0].collectExerciseData
-      state.collectFoodData = action.payload[0].collectFoodData
-      state.collectWaterData = action.payload[0].collectWaterData
-      state.collectWeightData = action.payload[0].collectWeightData
+      state.settings = {...state.settings, ...action.payload}
     },
     [updateSettings.fulfilled]: (state, action) => {
-      state.collectExerciseData = action.payload[0].collectExerciseData
-      state.collectFoodData = action.payload[0].collectFoodData
-      state.collectWaterData = action.payload[0].collectWaterData
-      state.collectWeightData = action.payload[0].collectWeightData
+      
     },
     [deleteSettings.fulfilled]: () => {
       return initialState
@@ -86,6 +69,6 @@ export const settingsSlice = createSlice({
   },
 })
 
-export const { toggleNotification, settingsLogout, changeCollectExercise, changeCollectFood, changeCollectWater, changeCollectWeight } = settingsSlice.actions
+export const { toggleSettings, settingsLogout } = settingsSlice.actions
 
 export default settingsSlice.reducer
