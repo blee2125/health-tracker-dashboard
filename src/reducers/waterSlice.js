@@ -61,6 +61,11 @@ export const waterSlice = createSlice({
     waterReset: () => {
       return initialState
     },
+    waterDailyReset: (state) => {
+      state.glasses = 0
+      state.id = null
+      state.date = ''
+    },
     increment: (state) => {
       state.glasses += 1
     },
@@ -93,7 +98,6 @@ export const waterSlice = createSlice({
       state.date = `${objDate[1]} ${objDate[2]} ${objDate[3]}`
     },
     [getSevenDays.fulfilled]: (state, action) => {
-      //console.log(action.payload)
       state.waterArray7days = action.payload;
     },
     [deleteAllWater.fulfilled]: () => {
@@ -103,6 +107,6 @@ export const waterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount, waterReset } = waterSlice.actions
+export const { increment, decrement, incrementByAmount, waterReset, waterDailyReset } = waterSlice.actions
 
 export default waterSlice.reducer

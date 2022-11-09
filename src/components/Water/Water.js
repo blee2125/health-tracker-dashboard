@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import { connect, useSelector, useDispatch } from "react-redux";
 import {Card, Button, ButtonGroup} from 'react-bootstrap';
-import { createWater, updateWater, getWaterByDate, waterReset } from "../../reducers/waterSlice";
+import { createWater, updateWater, getWaterByDate, waterDailyReset } from "../../reducers/waterSlice";
 import DateFunctions from "../../functions/DateFunctions";
 
 function Water(props) {
@@ -44,15 +44,16 @@ function Water(props) {
     .catch((e) => {console.log(e)});
   }
 
-  const matchDates = () => {
+  const matchDates = (objDate, dateStringSplit) => {
     if (objDate !== dateStringSplit) {
-      dispatch(waterReset)
+      dispatch(waterDailyReset)
     }
   }
 
   useEffect(() => {
     handleGetTodayRequest()
-    matchDates()
+    matchDates(objDate, dateStringSplit)
+    //console.log(objDate, dateStringSplit)
     // eslint-disable-next-line
   }, [dateStringSplit])
 
@@ -70,4 +71,4 @@ function Water(props) {
   )
 }
 
-export default connect(null, { createWater, updateWater, getWaterByDate, waterReset })(Water)
+export default connect(null, { createWater, updateWater, getWaterByDate, waterDailyReset })(Water)
