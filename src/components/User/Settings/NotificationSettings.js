@@ -1,50 +1,37 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Form, Card } from "react-bootstrap";
 import { connect, useSelector, useDispatch } from "react-redux";
-import { getSettings, updateSettings, deleteSettings, toggleNotification } from "../../../reducers/settingsSlice";
+import { toggleSettings } from "../../../reducers/settingsSlice";
 import {notify} from '../../../reducers/notificationSlice'
 
 function NotificationSettings(props) {
     const dispatch = useDispatch();
-    const userToken = useSelector((state) => state.userState.user.token);
-    const settings = useSelector((state) => state.settingsState);
-
-    const updateSettings = () => {
-        props.updateSettings({settings, userToken})
-        .unwrap()
-        .then((data) => {})
-        .catch((e) => {console.log(e)});
-    }
+    const settings = useSelector((state) => state.settingsState.settings);
 
     const exerciseSettingSwitch = () => {
-        dispatch(toggleNotification({setting: 'exerciseNotification'}))
+        dispatch(toggleSettings({setting: 'exerciseNotification'}))
         dispatch(notify({message: 'Exercise Notification Updated',type: 'success'}))
     }
 
     const foodSettingSwitch = () => {
-        dispatch(toggleNotification({setting: 'foodNotification'}))
+        dispatch(toggleSettings({setting: 'foodNotification'}))
         dispatch(notify({message: 'Food Notification Updated',type: 'success'}))
     }
 
     const waterSettingSwitch = () => {
-        dispatch(toggleNotification({setting: 'waterNotification'}))
+        dispatch(toggleSettings({setting: 'waterNotification'}))
         dispatch(notify({message: 'Water Notification Updated',type: 'success'}))
     }
 
     const weightSettingSwitch = () => {
-        dispatch(toggleNotification({setting: 'weightNotification'}))
+        dispatch(toggleSettings({setting: 'weightNotification'}))
         dispatch(notify({message: 'Weight Notification Updated',type: 'success'}))
     }
 
     const goalSettingSwitch = () => {
-        dispatch(toggleNotification({setting: 'goalNotification'}))
+        dispatch(toggleSettings({setting: 'goalNotification'}))
         dispatch(notify({message: 'Goal Notification Updated',type: 'success'}))
     }
-
-    useEffect(() => {
-        updateSettings()
-        // eslint-disable-next-line
-    }, [settings])
 
     return (
         <>
@@ -92,4 +79,4 @@ function NotificationSettings(props) {
     )
 }
 
-export default connect(null, { notify, getSettings, updateSettings, deleteSettings }) (NotificationSettings)
+export default connect(null, { notify, toggleSettings }) (NotificationSettings)
