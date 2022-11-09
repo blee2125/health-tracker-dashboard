@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import Weight from '../BodyMetrics/Weight/Weight'
 import ExerciseHome from '../Exercise/ExerciseHome'
 import FoodHome from '../Food/FoodHome'
-import Water from '../Water/Water'
 import DateFunctions from '../../functions/DateFunctions'
 import { Container, Col, Row } from 'react-bootstrap'
 import HealthGoalHome from '../HealthGoal/HealthGoalHome'
@@ -23,11 +22,11 @@ const HomePage = (props) => {
             <p>Welcome {userData.username}</p>
             </Row>
             <Row >
-                <Col lg='auto'><Water /></Col>
                 <Col lg='auto'><Weight /></Col>
+                <Col lg='auto'><WaterHome /></Col>
             </Row>
             <Row>
-                <WaterHome />
+                
                 <FoodHome />
                 <ExerciseGraph />
                 <ExerciseHome />
