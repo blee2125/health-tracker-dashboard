@@ -1,5 +1,5 @@
 import React from "react";
-import { connect, useSelector } from "react-redux";
+import { connect, useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Table, Card } from "react-bootstrap";
 import { deleteAllWater } from "../../../reducers/waterSlice";
@@ -10,17 +10,19 @@ import DeleteConfirmation from "../../Views/DeleteConfirmation"
 import { deleteUser } from "../../../reducers/userSlice";
 import { deleteSettings } from "../../../reducers/settingsSlice";
 import { deleteAllHealthGoal } from "../../../reducers/healthGoalSlice";
+import {notify} from '../../../reducers/notificationSlice'
+
 
 const DeleteData = (props) => {
     const userToken = useSelector((state) => state.userState.user.token)
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const deleteWaterData = () => {
         props.deleteAllWater(userToken)
         .unwrap()
         .then((data) => {
-            props.setDangerNotification(data)
-            props.setShowDangerNotification(true)
+            dispatch(notify({message: data,type: 'danger'}))
         })
         .catch((e) => {console.log(e)});
     }
@@ -29,8 +31,7 @@ const DeleteData = (props) => {
         props.deleteAllWeight(userToken)
         .unwrap()
         .then((data) => {
-            props.setDangerNotification(data)
-            props.setShowDangerNotification(true)
+            dispatch(notify({message: data,type: 'danger'}))
         })
         .catch((e) => {console.log(e)});
     }
@@ -39,8 +40,7 @@ const DeleteData = (props) => {
         props.deleteAllFood(userToken)
         .unwrap()
         .then((data) => {
-            props.setDangerNotification(data)
-            props.setShowDangerNotification(true)
+            dispatch(notify({message: data,type: 'danger'}))
         })
         .catch((e) => {console.log(e)});
     }
@@ -49,8 +49,7 @@ const DeleteData = (props) => {
         props.deleteAllExercise(userToken)
         .unwrap()
         .then((data) => {
-            props.setDangerNotification(data)
-            props.setShowDangerNotification(true)
+            dispatch(notify({message: data,type: 'danger'}))
         })
         .catch((e) => {console.log(e)});
     }
@@ -59,8 +58,7 @@ const DeleteData = (props) => {
         props.deleteAllHealthGoal(userToken)
         .unwrap()
         .then((data) => {
-            props.setDangerNotification(data)
-            props.setShowDangerNotification(true)
+            dispatch(notify({message: data,type: 'danger'}))
         })
         .catch((e) => {console.log(e)});
     }
@@ -155,4 +153,4 @@ const DeleteData = (props) => {
     )
 }
 
-export default connect(null, {deleteAllWater, deleteAllExercise, deleteAllFood, deleteAllWeight, deleteUser, deleteSettings, deleteAllHealthGoal }) (DeleteData)
+export default connect(null, { notify, deleteAllWater, deleteAllExercise, deleteAllFood, deleteAllWeight, deleteUser, deleteSettings, deleteAllHealthGoal }) (DeleteData)
