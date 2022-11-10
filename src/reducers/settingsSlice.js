@@ -37,11 +37,7 @@ const initialState = {
     collectFoodData: true,
     collectWaterData: true,
     collectWeightData: true,
-    exerciseNotification: true,
-    foodNotification: true,
-    waterNotification: true,
-    weightNotification: true,
-    goalNotification: true
+    notifications: true
 }}
 
 export const settingsSlice = createSlice({
@@ -53,7 +49,13 @@ export const settingsSlice = createSlice({
     },
     toggleSettings: (state, action) => {
       const setting = action.payload.setting
-      state.settings[setting] = (state.settings[setting] ? false : true)
+      if (setting === 'onNotifications') {
+        state.settings.notifications = true
+      } else if (setting === 'offNotifications') {
+        state.settings.notifications = false
+      } else {
+        state.settings[setting] = (state.settings[setting] ? false : true)
+      }
     }
   },
   extraReducers: {
