@@ -21,7 +21,9 @@ function FoodGoalNotification() {
     }
 
     useEffect(() => {
-        maxCal()
+        if (foodGoal.goal > 0) {
+            maxCal()
+        }
         // eslint-disable-next-line
     }, [foodTodayArray])
 
