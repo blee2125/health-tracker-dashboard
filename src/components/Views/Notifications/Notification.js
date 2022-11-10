@@ -7,29 +7,33 @@ function Notification(props) {
     const dispatch = useDispatch();
     const [show, setShow] = useState(false)
     const notification = useSelector((state) => state.notificationState)
+    const notificationSetting = useSelector((state) => state.settingsState.settings.notifications);
 
     function alertCheck() {
-        if (notification.type === 'success') {
-            setShow(true)
-        } else if (notification.type === 'primary') {
-            setShow(true)
-        } else if (notification.type === 'danger') {
-            setShow(true)
-        } else if (notification.type === 'secondary') {
-            setShow(true)
-        } else if (notification.type === 'warning') {
-            setShow(true)
-        } else if (notification.type === 'info') {
-            setShow(true)
-        } else if (notification.type === 'light') {
-            setShow(true)
-        } else if (notification.type === 'dark') {
-            setShow(true)
+        if (notificationSetting === false) {
+        } else {
+            if (notification.type === 'success') {
+                setShow(true)
+            } else if (notification.type === 'primary') {
+                setShow(true)
+            } else if (notification.type === 'danger') {
+                setShow(true)
+            } else if (notification.type === 'secondary') {
+                setShow(true)
+            } else if (notification.type === 'warning') {
+                setShow(true)
+            } else if (notification.type === 'info') {
+                setShow(true)
+            } else if (notification.type === 'light') {
+                setShow(true)
+            } else if (notification.type === 'dark') {
+                setShow(true)
+            }
         }
     }
 
     function resetAlert() {
-        if (notification.success === '') {
+        if (notification.type === '') {
             setShow(false)
         }
         dispatch(notificationNext())
