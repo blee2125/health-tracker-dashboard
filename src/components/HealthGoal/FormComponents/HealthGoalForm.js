@@ -10,6 +10,7 @@ import WeightGoalsForm from "./WeightGoalsForm";
 export const HealthGoalForm = (props) => {
   const waterGoal = useSelector((state) => state.healthGoalState.waterGoal.goal)
   const foodGoal = useSelector((state) => state.healthGoalState.foodGoal.goal)
+  const exerciseGoal = useSelector((state) => state.healthGoalState.exerciseGoal.goal)
   const weightGoal = useSelector((state) => state.healthGoalState.weightGoal.goal)
 
     return (
@@ -23,7 +24,7 @@ export const HealthGoalForm = (props) => {
             onChange={e => props.updateData('category', e.target.value)}
           >
             <option value=''></option>
-            <option value='Exercise'>Exercise</option>
+            {exerciseGoal > 0 ? '' : <option value='Exercise'>Exercise</option>}
             {foodGoal > 0 ? '' : <option value='Food'>Food</option>}
             {waterGoal > 0 ? '' : <option value='Water'>Water</option>}
             {weightGoal > 0 ? '' : <option value='Weight'>Weight</option>}

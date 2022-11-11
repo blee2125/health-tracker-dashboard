@@ -5,6 +5,12 @@ import { getAllHealthGoal, deleteHealthGoal } from "../../reducers/healthGoalSli
 import HealthGoalAddModal from './FormComponents/HealthGoalAddModal'
 import ListCompletedFilter from "./ListComponents/ListCompletedFilter";
 
+import FoodGoalProgress from '../HealthGoal/DisplayComponents/FoodGoalProgress'
+import ExerciseGoalProgress from "./DisplayComponents/ExerciseGoalProgress";
+import WaterGoalProgress from '../HealthGoal/DisplayComponents/WaterGoalProgress'
+import WeightGoalProgress from '../HealthGoal/DisplayComponents/WeightGoalProgress'
+import { Row, Col } from "react-bootstrap";
+
 function HealthGoal(props) {
     const userToken = useSelector((state) => state.userState.user.token)
     const healthGoalArray = useSelector((state) => state.healthGoalState.healthGoalArray)
@@ -42,8 +48,14 @@ function HealthGoal(props) {
 
     return (
         <div>
-            
             <h1>Goals</h1>
+            <Row>
+                <Col lg='auto'><FoodGoalProgress /></Col>
+                <Col lg='auto'><ExerciseGoalProgress /></Col>
+                <Col lg='auto'><WaterGoalProgress /></Col>
+                <Col lg='auto'><WeightGoalProgress /></Col>
+            </Row>
+            
             <HealthGoalList 
                 list={filterCompleted()}
                 listFilter={<ListCompletedFilter goalCompletedFilter={goalCompletedFilter} setGoalCompletedFilter={setGoalCompletedFilter} />}

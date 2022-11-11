@@ -1,7 +1,7 @@
 import React from "react";
 import DeleteConfirmation from "../../Views/DeleteConfirmation";
 import HealthGoalEditModal from "../FormComponents/HealthGoalEditModal";
-import CompletedButton from "./CompletedButton";
+//import CompletedButton from "./CompletedButton";
 
 function HealthGoalListItem(props) {
 
@@ -9,10 +9,8 @@ function HealthGoalListItem(props) {
         <tr>
             <td>{props.healthGoal.category}</td>
             <td>{props.healthGoal.goal}</td>
-            <td>{props.healthGoal.repeat ? 'yes' : 'no'}</td>
-            <td>{props.healthGoal.completed ? 'yes' : 'no'}</td>
             <td>
-                {props.healthGoal.completed ? '' : <CompletedButton id={props.healthGoal._id}/>}
+                {/* {props.healthGoal.completed ? '' : <CompletedButton id={props.healthGoal._id}/>} */}
             
                 <HealthGoalEditModal
                     healthGoalObject={props.healthGoal}
