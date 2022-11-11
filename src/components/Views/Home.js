@@ -25,9 +25,9 @@ const HomePage = (props) => {
             <p>Welcome {userData.username}</p>
             </Row>
             <Row>
-                <Col><FoodGoalProgress /></Col>
-                <Col><WaterGoalProgress /></Col>
-                <Col><WeightGoalProgress /></Col>
+                <Col lg='auto'><FoodGoalProgress /></Col>
+                <Col lg='auto'><WaterGoalProgress /></Col>
+                <Col lg='auto'><WeightGoalProgress /></Col>
             </Row>
             <Row >
                 <Col lg='auto'><Weight /></Col>
