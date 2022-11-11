@@ -57,8 +57,9 @@ export const deleteAllHealthGoal = createAsyncThunk(
 
 const initialState = {
   healthGoalArray: [],
-  waterGoal: {goal: ''},
+  exerciseGoal: {goal: ''},
   foodGoal: {goal: ''},
+  waterGoal: {goal: ''},
   weightGoal: {goal: ''}
 }
 
@@ -84,6 +85,9 @@ export const healthGoalSlice = createSlice({
       }
       if (action.payload.filter(goal => goal.category === 'Food').length > 0) {
         state.foodGoal = action.payload.filter(goal => goal.category === 'Food')[0]
+      }
+      if (action.payload.filter(goal => goal.category === 'Exercise').length > 0) {
+        state.exerciseGoal = action.payload.filter(goal => goal.category === 'Exercise')[0]
       }
       if (action.payload.filter(goal => goal.category === 'Weight').length > 0) {
         state.weightGoal = action.payload.filter(goal => goal.category === 'Weight')[0]
