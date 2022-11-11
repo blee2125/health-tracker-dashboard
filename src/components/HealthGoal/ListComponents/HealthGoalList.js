@@ -19,8 +19,6 @@ function HealthGoalList(props) {
                     <tr>
                         <td><b>Category</b></td>
                         <td><b>Goal</b></td>
-                        <td><b>Repeat</b></td>
-                        <td><b>Completed</b></td>
                         <td></td>
                     </tr>
                 </thead>
