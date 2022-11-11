@@ -16,8 +16,8 @@ function FoodGoalProgress() {
             <GoalProgressCard
                 title={'Daily Calories'}
                 goalUnit={'Calories'}
-                goal={calcTotal}
-                total={foodGoal}
+                goal={foodGoal}
+                total={calcTotal}
             />
         </div>
     )
