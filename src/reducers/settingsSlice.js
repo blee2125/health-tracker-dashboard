@@ -37,7 +37,7 @@ const initialState = {
     collectFoodData: true,
     collectWaterData: true,
     collectWeightData: true,
-    notifications: true
+    notifications: false
 }}
 
 export const settingsSlice = createSlice({
