@@ -9,6 +9,9 @@ import HealthGoalHome from '../HealthGoal/HealthGoalHome'
 
 import ExerciseGraph from '../Exercise/ExerciseGraph'
 import WaterHome from '../Water/WaterHome'
+import FoodGoalProgress from '../HealthGoal/DisplayComponents/FoodGoalProgress'
+import WaterGoalProgress from '../HealthGoal/DisplayComponents/WaterGoalProgress'
+import WeightGoalProgress from '../HealthGoal/DisplayComponents/WeightGoalProgress'
 
 const HomePage = (props) => {
     const userData = useSelector((state) => state.userState.user)
@@ -20,6 +23,11 @@ const HomePage = (props) => {
             <Row>
             <h1>{dateStringSplit}</h1>
             <p>Welcome {userData.username}</p>
+            </Row>
+            <Row>
+                <Col><FoodGoalProgress /></Col>
+                <Col><WaterGoalProgress /></Col>
+                <Col><WeightGoalProgress /></Col>
             </Row>
             <Row >
                 <Col lg='auto'><Weight /></Col>
