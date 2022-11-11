@@ -5,7 +5,7 @@ function GoalProgressCard(props) {
 
     return (
         <div>
-            <Card bg='light' border="secondary" style={{ width: '200px', height: '200px', padding: '25px', margin: "25px"}}>
+            <Card bg='light' border="secondary" style={{ width: '200px', height: '200px', padding: '25px', margin: "5px"}}>
                 <h4>{props.title}</h4>
                 <table>
                     <tbody>
