@@ -25,13 +25,15 @@ function Login(props) {
         props.loginUser({username, password})
         .unwrap()
         .then((data) => {
-            props.getSettings(data.token)
             props.getExerciseToday({date: dateStringSplit, token: data.token})
             props.getWaterByDate({date: {'time': dateStringSplit}, token: data.token})
             props.getFoodToday({date: dateStringSplit, token: data.token})
             props.getCurrentWeight(data.token)
-            navigate('/')
-            dispatch(notify({message: `Welcome ${username}`,type: 'primary'}))
+            props.getSettings(data.token)
+            .then(() => {
+                navigate('/')
+                dispatch(notify({message: `Welcome ${username}`,type: 'primary'}))
+            })
         })
         .catch((e) => {console.log(e)});
     }
