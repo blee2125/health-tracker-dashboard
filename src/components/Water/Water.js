@@ -44,15 +44,15 @@ function Water(props) {
     .catch((e) => {console.log(e)});
   }
 
-  const matchDates = (objDate, dateStringSplit) => {
+  const matchDates = () => {
     if (objDate !== dateStringSplit) {
-      dispatch(waterDailyReset)
+      dispatch(waterDailyReset())
     }
   }
 
   useEffect(() => {
     handleGetTodayRequest()
-    matchDates(objDate, dateStringSplit)
+    matchDates()
     // eslint-disable-next-line
   }, [dateStringSplit])
 
