@@ -7,6 +7,8 @@ function FoodSearchModal(props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const [foodAmount, setFoodAmount] = useState('')
+    const [foodUnit, setFoodUnit] = useState('')
     const [foodSearch, setFoodSearch] = useState('')
     const [foodSearchResults, setFoodSearchResults] = useState({})
 
@@ -20,9 +22,10 @@ function FoodSearchModal(props) {
     }
     async function searchResults(req, res) {
         try {
-            const searchResults = await searchApiNinja(foodSearch)
+            const searchResults = await searchApiNinja(foodAmount + ' ' + foodUnit + ' ' +foodSearch)
             setFoodSearchResults(searchResults.data[0])
             props.updateData(searchResults.data[0])
+            props.updateAmount(foodAmount+' '+foodUnit)
         } catch {
             console.log('error with api ninja - nutrition')
         }
@@ -45,8 +48,39 @@ function FoodSearchModal(props) {
             </Modal.Header>
             <Modal.Body>
                 <Form onSubmit={handleSubmit}>
+                <Row>
+                    <Col lg={2}><Form.Label>Amount</Form.Label></Col>
+                        <Col xs={4}>
+                            <Form.Group className="mb-3" controlId="formGroupAmount">
+                                <Form.Control 
+                                    type="number" 
+                                    placeholder="Amount" 
+                                    width={'100%'}
+                                    defaultValue={foodAmount}
+                                    onChange={e => setFoodAmount(e.target.value)}
+                                />
+                            </Form.Group>
+                        </Col>
+                        <Col lg={1}><Form.Label>Unit</Form.Label></Col>
+                        <Col xs={4}>
+                            <Form.Group className="mb-3" controlId="formGroupUnit">
+                                <Form.Select
+                                    width={'100%'}
+                                    value={foodUnit}
+                                    onChange={e => setFoodUnit(e.target.value)}
+                                >
+                                    <option value=''></option>
+                                    <option value='Cups'>Cups</option>
+                                    <option value='Grams'>Grams</option>
+                                    <option value='Ounces'>Ounces</option>
+                                    <option value=' '>Count</option>
+                                </Form.Select>
+                            </Form.Group>
+                        </Col>
+                    </Row>
                     <Row>
-                        <Col xs={9}>
+                    <Col lg={2}><Form.Label>Search</Form.Label></Col>
+                        <Col xs={7}>
                             <Form.Group className="mb-3" controlId="formGroupName">
                                 <Form.Control 
                                     type="text" 

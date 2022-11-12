@@ -14,6 +14,7 @@ function AddFoodModal(props) {
     const dispatch = useDispatch();
 
     const [foodSearchResults, setFoodSearchResults] = useState({})
+    const [foodAmount, setFoodAmount] = useState('')
     const transferButton = () => {
         console.log(foodSearchResults)
         setFoodObject(foodObject => ({
@@ -23,7 +24,8 @@ function AddFoodModal(props) {
                 calories: foodSearchResults.calories,
                 carbsg: foodSearchResults.carbohydrates_total_g,
                 fatg: foodSearchResults.fat_total_g,
-                proteing: foodSearchResults.protein_g
+                proteing: foodSearchResults.protein_g,
+                amount: foodAmount
             }
         }));  
     }
@@ -59,6 +61,9 @@ function AddFoodModal(props) {
 
     const handleAddSubmit = () => {
         if (foodObject.name !== '') {
+            if (foodObject.meal === '') {
+                foodObject.meal = 'Snack'
+            }
             props.createFood({foodObject, userToken})
             .unwrap()
             .then((data) => {
@@ -90,7 +95,7 @@ function AddFoodModal(props) {
 
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-            <Modal.Title>Add Food - <FoodSearchModal  updateData={setFoodSearchResults} transferButton={transferButton} /> <Button onClick={clearForm}>Clear</Button></Modal.Title>
+            <Modal.Title>Add Food - <FoodSearchModal  updateData={setFoodSearchResults} updateAmount={setFoodAmount} transferButton={transferButton} /> <Button onClick={clearForm}>Clear</Button></Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <FoodForm foodObject={foodObject} updateData={updateData}/>
