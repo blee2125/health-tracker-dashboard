@@ -5,7 +5,16 @@ import FoodListTotalCalories from "./FoodListTotalCalories";
 import FoodListTotalMacros from "./FoodListTotalMacros";
 
 function FoodList(props) {
-    const listFoodItems = props.list.map((foodItem, index) => {
+    const filteredByMeal = props.list.filter((foodItem) => {
+        if (!props.meal) {
+            return foodItem
+        } else if (foodItem.meal === props.meal) {
+            return foodItem
+        } else {
+            return null
+        }
+    })
+    const listFoodItems = filteredByMeal.map((foodItem, index) => {
         return (
             <FoodListItem 
                 foodData={foodItem} 
@@ -15,6 +24,7 @@ function FoodList(props) {
             />
         )
     })
+
 
     return (
         <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
@@ -35,8 +45,8 @@ function FoodList(props) {
                     </tbody>
                 </Table>
             </div>
-            <FoodListTotalCalories list={props.list}/>
-            <FoodListTotalMacros list={props.list} />
+            <FoodListTotalCalories list={filteredByMeal}/>
+            <FoodListTotalMacros list={filteredByMeal} />
         </Card>
     );
 }
