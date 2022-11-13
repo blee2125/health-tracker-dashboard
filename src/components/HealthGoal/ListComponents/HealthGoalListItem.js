@@ -17,7 +17,7 @@ function HealthGoalListItem(props) {
                 />
                 <DeleteConfirmation 
                     deleteItem={() => props.deleteButton(props.healthGoal._id)} 
-                    info={props.healthGoal.goal} 
+                    info={props.healthGoal.category+' Goal: '+props.healthGoal.goal} 
                 />
             </td>
         </tr>
