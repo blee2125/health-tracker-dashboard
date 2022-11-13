@@ -1,15 +1,13 @@
 import React from "react";
+import FoodFunctions from "../../../functions/FoodFunctions";
 
 function FoodListTotalCalories(props) {
-
-    const calcTotal = props.list.reduce((accumulator, food) => {
-        const cal = food.calories > 0 ? food.calories : 0
-        return accumulator + cal;
-    }, 0);
+    
+    const calcTotalCalories = (array) => { return FoodFunctions.calcTotalCalories(array)}
 
     return (
         <div>
-            <p>Total Calories - {calcTotal.toFixed(0)}</p>
+            <p>Total Calories - {calcTotalCalories(props.list)}</p>
         </div>
     );
 }

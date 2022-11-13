@@ -1,25 +1,15 @@
 import React from "react";
+import FoodFunctions from "../../../functions/FoodFunctions";
 
 function FoodListTotalMacros(props) {
 
-    const calcTotalCarbs = props.list.reduce((accumulator, food) => {
-        const carbs = food.carbsg > 0 ? food.carbsg : 0
-        return accumulator + carbs;
-    }, 0);
-
-    const calcTotalFat = props.list.reduce((accumulator, food) => {
-        const fat = food.fatg > 0 ? food.fatg : 0
-        return accumulator + fat;
-    }, 0);
-
-    const calcTotalProtein = props.list.reduce((accumulator, food) => {
-        const protein = food.proteing > 0 ? food.proteing : 0
-        return accumulator + protein;
-    }, 0);
+    const calcTotalCarbs = (array) => { return FoodFunctions.calcTotalCarbs(array)}
+    const calcTotalFat = (array) => { return FoodFunctions.calcTotalFat(array)}
+    const calcTotalProtein = (array) => { return FoodFunctions.calcTotalProtein(array)}
 
     return (
         <div>
-            <p>Carbs:{calcTotalCarbs.toFixed(1)} - Fat:{calcTotalFat.toFixed(1)} - Protein:{calcTotalProtein.toFixed(1)}</p>
+            <p>Carbs:{calcTotalCarbs(props.list)} - Fat:{calcTotalFat(props.list)} - Protein:{calcTotalProtein(props.list)}</p>
         </div>
     );
 }
