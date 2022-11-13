@@ -12,6 +12,7 @@ import { deleteSettings } from "../../../reducers/settingsSlice";
 import { deleteAllHealthGoal } from "../../../reducers/healthGoalSlice";
 import { deleteAllHeartRate } from "../../../reducers/heartRateSlice";
 import { deleteAllBloodPressure } from "../../../reducers/bloodPressureSlice";
+import { deleteAllSleep } from "../../../reducers/sleepSlice";
 import {notify} from '../../../reducers/notificationSlice'
 
 
@@ -74,6 +75,15 @@ const DeleteData = (props) => {
         .catch((e) => {console.log(e)});
     }
 
+    const deleteSleep = () => {
+        props.deleteAllSleep(userToken)
+        .unwrap()
+        .then((data) => {
+            dispatch(notify({message: data,type: 'danger'}))
+        })
+        .catch((e) => {console.log(e)});
+    }
+
     const deleteGoalData = () => {
         props.deleteAllHealthGoal(userToken)
         .unwrap()
@@ -89,6 +99,7 @@ const DeleteData = (props) => {
         props.deleteAllWater(userToken)
         props.deleteAllWeight(userToken)
         props.deleteSettings(userToken)
+        props.deleteAllSleep(userToken)
         props.deleteUser(userToken)
         props.deleteAllBloodPressure(userToken)
         props.deleteAllHeartRate(userToken)
@@ -132,6 +143,17 @@ const DeleteData = (props) => {
                                 <DeleteConfirmation 
                                     deleteItem={() => deleteWaterData(userToken)} 
                                     info={'All Water Data'} 
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Sleep Data
+                            </td>
+                            <td>
+                                <DeleteConfirmation 
+                                    deleteItem={() => deleteSleep(userToken)} 
+                                    info={'All Sleep Data'} 
                                 />
                             </td>
                         </tr>
@@ -197,4 +219,4 @@ const DeleteData = (props) => {
     )
 }
 
-export default connect(null, { notify, deleteAllWater, deleteAllExercise, deleteAllFood, deleteAllWeight, deleteUser, deleteSettings, deleteAllHealthGoal, deleteAllBloodPressure, deleteAllHeartRate }) (DeleteData)
+export default connect(null, { notify, deleteAllWater, deleteAllExercise, deleteAllFood, deleteAllWeight, deleteUser, deleteSettings, deleteAllHealthGoal, deleteAllBloodPressure, deleteAllHeartRate, deleteAllSleep }) (DeleteData)
