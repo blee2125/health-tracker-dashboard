@@ -10,6 +10,8 @@ import DeleteConfirmation from "../../Views/DeleteConfirmation"
 import { deleteUser } from "../../../reducers/userSlice";
 import { deleteSettings } from "../../../reducers/settingsSlice";
 import { deleteAllHealthGoal } from "../../../reducers/healthGoalSlice";
+import { deleteAllHeartRate } from "../../../reducers/heartRateSlice";
+import { deleteAllBloodPressure } from "../../../reducers/bloodPressureSlice";
 import {notify} from '../../../reducers/notificationSlice'
 
 
@@ -54,6 +56,24 @@ const DeleteData = (props) => {
         .catch((e) => {console.log(e)});
     }
 
+    const deleteBloodPressure = () => {
+        props.deleteAllBloodPressure(userToken)
+        .unwrap()
+        .then((data) => {
+            dispatch(notify({message: data,type: 'danger'}))
+        })
+        .catch((e) => {console.log(e)});
+    }
+
+    const deleteHeartRate = () => {
+        props.deleteAllHeartRate(userToken)
+        .unwrap()
+        .then((data) => {
+            dispatch(notify({message: data,type: 'danger'}))
+        })
+        .catch((e) => {console.log(e)});
+    }
+
     const deleteGoalData = () => {
         props.deleteAllHealthGoal(userToken)
         .unwrap()
@@ -70,6 +90,8 @@ const DeleteData = (props) => {
         props.deleteAllWeight(userToken)
         props.deleteSettings(userToken)
         props.deleteUser(userToken)
+        props.deleteAllBloodPressure(userToken)
+        props.deleteAllHeartRate(userToken)
         props.deleteAllHealthGoal(userToken)
         navigate('/register')
     }
@@ -126,6 +148,28 @@ const DeleteData = (props) => {
                         </tr>
                         <tr>
                             <td>
+                                Blood Pressure Data
+                            </td>
+                            <td>
+                                <DeleteConfirmation 
+                                    deleteItem={() => deleteBloodPressure(userToken)} 
+                                    info={'All Blood Pressure Data'} 
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Heart Rate Data
+                            </td>
+                            <td>
+                                <DeleteConfirmation 
+                                    deleteItem={() => deleteHeartRate(userToken)} 
+                                    info={'All Heart Rate Data'} 
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 Goal Data
                             </td>
                             <td>
@@ -153,4 +197,4 @@ const DeleteData = (props) => {
     )
 }
 
-export default connect(null, { notify, deleteAllWater, deleteAllExercise, deleteAllFood, deleteAllWeight, deleteUser, deleteSettings, deleteAllHealthGoal }) (DeleteData)
+export default connect(null, { notify, deleteAllWater, deleteAllExercise, deleteAllFood, deleteAllWeight, deleteUser, deleteSettings, deleteAllHealthGoal, deleteAllBloodPressure, deleteAllHeartRate }) (DeleteData)
