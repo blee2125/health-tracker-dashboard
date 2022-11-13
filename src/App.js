@@ -23,6 +23,8 @@ import WeightHome from './components/BodyMetrics/Weight/WeightHome';
 import WeightGraph from './components/BodyMetrics/Weight/WeightGraph';
 import WaterHome from './components/Water/WaterHome';
 import HealthGoal from './components/HealthGoal/HealthGoal'
+import BloodPressure from './components/BodyMetrics/BloodPressure/BloodPressure';
+import HeartRate from './components/BodyMetrics/HeartRate/HeartRate'
 
 function App(props) {
   const userData = useSelector((state) => state.userState)
@@ -65,6 +67,8 @@ function App(props) {
                 <Route path="userinfo/settings/deletedata" element={isAuth(<DeleteData />)} />
               <Route path="/login" element={isNotAuth(<Login />)} />
               <Route path="/register" element={isNotAuth(<Register />)} />
+              <Route path="/bloodpressure" element={isAuth(<BloodPressure />)} />
+              <Route path="/heartrate" element={isAuth(<HeartRate />)} />
               <Route path="/weight" element={isAuth(<WeightHome />)} />
                 <Route path="/weight/weightGraph" element={isAuth(<WeightGraph />)} />
               <Route path="/healthGoals" element={isAuth(<HealthGoal />)} />

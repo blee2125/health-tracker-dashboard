@@ -7,6 +7,8 @@ import weightReducer from './reducers/weightSlice'
 import settingsReducer from './reducers/settingsSlice'
 import healthGoalReducer from './reducers/healthGoalSlice'
 import notificationReducer from './reducers/notificationSlice'
+import bloodPressureReducer from './reducers/bloodPressureSlice'
+import heartRateReducer from './reducers/heartRateSlice'
 
 export default configureStore({
   reducer: {
@@ -17,6 +19,8 @@ export default configureStore({
     exerciseState: exerciseReducer,
     foodState: foodReducer,
     weightState: weightReducer,
-    healthGoalState: healthGoalReducer
+    healthGoalState: healthGoalReducer,
+    bloodPressureState: bloodPressureReducer,
+    heartRateState: heartRateReducer
   },
 })
