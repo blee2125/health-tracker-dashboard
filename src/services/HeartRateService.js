@@ -21,7 +21,7 @@ class HeartRateService {
     return http.delete(`/heartrate/delete/${id}`, head);
   }
 
-  deleteAllBloodPressure(head) {
+  deleteAllHeartRate(head) {
     return http.delete(`/heartrate/deleteall`, head)
   }
 }
