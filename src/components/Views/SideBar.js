@@ -8,6 +8,7 @@ import ExerciseAddModal from '../Exercise/FormComponents/ExerciseAddModal';
 import AddFoodModal from '../Food/FormComponents/AddFoodModal';
 import AddBloodPressure from '../BodyMetrics/BloodPressure/AddBloodPressure';
 import AddHeartRate from '../BodyMetrics/HeartRate/AddHeartRate';
+import AddSleep from '../BodyMetrics/Sleep/AddSleep';
 
 const SideBar = (props) => {
     const isAuthenticated = useSelector((state) => state.userState.isAuthenticated)
@@ -51,6 +52,10 @@ const SideBar = (props) => {
                         Water
                     </NavLink>
                         <WaterSidebar />
+                    <NavLink as={Link}  to="/sleep" className='sidebar-link'>
+                        Sleep
+                    </NavLink>
+                        <AddSleep onSidebar={true}/>
                     <NavLink as={Link}  to="/bloodpressure" className='sidebar-link'>
                         Blood Pressure
                     </NavLink>
