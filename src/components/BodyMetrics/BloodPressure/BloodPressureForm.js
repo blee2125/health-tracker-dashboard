@@ -9,7 +9,7 @@ export const BloodPressureForm = (props) => {
           <Form.Label>Upper/Systolic</Form.Label>
           <Form.Control 
             type="number" 
-            placeholder="Lower/Diastolic" 
+            placeholder="Lower/Systolic" 
             defaultValue={props.bloodPressureObject.systolic}
             onChange={e => props.updateData('systolic', e.target.value)}
           />
