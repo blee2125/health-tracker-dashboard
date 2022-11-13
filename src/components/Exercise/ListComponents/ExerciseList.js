@@ -18,6 +18,7 @@ function ExerciseList(props) {
         <Card bg='light' border="secondary" style={{ width: '600px', padding: '25px', margin: "25px"}}>
             <h2>{props.listTitle ? props.listTitle : "Exercise List"}</h2>
             {props.addModal ? props.addModal : ''}
+            <div className="tablescrollable">
             <Table>
                 <thead>
                     <tr>
@@ -32,6 +33,7 @@ function ExerciseList(props) {
                     {listExerciseItems}
                 </tbody>
             </Table>
+            </div>
         </Card>
     );
 }
