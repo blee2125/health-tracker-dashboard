@@ -69,7 +69,7 @@ export const heartRateSlice = createSlice({
   },
   extraReducers: {
     [createHeartRate.fulfilled]: (state, action) => {
-
+      state.heartRateArray.push(action.payload)
     },
     [getHeartRateByDate.fulfilled]: (state, action) => {
       state.heartRateArray = action.payload;

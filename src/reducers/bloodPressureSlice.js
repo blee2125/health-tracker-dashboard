@@ -10,7 +10,6 @@ const createHead = (token) => {
 export const createBloodPressure = createAsyncThunk(
   "bloodpressure/create",
     async (data) => {
-      console.log(data)
       const res = await BloodPressureService.create(data.data, createHead(data.userToken));
       return res.data;
     }
@@ -70,7 +69,7 @@ export const bloodPressureSlice = createSlice({
   },
   extraReducers: {
     [createBloodPressure.fulfilled]: (state, action) => {
-
+      state.bloodPressureArray.push(action.payload)
     },
     [getBloodPressureByDate.fulfilled]: (state, action) => {
       state.bloodPressureArray = action.payload;

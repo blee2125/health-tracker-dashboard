@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import { connect, useSelector } from "react-redux";
 import {Card} from 'react-bootstrap';
-import { getAllHeartRate } from "../../../reducers/heartRateSlice";
+import { getAllHeartRate, deleteHeartRate } from "../../../reducers/heartRateSlice";
 import HeartRateList from "./ListComponents/HeartRateList";
 
 function HeartRate(props) {
@@ -17,6 +17,13 @@ function HeartRate(props) {
     .catch((e) => {console.log(e)});
   }
 
+  const handleDelete = (id) => {
+    props.deleteHeartRate({id: id, userToken: userToken})
+        .unwrap()
+        .then((data) => {})
+        .catch((e) => {console.log(e)});
+  }
+
   useEffect(() => {
     getCurrent()
     // eslint-disable-next-line
@@ -28,9 +35,9 @@ function HeartRate(props) {
         <h3>Heart Rate</h3>
 
       </Card>
-      <HeartRateList list={heartRateList}/>
+      <HeartRateList list={heartRateList} handleDelete={handleDelete}/>
     </div>
   )
 }
 
-export default connect(null, {getAllHeartRate})(HeartRate)
+export default connect(null, { getAllHeartRate, deleteHeartRate })(HeartRate)
