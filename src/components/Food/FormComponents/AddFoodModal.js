@@ -5,7 +5,7 @@ import { createFood, getFoodToday } from "../../../reducers/foodSlice";
 import FoodForm from "./FoodForm";
 import DateFunctions from '../../../functions/DateFunctions';
 import {notify} from '../../../reducers/notificationSlice'
-import FoodSearchModal from "../FoodSearchModal";
+import FoodSearchModal from "./FoodSearchModal";
 
 function AddFoodModal(props) {    
     const [show, setShow] = useState(false);
