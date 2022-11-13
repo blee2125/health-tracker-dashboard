@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import { connect, useSelector } from "react-redux";
 import {Card} from 'react-bootstrap';
-import { getAllBloodPressure } from "../../../reducers/bloodPressureSlice";
+import { getAllBloodPressure, deleteBloodPressure } from "../../../reducers/bloodPressureSlice";
 import BloodPressureList from "./ListComponents/BloodPressureList";
 
 function BloodPressure(props) {
@@ -17,6 +17,13 @@ function BloodPressure(props) {
     .catch((e) => {console.log(e)});
   }
 
+  const handleDelete = (id) => {
+    props.deleteBloodPressure({id: id, userToken: userToken})
+        .unwrap()
+        .then((data) => {})
+        .catch((e) => {console.log(e)});
+  }
+
   useEffect(() => {
     getCurrent()
     // eslint-disable-next-line
@@ -28,10 +35,10 @@ function BloodPressure(props) {
         <h3>Blood Pressure</h3>
 
         </Card>
-        <BloodPressureList list={bpArray}/>
+        <BloodPressureList list={bpArray} handleDelete={handleDelete} />
       
     </div>
   )
 }
 
-export default connect(null, {getAllBloodPressure})(BloodPressure)
+export default connect(null, { getAllBloodPressure, deleteBloodPressure })(BloodPressure)
