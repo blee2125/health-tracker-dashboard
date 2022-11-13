@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Row, Col, Button, Modal, Table } from 'react-bootstrap';
-import http from "../../http-common";
+import http from "../../../http-common";
 
 function FoodSearchModal(props) {    
     const [show, setShow] = useState(false);
