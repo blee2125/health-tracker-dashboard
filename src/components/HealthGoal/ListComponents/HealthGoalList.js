@@ -14,6 +14,7 @@ function HealthGoalList(props) {
             <h2>{props.listTitle ? props.listTitle : "Goal List"}</h2>
             {props.addModal ? props.addModal : ''}
             {props.listFilter ? props.listFilter : ''}
+            <div className="tablescrollable">
             <Table>
                 <thead>
                     <tr>
@@ -26,6 +27,7 @@ function HealthGoalList(props) {
                     {listHealthGoals}
                 </tbody>
             </Table>
+            </div>
         </Card>
     );
 }
