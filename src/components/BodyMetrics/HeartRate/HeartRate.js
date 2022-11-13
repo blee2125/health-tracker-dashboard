@@ -2,9 +2,11 @@ import React, {useEffect} from "react";
 import { connect, useSelector } from "react-redux";
 import {Card} from 'react-bootstrap';
 import { getAllHeartRate } from "../../../reducers/heartRateSlice";
+import HeartRateList from "./ListComponents/HeartRateList";
 
 function HeartRate(props) {
   const userToken = useSelector((state) => state.userState.user.token)
+  const heartRateList = useSelector((state) => state.heartRateState.heartRateArray)
 
   const getCurrent = () => {
     props.getAllHeartRate(userToken)
@@ -26,6 +28,7 @@ function HeartRate(props) {
         <h3>Heart Rate</h3>
 
       </Card>
+      <HeartRateList list={heartRateList}/>
     </div>
   )
 }
