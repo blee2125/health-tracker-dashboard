@@ -51,13 +51,17 @@ Backend built using Express.js and MongoDB - [Github Link](https://github.com/bl
 * Notifications
     - Displays notifications when data is added or deleted
 
+* Body Metrics
+    - Heart Rate
+    - Blood Pressure with categories sourced from the American Heart Association
+
+* Sleep Tracking
+
 
 ## Future improvements
 
-* Body Stats - Heart Rate, Blood Pressure
 * Daily Supplements - Vitamins and Minerals
 * Daily Health Journal
-* Sleep Tracking
 * Medications
 * And More...
 
