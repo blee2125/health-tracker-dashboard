@@ -3,6 +3,7 @@ import { connect, useSelector } from "react-redux";
 import {Card} from 'react-bootstrap';
 import { getAllBloodPressure, deleteBloodPressure } from "../../../reducers/bloodPressureSlice";
 import BloodPressureList from "./ListComponents/BloodPressureList";
+import BloodPressureLegend from "./DisplayComponents/BloodPressureLegend";
 
 function BloodPressure(props) {
   const userToken = useSelector((state) => state.userState.user.token)
@@ -11,9 +12,7 @@ function BloodPressure(props) {
   const getCurrent = () => {
     props.getAllBloodPressure(userToken)
     .unwrap()
-    .then((data) => {
-      
-    })
+    .then((data) => {})
     .catch((e) => {console.log(e)});
   }
 
@@ -35,7 +34,12 @@ function BloodPressure(props) {
         <h3>Blood Pressure</h3>
 
         </Card>
-        <BloodPressureList list={bpArray} handleDelete={handleDelete} />
+        <BloodPressureLegend/>
+        <BloodPressureList 
+          list={bpArray}
+          listTitle={'Blood Pressure'}
+          handleDelete={handleDelete} 
+        />
       
     </div>
   )
